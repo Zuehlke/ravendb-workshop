@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Indexes\Player_Index.cs" />
     <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

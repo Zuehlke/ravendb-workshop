@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Raven.Imports.Newtonsoft.Json;
 
 namespace NoSqlKickoff.Model
 {
@@ -17,5 +15,11 @@ namespace NoSqlKickoff.Model
         public string MiddleName { get; set; }
 
         public DateTime DateOfBirth { get; set; }
+
+        public string TeamId { get; set; }
+
+        // Navigation property
+        [JsonIgnore]
+        public Team Team { get; set; }
     }
 }
