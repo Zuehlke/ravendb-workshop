@@ -21,7 +21,7 @@ namespace NoSqlKickoff.Tests
             _store = NewDocumentStore();
             _store.Initialize();
 
-            IndexCreation.CreateIndexes(typeof(Player_Index).Assembly, _store);
+            IndexCreation.CreateIndexes(typeof(Player_Index_UC03).Assembly, _store);
 
             using (var session = _store.OpenSession())
             {
@@ -45,9 +45,9 @@ namespace NoSqlKickoff.Tests
         {
             using (var session = _store.OpenSession())
             {
-                var playersFromSwitzerland = session.Query<Player_Index.Result, Player_Index>()
-                    .Where(p => p.Country == "Switzerland")
-                    .ProjectFromIndexFieldsInto<Player_Index.Result>()
+                var playersFromSwitzerland = session.Query<Player_Index_UC03.IndexEntry, Player_Index_UC03>()
+                    //.Where(p => p.Country == "Switzerland")
+                    .ProjectFromIndexFieldsInto<Player_Index_UC03.IndexEntry>()
                     .ToList();
 
                 Assert.That(playersFromSwitzerland.Count(), Is.EqualTo(2));

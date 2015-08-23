@@ -9,6 +9,10 @@ using Raven.Tests.Helpers;
 
 namespace NoSqlKickoff.Tests
 {
+    /// <summary>
+    /// Use Case: Store and load players
+    /// Goal: Store one or many players in the database and then load them from the database by their id
+    /// </summary>
     [TestFixture]
     public class UC_01_StoreAndLoad : RavenTestBase
     {

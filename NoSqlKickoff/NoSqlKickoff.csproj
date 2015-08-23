@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Indexes\Player_Index.cs" />
+    <Compile Include="Indexes\Player_Index_UC06.cs" />
+    <Compile Include="Indexes\Player_Index_UC05.cs" />
+    <Compile Include="Indexes\Player_Index_UC04.cs" />
+    <Compile Include="Indexes\Player_Index_UC03.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,7 +10,11 @@ using Raven.Tests.Helpers;
 
 namespace NoSqlKickoff.Tests
 {
-    public class UC_02_Querying : RavenTestBase
+    /// <summary>
+    /// Use Case: Simple querying against an automatically created index
+    /// Goal: Query the Player collection with Filtering and Paging
+    /// </summary>
+    public class UC_02_Querying_AutoIndex : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -24,6 +28,7 @@ namespace NoSqlKickoff.Tests
 
             _players = DataGenerator.CreatePlayerList();
 
+            // Store some players in the database
             using (var session = _store.OpenSession())
             {
                 foreach (var player in _players)
@@ -64,7 +69,7 @@ namespace NoSqlKickoff.Tests
                     .ToList();
 
                 Assert.That(firstPage.Count(), Is.EqualTo(2));
-                Assert.That(stats.TotalResults, Is.EqualTo(4));
+                Assert.That(stats.TotalResults, Is.EqualTo(_players.Count));
             }
         }
 
@@ -77,10 +82,6 @@ namespace NoSqlKickoff.Tests
                     .Customize(c => c.WaitForNonStaleResultsAsOfNow())
                     .Where(p => p.FirstName.StartsWith("C"))
                     .ToList();
-
-                
-
-                WaitForUserToContinueTheTest(_store);
 
                 Assert.That(filteredResults.Count(), Is.EqualTo(1));
             }

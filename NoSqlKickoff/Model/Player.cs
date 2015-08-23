@@ -16,10 +16,17 @@ namespace NoSqlKickoff.Model
 
         public DateTime DateOfBirth { get; set; }
 
+        public Nationality Nationality { get; set; }
+
         public string TeamId { get; set; }
 
         // Navigation property
         [JsonIgnore]
-        public Team Team { get; set; }
+        public Team TeamNavigationProperty { get; set; }
+    }
+
+    public class Nationality
+    {
+        public string Name { get; set; }
     }
 }
