@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Model;
 
 using NUnit.Framework;
@@ -14,9 +10,11 @@ using Raven.Tests.Helpers;
 
 namespace NoSqlKickoff.Tests
 {
-    public class _02_Querying : RavenTestBase
+    public class UC_02_Querying : RavenTestBase
     {
         private IDocumentStore _store;
+
+        private List<Player> _players;
 
         [SetUp]
         public void SetUp()
@@ -24,12 +22,14 @@ namespace NoSqlKickoff.Tests
             _store = NewDocumentStore();
             _store.Initialize();
 
+            _players = DataGenerator.CreatePlayerList();
+
             using (var session = _store.OpenSession())
             {
-                session.Store(new Player { FirstName = "Lionel", LastName = "Messi" });
-                session.Store(new Player { FirstName = "Bastian", LastName = "Schweinsteiger" });
-                session.Store(new Player { FirstName = "Christiano", LastName = "Ronaldo" });
-                session.Store(new Player { FirstName = "Stephane", LastName = "Chapuisat" });
+                foreach (var player in _players)
+                {
+                    session.Store(player);
+                }
 
                 session.SaveChanges();
             }
@@ -46,7 +46,7 @@ namespace NoSqlKickoff.Tests
                 // Wait for unstale index
                 var allPlayers = session.Query<Player>().Customize(c => c.WaitForNonStaleResultsAsOfNow()).ToList();
 
-                Assert.That(allPlayers.Count(), Is.EqualTo(4));
+                Assert.That(allPlayers.Count, Is.EqualTo(_players.Count));
             }
         }
 

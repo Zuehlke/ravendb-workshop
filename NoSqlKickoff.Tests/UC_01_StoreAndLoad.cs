@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 using NoSqlKickoff.Model;
 
@@ -14,7 +10,7 @@ using Raven.Tests.Helpers;
 namespace NoSqlKickoff.Tests
 {
     [TestFixture]
-    public class _01_StoreAndLoad : RavenTestBase
+    public class UC_01_StoreAndLoad : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -28,8 +24,8 @@ namespace NoSqlKickoff.Tests
         [Test]
         public void StoreAndLoad()
         {
-            var player = new Player { FirstName = "Christiano", LastName = "Ronaldo" };
-
+            Player player = DataGenerator.CreatePlayer();
+            
             using (var session = _store.OpenSession())
             {
                 session.Store(player);
@@ -51,5 +47,30 @@ namespace NoSqlKickoff.Tests
             Assert.AreEqual(loadedPlayer.FirstName, player.FirstName);
         }
 
+        [Test]
+        public void StoreAndLoadMultiple()
+        {
+            var players = DataGenerator.CreatePlayerList();
+
+            using (var session = _store.OpenSession())
+            {
+                foreach (var player in players)
+                {
+                    session.Store(player);    
+                }
+
+                session.SaveChanges();
+            }
+
+            Player[] loadedPlayers;
+            using (var session = _store.OpenSession())
+            {
+                loadedPlayers = session.Load<Player>(players.Select(p => p.Id).ToArray());
+            }
+
+            CollectionAssert.AreEquivalent(
+                players.Select(player => player.LastName),
+                loadedPlayers.Select(player => player.LastName));
+        }
     }
 }
