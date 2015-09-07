@@ -56,11 +56,38 @@ namespace NoSqlKickoff.Tests
             {
                 var filteredResults = session.Query<Player, Player_Index_UC06>()
                      .Where(p => p.FirstName.StartsWith("C"))
-                     .Select(p => p.FirstName)
+                     .Select(p => p.LastName)
                      .ToList();
 
                 Assert.That(filteredResults.Count(), Is.EqualTo(1));
-                Assert.That(filteredResults.Single(), Is.EqualTo("Christiano"));
+                Assert.That(filteredResults.Single(), Is.EqualTo("Ronaldo"));
+            }
+        }
+
+        [Test]
+        public void SimpleProjection_WithSelectIntoDifferentType()
+        {
+            using (var session = _store.OpenSession())
+            {
+                // Select works only on the Document and not on the index Entry
+                // Use ProjectFromIndexFieldsInto instead.
+                var filteredResults = session.Query<Player_Index_UC06.IndexEntry, Player_Index_UC06>()
+                     .Where(p => p.FirstName.StartsWith("C"))
+                     .OfType<Player>()
+                     .Select(p => new
+                                      {
+                                        p.LastName,
+                                        p.FirstName
+                                      })
+                     .ToList()
+                     .Select(p => new PlayerWithFullName
+                                      {
+                                          FullName = p.FirstName + " " + p.LastName
+                                      })
+                    .ToList();
+
+                Assert.That(filteredResults.Count(), Is.EqualTo(1));
+                Assert.That(filteredResults.Single().FullName, Is.EqualTo("Christiano Ronaldo"));
             }
         }
     }

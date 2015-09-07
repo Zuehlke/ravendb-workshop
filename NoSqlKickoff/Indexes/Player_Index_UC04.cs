@@ -11,6 +11,7 @@ namespace NoSqlKickoff.Indexes
         public class IndexEntry
         {
             public string Name { get; set; }
+
             public string FirstNameRenamed { get; set; }
 
             // This underscore Syntax can be used for property chains in Indexes

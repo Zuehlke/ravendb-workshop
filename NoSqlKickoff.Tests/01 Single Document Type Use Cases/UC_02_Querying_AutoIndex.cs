@@ -52,6 +52,8 @@ namespace NoSqlKickoff.Tests
                 var allPlayers = session.Query<Player>().Customize(c => c.WaitForNonStaleResultsAsOfNow()).ToList();
 
                 Assert.That(allPlayers.Count, Is.EqualTo(_players.Count));
+
+                WaitForUserToContinueTheTest(_store);
             }
         }
 

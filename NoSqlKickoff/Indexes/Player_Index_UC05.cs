@@ -11,7 +11,7 @@ namespace NoSqlKickoff.Indexes
     {
         public class IndexEntry
         {
-            public string Name { get; set; }
+            public string FullName { get; set; }
         }
 
         public Player_Index_UC05()
@@ -19,12 +19,12 @@ namespace NoSqlKickoff.Indexes
             Map = players => from player in players
                              select new IndexEntry
                              {
-                                 Name = player.FirstName + " " + player.LastName
+                                 FullName = player.FirstName + " " + player.LastName
                              };
 
             // We have to store the index field, otherwise we cannot use it for Projection
             // By default, Raven runs an analyzer over the Index fields, and only stores the analyzed/scrambled version.
-            Store("Name", FieldStorage.Yes);
+            Store("FullName", FieldStorage.Yes);
         }
     }
 }

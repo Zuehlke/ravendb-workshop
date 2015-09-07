@@ -58,10 +58,10 @@ namespace NoSqlKickoff.Tests
         {
             using (var session = _store.OpenSession())
             {
-                // Not possible to query on Name, because Player does not have a Name property
-                // var filteredResults = session.Query<Player, Player_Index_UC04>()
-                //    .Where(p => p.Name.StartsWith("C"))
-                //    .ToList();
+                 //Not possible to query on Name, because Player does not have a Name property
+                 //var filteredResults = session.Query<Player, Player_Index_UC04>()
+                 //   .Where(p => p.Name.StartsWith("C"))
+                 //   .ToList();
 
                 // Instead we have to query on the Index Entry and then coerce the type to Player using special operators
 

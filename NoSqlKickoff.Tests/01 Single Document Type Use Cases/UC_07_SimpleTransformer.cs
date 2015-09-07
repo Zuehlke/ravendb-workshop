@@ -3,20 +3,18 @@ using System.Linq;
 
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Model;
+using NoSqlKickoff.Transformers;
 
 using NUnit.Framework;
 
 using Raven.Client;
 using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
+using Raven.Client.Linq;
 
 namespace NoSqlKickoff.Tests
 {
-    /// <summary>
-    /// Use Case: Get index entries directly
-    /// Goal: Query an index and get its values as object, totally ignoring the document store
-    /// </summary>
-    public class UC_05_ProjectFromIndexFieldsInto : RavenTestBase
+    public class UC_07_SimpleTransformer : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -50,24 +48,18 @@ namespace NoSqlKickoff.Tests
         }
 
         [Test]
-        public void GetStoredIndexFields()
+        public void SimpleTransformer()
         {
             using (var session = _store.OpenSession())
             {
-                // Not possible to just get the Index Entry, because the Index specifies that it works on objects of type Player
-                // var filteredResults = session.Query<Player_Index_UC05.IndexEntry, Player_Index_UC05>()
-                //        .Where(p => p.Name.StartsWith("C"))
-                //        .ToList();
-
-                // Solution: ProjectFromIndexFieldsInto
-                var filteredResults = session.Query<Player_Index_UC05.IndexEntry, Player_Index_UC05>()
-                     .Where(p => p.Name.StartsWith("C"))
-                     .ProjectFromIndexFieldsInto<Player_Index_UC05.IndexEntry>()
+                var filteredResults = session.Query<Player, Player_Index_UC07>()
+                     .Where(p => p.FirstName.StartsWith("C"))
+                     .TransformWith<PlayerFullNameTransformer, PlayerWithFullName>()
                      .ToList();
 
                 Assert.That(filteredResults.Count(), Is.EqualTo(1));
-                Assert.That(filteredResults.Single().Name, Is.EqualTo("Christiano Ronaldo"));
-            }
+                Assert.That(filteredResults.Single().FullName, Is.EqualTo("Christiano Ronaldo"));
+            }  
         }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Model;
@@ -15,7 +12,7 @@ using Raven.Tests.Helpers;
 
 namespace NoSqlKickoff.Tests
 {
-    public class UC_07_Include : RavenTestBase
+    public class UC_08_Include : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -49,8 +46,6 @@ namespace NoSqlKickoff.Tests
                     session.Store(player);
                 }
 
-                
-
                 session.SaveChanges();
             }
 
@@ -68,6 +63,7 @@ namespace NoSqlKickoff.Tests
 
                 foreach (var player in allPlayers)
                 {
+                    // This causes a network request for each team --> exception if too many operations per session
                     var team = session.Load<Team>(player.TeamId);
                     player.TeamNavigationProperty = team;
                 }
@@ -75,8 +71,7 @@ namespace NoSqlKickoff.Tests
                 Assert.IsTrue(allPlayers.All(p => p.TeamNavigationProperty != null));
             }
         }
-
-
+        
         [Test]
         public void GetPlayerWithTeam_UsingInclude()
         {

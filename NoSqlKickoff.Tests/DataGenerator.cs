@@ -23,6 +23,11 @@ namespace NoSqlKickoff.Tests
             return PlayerGenerator.GetPlayersWithTeamIds(teams).ToList();
         }
 
+        public static List<PlayerWithTeam> CreatePlayerListWithTeams(List<Team> teams)
+        {
+            return PlayerGenerator.GetPlayerListWithTeams(teams).ToList();
+        }
+
         public static List<Team> CreateTeamList()
         {
             return TeamGenerator.GetTeams();
@@ -177,6 +182,28 @@ namespace NoSqlKickoff.Tests
                 {
                     player.TeamId = team.Id;
                     yield return player;
+                }
+            }
+        }
+
+        public static IEnumerable<PlayerWithTeam> GetPlayerListWithTeams(List<Team> teams)
+        {
+            foreach (var team in teams)
+            {
+                var playersOfTeam = TeamDictionary[team.Name];
+                foreach (var player in playersOfTeam)
+                {
+                    var playerWithTeam = new PlayerWithTeam
+                    {
+                        DateOfBirth = player.DateOfBirth,
+                        FirstName = player.FirstName,
+                        Id = player.Id,
+                        LastName = player.LastName,
+                        MiddleName = player.MiddleName,
+                        Nationality = player.Nationality,
+                        Team = team
+                    };
+                    yield return playerWithTeam;
                 }
             }
         }

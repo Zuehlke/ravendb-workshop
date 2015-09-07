@@ -49,20 +49,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Indexes\Player_Index_UC13.cs" />
+    <Compile Include="Indexes\Player_Index_UC12.cs" />
+    <Compile Include="Indexes\Player_Index_UC11.cs" />
+    <Compile Include="Indexes\Player_Index_UC10.cs" />
+    <Compile Include="Indexes\Player_Index_UC09.cs" />
+    <Compile Include="Indexes\Player_Index_UC07.cs" />
     <Compile Include="Indexes\Player_Index_UC06.cs" />
     <Compile Include="Indexes\Player_Index_UC05.cs" />
     <Compile Include="Indexes\Player_Index_UC04.cs" />
     <Compile Include="Indexes\Player_Index_UC03.cs" />
     <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\PlayerWithFullName.cs" />
+    <Compile Include="Model\PlayerWithTeam.cs" />
     <Compile Include="Model\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transformers\PlayerFullNameTransformer.cs" />
+    <Compile Include="Transformers\PlayerWithTeamTransformer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Transformers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

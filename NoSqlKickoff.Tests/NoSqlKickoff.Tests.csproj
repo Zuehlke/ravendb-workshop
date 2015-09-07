@@ -65,17 +65,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="02 Referenced Documents Use Cases\UC_10_LoadDocumentInTransformer.cs" />
+    <Compile Include="02 Referenced Documents Use Cases\UC_11_LoadDocumentWithStoreFields.cs" />
+    <Compile Include="03 MapReduce Use Cases\UC_12_MapReduce.cs" />
+    <Compile Include="04 Embedding\UC_13_QueryPersonWithEmbeddedTeam.cs" />
     <Compile Include="DataGenerator.cs" />
     <Compile Include="LinqExtensions.cs" />
-    <Compile Include="UC_02_Querying_AutoIndex.cs" />
-    <Compile Include="UC_01_StoreAndLoad.cs" />
+    <Compile Include="01 Single Document Type Use Cases\UC_02_Querying_AutoIndex.cs" />
+    <Compile Include="01 Single Document Type Use Cases\UC_01_StoreAndLoad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UC_07_Include.cs" />
-    <Compile Include="UC_04_Querying_TypeCoercion.cs" />
-    <Compile Include="UC_03_Querying_StaticIndex.cs" />
-    <Compile Include="UC-LoadDocument.cs" />
-    <Compile Include="UC_06_Select.cs" />
-    <Compile Include="UC_05_ProjectFromIndexFieldsInto.cs" />
+    <Compile Include="02 Referenced Documents Use Cases\UC_08_Include.cs" />
+    <Compile Include="01 Single Document Type Use Cases\UC_04_Querying_TypeCoercion.cs" />
+    <Compile Include="01 Single Document Type Use Cases\UC_03_Querying_StaticIndex.cs" />
+    <Compile Include="02 Referenced Documents Use Cases\UC_09_LoadDocumentInIndex.cs" />
+    <Compile Include="01 Single Document Type Use Cases\UC_06_Select.cs" />
+    <Compile Include="01 Single Document Type Use Cases\UC_05_ProjectFromIndexFieldsInto.cs" />
+    <Compile Include="01 Single Document Type Use Cases\UC_07_SimpleTransformer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -88,6 +93,9 @@
       <Project>{522C8C48-BD22-4EE3-9F00-BACAC5C73AEB}</Project>
       <Name>NoSqlKickoff</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
