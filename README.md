@@ -1,5 +1,8 @@
 # ravendb-workshop
-RavenDB Workshop for Zühlke Days 2015 which takes place on 25
+RavenDB Workshop for Zühlke Days 2015 (NoSQL Kickoff: Modelling and querying football data with RavenDB) which takes place on 24.9.2015 13:35 - 16:20.
+
+## Description of the Workshop
+In this tutorial, attendees will learn the most important concepts of document databases by getting a deep introduction into RavenDB, a document store particularly popular with .NET. They will learn how to translate a complex domain model into a reasonable document representation, how to build indexes for these documents and how to query them efficiently, and how to write unit tests to keep things maintainable. Attendees should join if they are interested in learning how to solve non-trivial persistency challenges in a non-relational way.
 
 ## How to start the solution
 * Open the solution
