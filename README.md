@@ -1,13 +1,13 @@
 # ravendb-workshop
 RavenDB Workshop for Zühlke Days 2015 which takes place on 25
 
-# How to start the solution
+## How to start the solution
 * Open the solution
 * Build the solution (Ctrl + Shift + B) to get the NuGet packages
 * start the ravendb server located in packages/RavenDb.Server.%version%/RavenDb.Server.exe
 * Now you are ready to do the exercises
 
-#Use Cases / Exercises
+##Use Cases / Exercises
 
 * Store a list of players and load them by their id
 * Store the player list and filter out Christiano Ronaldo
@@ -26,3 +26,7 @@ RavenDB Workshop for Zühlke Days 2015 which takes place on 25
 
 * Get a list of all players whose first name starts with "C"
 * Get a list of all players whose last name contains the keyword "van"
+
+##Contributors
+- [mzoellner](https://github.com/mzoellner) (Michael Zöllner)
+- [tobiaszuercher](https://github.com/tobiaszuercher) (Tobias Zürcher)
