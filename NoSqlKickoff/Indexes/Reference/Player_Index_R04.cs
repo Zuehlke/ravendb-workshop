@@ -10,7 +10,7 @@ namespace NoSqlKickoff.Indexes
     {
         public class IndexEntry
         {
-            public string Name { get; set; }
+            public string FullName { get; set; }
 
             public string FirstNameRenamed { get; set; }
 
@@ -26,7 +26,7 @@ namespace NoSqlKickoff.Indexes
             Map = players => from player in players
                              select new IndexEntry
                              {
-                                 Name = player.FirstName + " " + player.LastName,
+                                 FullName = player.FirstName + " " + player.LastName,
                                  FirstNameRenamed = player.FirstName,
                                  Nationality_Name = player.Nationality.Name,
                                  Nationality = player.Nationality.Name

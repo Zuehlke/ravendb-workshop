@@ -73,7 +73,7 @@ namespace NoSqlKickoff.Tests
 
                 // Option 2: OfType<T>
                 var filteredResults = session.Query<Player_Index_R04.IndexEntry, Player_Index_R04>()
-                     .Where(p => p.Name.StartsWith("C"))
+                     .Where(p => p.FullName.StartsWith("C"))
                      .OfType<Player>()
                      .ToList();
                 
