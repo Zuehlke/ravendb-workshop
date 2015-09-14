@@ -16,7 +16,7 @@ namespace NoSqlKickoff.Tests
     /// Use Case: Get index entries directly
     /// Goal: Query an index and get its values as object, totally ignoring the document store
     /// </summary>
-    public class UC_11_LoadDocumentWithStoreFields : RavenTestBase
+    public class R11_LoadDocumentWithStoreFields : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -31,7 +31,7 @@ namespace NoSqlKickoff.Tests
             _store.Initialize();
 
             // We first have to create the static indexes
-            IndexCreation.CreateIndexes(typeof(Player_Index_UC03).Assembly, _store);
+            IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             _teams = DataGenerator.CreateTeamList();
 
@@ -63,7 +63,7 @@ namespace NoSqlKickoff.Tests
         {
             using (var session = _store.OpenSession())
             {
-                var playersOfItalianTeams = session.Query<Player_Index_UC11.IndexEntry, Player_Index_UC11>()
+                var playersOfItalianTeams = session.Query<Player_Index_R11.IndexEntry, Player_Index_R11>()
                     .Where(p => p.CountryOfTeam == "Italy")
                     .ProjectFromIndexFieldsInto<PlayerWithTeam>()
                     .ToList();

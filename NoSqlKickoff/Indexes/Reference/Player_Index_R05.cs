@@ -7,14 +7,14 @@ using Raven.Client.Indexes;
 
 namespace NoSqlKickoff.Indexes
 {
-    public class Player_Index_UC05 : AbstractIndexCreationTask<Player>
+    public class Player_Index_R05 : AbstractIndexCreationTask<Player>
     {
         public class IndexEntry
         {
             public string FullName { get; set; }
         }
 
-        public Player_Index_UC05()
+        public Player_Index_R05()
         {
             Map = players => from player in players
                              select new IndexEntry

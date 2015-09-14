@@ -31,11 +31,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Raven.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\packages\RavenDB.Client.3.0.3690\lib\net45\Raven.Abstractions.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.3.0.3785\lib\net45\Raven.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Raven.Client.Lightweight, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\packages\RavenDB.Client.3.0.3690\lib\net45\Raven.Client.Lightweight.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.3.0.3785\lib\net45\Raven.Client.Lightweight.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -49,16 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Indexes\Player_Index_UC13.cs" />
-    <Compile Include="Indexes\Player_Index_UC12.cs" />
-    <Compile Include="Indexes\Player_Index_UC11.cs" />
-    <Compile Include="Indexes\Player_Index_UC10.cs" />
-    <Compile Include="Indexes\Player_Index_UC09.cs" />
-    <Compile Include="Indexes\Player_Index_UC07.cs" />
-    <Compile Include="Indexes\Player_Index_UC06.cs" />
-    <Compile Include="Indexes\Player_Index_UC05.cs" />
-    <Compile Include="Indexes\Player_Index_UC04.cs" />
-    <Compile Include="Indexes\Player_Index_UC03.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R12.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R13.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R11.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R10.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R09.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R07.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R06.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R05.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R04.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R03.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\PlayerWithFullName.cs" />
     <Compile Include="Model\PlayerWithTeam.cs" />
@@ -70,7 +70,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

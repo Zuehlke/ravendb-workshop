@@ -16,7 +16,7 @@ namespace NoSqlKickoff.Tests
     /// Use Case: Get index entries directly
     /// Goal: Query an index and get its values as object, totally ignoring the document store
     /// </summary>
-    public class UC_06_Select : RavenTestBase
+    public class R06_Select : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -29,7 +29,7 @@ namespace NoSqlKickoff.Tests
             _store.Initialize();
 
             // We first have to create the static indexes
-            IndexCreation.CreateIndexes(typeof(Player_Index_UC03).Assembly, _store);
+            IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             _players = DataGenerator.CreatePlayerList();
 
@@ -54,7 +54,7 @@ namespace NoSqlKickoff.Tests
         {
             using (var session = _store.OpenSession())
             {
-                var filteredResults = session.Query<Player, Player_Index_UC06>()
+                var filteredResults = session.Query<Player, Player_Index_R06>()
                      .Where(p => p.FirstName.StartsWith("C"))
                      .Select(p => p.LastName)
                      .ToList();
@@ -71,7 +71,7 @@ namespace NoSqlKickoff.Tests
             {
                 // Select works only on the Document and not on the index Entry
                 // Use ProjectFromIndexFieldsInto instead.
-                var filteredResults = session.Query<Player_Index_UC06.IndexEntry, Player_Index_UC06>()
+                var filteredResults = session.Query<Player_Index_R06.IndexEntry, Player_Index_R06>()
                      .Where(p => p.FirstName.StartsWith("C"))
                      .OfType<Player>()
                      .Select(p => new

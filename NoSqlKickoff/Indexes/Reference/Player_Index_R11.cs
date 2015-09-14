@@ -7,7 +7,7 @@ using Raven.Client.Indexes;
 
 namespace NoSqlKickoff.Indexes
 {
-    public class Player_Index_UC11 : AbstractIndexCreationTask<Player>
+    public class Player_Index_R11 : AbstractIndexCreationTask<Player>
     {
         public class IndexEntry
         {
@@ -16,7 +16,7 @@ namespace NoSqlKickoff.Indexes
             public Team Team { get; set; }
         }
 
-        public Player_Index_UC11()
+        public Player_Index_R11()
         {
             Map = players => from player in players
                              let team = LoadDocument<Team>(player.TeamId)

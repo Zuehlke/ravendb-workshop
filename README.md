@@ -15,11 +15,11 @@ In this tutorial, attendees will learn the most important concepts of document d
 * Store and load players:
 	* As a user I want save a list of the following players: "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
 	* As a user I want to be able to receive back the whole list of players ("Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger") I stored before and load them by their id for verification. 
+* Filter and paged list of players:
+	* As a user I need search for players based on their first name and paged
 	* As a user I want to be able to filter out the player "Christiano Ronaldo".
 	* As a user I want to query for all players that start with a "C" in the firstname.
 	* As a user I want to query for all players whose last name contains the keyword "van".
-* Filter and paged list of players:
-	* Return a list of players filtered by first name and paged
 * Team member list:
 	* Return the player list of Dortmund
 	* Return a list of players of AC Milan from the 1990 season

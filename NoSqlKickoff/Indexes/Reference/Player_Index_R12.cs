@@ -1,15 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
+﻿using System.Linq;
 
 using NoSqlKickoff.Model;
 
-using Raven.Abstractions.Indexing;
 using Raven.Client.Indexes;
 
 namespace NoSqlKickoff.Indexes
 {
-    public class Player_Index_UC13 : AbstractIndexCreationTask<PlayerWithTeam>
+    public class Player_Index_R12 : AbstractIndexCreationTask<PlayerWithTeam>
     {
         public class IndexEntry
         {
@@ -20,7 +17,7 @@ namespace NoSqlKickoff.Indexes
             public bool PlaysInHisHomeCountry { get; set; }
         }
 
-        public Player_Index_UC13()
+        public Player_Index_R12()
         {
             Map = players => from player in players
                              select new IndexEntry

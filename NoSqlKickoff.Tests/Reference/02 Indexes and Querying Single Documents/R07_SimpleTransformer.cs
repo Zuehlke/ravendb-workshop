@@ -14,7 +14,7 @@ using Raven.Client.Linq;
 
 namespace NoSqlKickoff.Tests
 {
-    public class UC_07_SimpleTransformer : RavenTestBase
+    public class R07_SimpleTransformer : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -27,7 +27,7 @@ namespace NoSqlKickoff.Tests
             _store.Initialize();
 
             // We first have to create the static indexes
-            IndexCreation.CreateIndexes(typeof(Player_Index_UC03).Assembly, _store);
+            IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             _players = DataGenerator.CreatePlayerList();
 
@@ -52,7 +52,7 @@ namespace NoSqlKickoff.Tests
         {
             using (var session = _store.OpenSession())
             {
-                var filteredResults = session.Query<Player, Player_Index_UC07>()
+                var filteredResults = session.Query<Player, Player_Index_R07>()
                      .Where(p => p.FirstName.StartsWith("C"))
                      .TransformWith<PlayerFullNameTransformer, PlayerWithFullName>()
                      .ToList();

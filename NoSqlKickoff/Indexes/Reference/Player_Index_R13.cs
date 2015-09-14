@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 
 using NoSqlKickoff.Model;
 
-using Raven.Abstractions.Indexing;
 using Raven.Client.Indexes;
 
 namespace NoSqlKickoff.Indexes
 {
-    public class Player_Index_UC12 : AbstractIndexCreationTask<Player, Player_Index_UC12.IndexEntry>
+    public class Player_Index_R13 : AbstractIndexCreationTask<Player, Player_Index_R13.IndexEntry>
     {
         public class IndexEntry
         {
@@ -20,7 +18,7 @@ namespace NoSqlKickoff.Indexes
             public List<string> Players { get; set; }
         }
 
-        public Player_Index_UC12()
+        public Player_Index_R13()
         {
             Map = players => from player in players
                              let team = LoadDocument<Team>(player.TeamId)

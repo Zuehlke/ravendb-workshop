@@ -35,23 +35,23 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Raven.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\packages\RavenDB.Tests.Helpers.3.0.3690\lib\net45\Raven.Abstractions.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.3.0.3785\lib\net45\Raven.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Raven.Client.Lightweight, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\packages\RavenDB.Client.3.0.3690\lib\net45\Raven.Client.Lightweight.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.3.0.3785\lib\net45\Raven.Client.Lightweight.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Raven.Database, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\packages\RavenDB.Database.3.0.3690\lib\net45\Raven.Database.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Database.3.0.3785\lib\net45\Raven.Database.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Raven.Server, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\packages\RavenDB.Tests.Helpers.3.0.3690\lib\net45\Raven.Server.exe</HintPath>
+      <HintPath>..\packages\RavenDB.Tests.Helpers.3.0.3785\lib\net45\Raven.Server.exe</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Raven.Tests.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\packages\RavenDB.Tests.Helpers.3.0.3690\lib\net45\Raven.Tests.Helpers.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Tests.Helpers.3.0.3785\lib\net45\Raven.Tests.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -65,28 +65,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="02 Referenced Documents Use Cases\UC_10_LoadDocumentInTransformer.cs" />
-    <Compile Include="02 Referenced Documents Use Cases\UC_11_LoadDocumentWithStoreFields.cs" />
-    <Compile Include="03 MapReduce Use Cases\UC_12_MapReduce.cs" />
-    <Compile Include="04 Embedding\UC_13_QueryPersonWithEmbeddedTeam.cs" />
+    <Compile Include="Reference\03 Modelling and Querying Relationships\R10_LoadDocumentInTransformer.cs" />
+    <Compile Include="Reference\03 Modelling and Querying Relationships\R11_LoadDocumentWithStoreFields.cs" />
+    <Compile Include="Reference\04 Aggregations\R13_MapReduce.cs" />
+    <Compile Include="Reference\03 Modelling and Querying Relationships\R12_QueryPersonWithEmbeddedTeam.cs" />
     <Compile Include="DataGenerator.cs" />
     <Compile Include="LinqExtensions.cs" />
-    <Compile Include="01 Single Document Type Use Cases\UC_02_Querying_AutoIndex.cs" />
-    <Compile Include="01 Single Document Type Use Cases\UC_01_StoreAndLoad.cs" />
+    <Compile Include="Reference\01 RavenDB Basics\R02_Querying_AutoIndex.cs" />
+    <Compile Include="Reference\01 RavenDB Basics\R01_StoreAndLoad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="02 Referenced Documents Use Cases\UC_08_Include.cs" />
-    <Compile Include="01 Single Document Type Use Cases\UC_04_Querying_TypeCoercion.cs" />
-    <Compile Include="01 Single Document Type Use Cases\UC_03_Querying_StaticIndex.cs" />
-    <Compile Include="02 Referenced Documents Use Cases\UC_09_LoadDocumentInIndex.cs" />
-    <Compile Include="01 Single Document Type Use Cases\UC_06_Select.cs" />
-    <Compile Include="01 Single Document Type Use Cases\UC_05_ProjectFromIndexFieldsInto.cs" />
-    <Compile Include="01 Single Document Type Use Cases\UC_07_SimpleTransformer.cs" />
+    <Compile Include="Reference\03 Modelling and Querying Relationships\R08_Include.cs" />
+    <Compile Include="Reference\02 Indexes and Querying Single Documents\R04_Querying_TypeCoercion.cs" />
+    <Compile Include="Reference\02 Indexes and Querying Single Documents\R03_Querying_StaticIndex.cs" />
+    <Compile Include="Reference\03 Modelling and Querying Relationships\R09_LoadDocumentInIndex.cs" />
+    <Compile Include="Reference\02 Indexes and Querying Single Documents\R06_Select.cs" />
+    <Compile Include="Reference\02 Indexes and Querying Single Documents\R05_ProjectFromIndexFieldsInto.cs" />
+    <Compile Include="Reference\02 Indexes and Querying Single Documents\R07_SimpleTransformer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Raven.Studio.Html5.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NoSqlKickoff\NoSqlKickoff.csproj">
@@ -95,7 +92,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Raven.Studio.Html5.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exercises\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

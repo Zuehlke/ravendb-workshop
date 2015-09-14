@@ -20,7 +20,7 @@ namespace NoSqlKickoff.Tests
     //  either the compiler complains, it will throw at runtime or you won't get any results
     //  Best Solution: use type coercion
     /// </summary>
-    public class UC_04_Querying_TypeCoercion : RavenTestBase
+    public class R04_Querying_TypeCoercion : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -33,7 +33,7 @@ namespace NoSqlKickoff.Tests
             _store.Initialize();
 
             // We first have to create the static indexes
-            IndexCreation.CreateIndexes(typeof(Player_Index_UC03).Assembly, _store);
+            IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             _players = DataGenerator.CreatePlayerList();
 
@@ -72,7 +72,7 @@ namespace NoSqlKickoff.Tests
                 //.ToList();
 
                 // Option 2: OfType<T>
-                var filteredResults = session.Query<Player_Index_UC04.IndexEntry, Player_Index_UC04>()
+                var filteredResults = session.Query<Player_Index_R04.IndexEntry, Player_Index_R04>()
                      .Where(p => p.Name.StartsWith("C"))
                      .OfType<Player>()
                      .ToList();
@@ -92,7 +92,7 @@ namespace NoSqlKickoff.Tests
                 //    .ToList();
 
                 // Solution: Type coercion
-                var filteredResults = session.Query<Player_Index_UC04.IndexEntry, Player_Index_UC04>()
+                var filteredResults = session.Query<Player_Index_R04.IndexEntry, Player_Index_R04>()
                      .Where(p => p.FirstNameRenamed.StartsWith("C"))
                      .OfType<Player>()
                      .ToList();
@@ -106,7 +106,7 @@ namespace NoSqlKickoff.Tests
         {
             using (var session = _store.OpenSession())
             {
-                var filteredResults = session.Query<Player, Player_Index_UC04>()
+                var filteredResults = session.Query<Player, Player_Index_R04>()
                     .Where(p => p.Nationality.Name == "Germany")
                     .ToList();
 
@@ -119,7 +119,7 @@ namespace NoSqlKickoff.Tests
         {
             using (var session = _store.OpenSession())
             {
-                var filteredResults = session.Query<Player_Index_UC04.IndexEntry, Player_Index_UC04>()
+                var filteredResults = session.Query<Player_Index_R04.IndexEntry, Player_Index_R04>()
                     .Where(p => p.Nationality == "Germany")
                     .OfType<Player>()
                     .ToList();
