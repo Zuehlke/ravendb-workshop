@@ -20,7 +20,8 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// Exercise 5: As a user I want to find the player "Christiano Ronaldo"
+        /// TODO: Exercise 5
+        /// As a user I want to find the player "Christiano Ronaldo"
         /// </summary>
         public Player FindChristiano()
         {
@@ -28,7 +29,8 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// Exercise 6: As a user I want to query for all players that start with a "C" in the firstname
+        /// TODO: Exercise 6
+        /// As a user I want to query for all players that start with a "C" in the firstname
         /// </summary>
         public List<Player> FindPlayersStartingWithC()
         {
