@@ -16,7 +16,8 @@ In this tutorial, attendees will learn the most important concepts of document d
 	* As a user I want save a list of the following players: "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
 	* As a user I want to be able to receive back the whole list of players ("Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger") I stored before and load them by their id for verification. 
 * Filter and paged list of players:
-	* As a user I need search for players and get a list of 5 players at once (paged list).
+	* As a user I need to get a list of 5 players at once (paged list).
+	* As a user I need to get the second list of 5 players at once (paged list).
 	* As a user I want to be able to filter out the player "Christiano Ronaldo".
 	* As a user I want to query for all players that start with a "C" in the firstname.
 	* As a user I want to query for all players whose last name contains the keyword "van".
