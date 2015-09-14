@@ -1,20 +1,16 @@
 # ravendb-workshop
 RavenDB Workshop for Zühlke Days 2015 (NoSQL Kickoff: Modelling and querying football data with RavenDB) which takes place on 24.9.2015 13:35 - 16:20.
 
-CI-Build-Master: [![Build status](https://ci.appveyor.com/api/projects/status/sa8q7wv9b47ihf48)](https://ci.appveyor.com/project/tobiaszuercher/ravendb-workshop)
-
 ## Description of the Workshop
 In this tutorial, attendees will learn the most important concepts of document databases by getting a deep introduction into RavenDB, a document store particularly popular with .NET. They will learn how to translate a complex domain model into a reasonable document representation, how to build indexes for these documents and how to query them efficiently, and how to write unit tests to keep things maintainable. Attendees should join if they are interested in learning how to solve non-trivial persistency challenges in a non-relational way.
 
 ## How to start the solution
 * Open the solution
 * Build the solution (Ctrl + Shift + B) to get the NuGet packages
-* start the ravendb server located in `packages/RavenDb.Server.%version%/RavenDb.Server.exe`
+* start the ravendb server located in packages/RavenDb.Server.%version%/RavenDb.Server.exe
 * Now you are ready to do the exercises
 
 ##Use Cases / Exercises
-
-The exercises are located in `NoSqlKickoff.Tests/Exercises`
 
 1. Store and load players:
 	* As a user I want save a list of the following players: "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".

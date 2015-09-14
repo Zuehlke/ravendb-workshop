@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using NoSqlKickoff.Model;
 
 using NUnit.Framework;
-
+using Raven.Client.Linq;
 using Raven.Client;
 using Raven.Tests.Helpers;
 
@@ -15,17 +15,32 @@ using ServiceStack.Text;
 
 namespace NoSqlKickoff.Tests.Exercises
 {
+    using NoSqlKickoff.Indexes;
+    using NoSqlKickoff.Indexes.Exercises;
+    using NoSqlKickoff.Transformers;
+
+    using Raven.Abstractions.Data;
+    using Raven.Client.Indexes;
+
     public class E04_QueryPlayerEmployments : RavenTestBase
     {
         private IDocumentStore _store;
-
+        
         /// <summary>
         /// Exercise 7: As a user I want to know what players had been employed by Dortmund for the season "2013-2014".
         /// TODO: Keep player, team and employment seperate!
         /// </summary>
-        public List<Player> FindPlayerEmploymentsUsingJoin()
+        public List<PlayerEmployment> FindPlayerEmploymentsUsingJoin()
         {
-            return new List<Player>();
+            List<PlayerEmployment> playerEmploymentList;
+            using (var session = _store.OpenSession())
+            {
+                playerEmploymentList = session.Query<E04_EmploymentIndex.IndexEntry, E04_EmploymentIndex>()
+                    .Where(x => x.Season == "2013-2014" && x.TeamName == "Dortmund")
+                    .TransformWith<PlayerEmploymentTransformer, PlayerEmployment>().ToList();
+            }
+
+            return playerEmploymentList;
         }
 
         /// <summary>
@@ -49,11 +64,19 @@ namespace NoSqlKickoff.Tests.Exercises
         [Test]
         public void FindPlayerEmploymentsUsingJoin_ShouldReturnAllPlayersOfDortmundIn20132014()
         {
-            var players = FindPlayerEmploymentsUsingJoin();
+            using (var session = _store.OpenSession())
+            {
+                session.Store(new Employment());
+                session.SaveChanges();
+            }
 
-            players.PrintDump();
+            WaitForIndexing(_store);
 
-            Assert.That(players.Count, Is.AtLeast(1));
+            var playerEmployments = FindPlayerEmploymentsUsingJoin();
+
+            playerEmployments.PrintDump();
+
+            Assert.That(playerEmployments.Count, Is.AtLeast(1));
         }
 
         [Test]
@@ -80,6 +103,8 @@ namespace NoSqlKickoff.Tests.Exercises
         public void SetUp()
         {
             _store = NewDocumentStore();
+
+            IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             var players = DataGenerator.CreatePlayerList();
 

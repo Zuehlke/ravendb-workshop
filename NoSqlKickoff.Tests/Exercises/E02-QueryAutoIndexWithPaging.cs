@@ -16,9 +16,8 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 3 & Exercise 4
-        /// As a user I need to get a list of 5 players at once (paged list)
-        /// As a user I need to get the second list of 5 players at once (paged list)
+        /// Exercise 3: As a user I need to get a list of 5 players at once (paged list)
+        /// Exercise 4: As a user I need to get the second list of 5 players at once (paged list)
         /// </summary>
         /// <returns></returns>
         public List<Player> GetPagedListOfFivePlayers(int page)
