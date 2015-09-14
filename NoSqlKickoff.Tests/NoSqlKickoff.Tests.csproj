@@ -54,6 +54,10 @@
       <HintPath>..\packages\RavenDB.Tests.Helpers.3.0.3785\lib\net45\Raven.Tests.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -66,6 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exercises\E01-StoreAndLoadPlayers.cs" />
+    <Compile Include="Exercises\E02-QueryAutoIndexWithPaging.cs" />
+    <Compile Include="Exercises\E03-QueryAutoIndexWithFilter.cs" />
     <Compile Include="Reference\03 Modelling and Querying Relationships\R10_LoadDocumentInTransformer.cs" />
     <Compile Include="Reference\03 Modelling and Querying Relationships\R11_LoadDocumentWithStoreFields.cs" />
     <Compile Include="Reference\04 Aggregations\R13_MapReduce.cs" />

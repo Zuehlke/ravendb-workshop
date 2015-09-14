@@ -12,17 +12,19 @@ In this tutorial, attendees will learn the most important concepts of document d
 
 ##Use Cases / Exercises
 
-1. Store and load players:
+* Store and load players:
 	* As a user I want save a list of the following players: "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
 	* As a user I want to be able to receive back the whole list of players ("Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger") I stored before and load them by their id for verification. 
-2. Filter and paged list of players:
-	* As a user I need search for players and get a list of 5 players at once (paged list).
-	* As a user I want to be able to filter out the player "Christiano Ronaldo".
+* Filter and paged list of players:
+	* As a user I need to get a list of 5 players at once (paged list).
+	* As a user I need to get the second list of 5 players at once (paged list).
+	* As a user I want to find the player "Christiano Ronaldo".
 	* As a user I want to query for all players that start with a "C" in the firstname.
-3. Team member list:
+	* As a user I want to query for all players whose last name contains the keyword "van".
+* Team member list:
 	* Return the player list of Dortmund
 	* Return a list of players of AC Milan from the 1990 season
-4. Reporting and statistics:
+* Reporting and statistics:
 	* Return the total number of players who ever played in each team
 		* Return the total number of players who ever played in Real Madrid
 	* Return the number of active players per team (players that currently play in that team)
@@ -32,8 +34,10 @@ In this tutorial, attendees will learn the most important concepts of document d
 		* only for FC Barcelona
 	* Return the average salary per nationality of player
 	* Return the average salary per country of team
-5. Full-text search:
-	* Get a list of all players whose last name contains the keyword "van"
+
+
+* Get a list of all players whose first name starts with "C"
+* Get a list of all players whose last name contains the keyword "van"
 
 ##Contributors
 - [mzoellner](https://github.com/mzoellner) (Michael Zöllner)

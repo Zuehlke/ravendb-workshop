@@ -9,6 +9,8 @@ using NUnit.Framework;
 using Raven.Client;
 using Raven.Tests.Helpers;
 
+using ServiceStack.Text;
+
 namespace NoSqlKickoff.Tests.Exercises
 {
     public class E01_StoreAndLoadPlayers : RavenTestBase
@@ -52,6 +54,8 @@ namespace NoSqlKickoff.Tests.Exercises
             {
                 var players = session.Query<Player>().ToList();
 
+                players.PrintDump();
+
                 Assert.That(players.Count, Is.EqualTo(3));
                 Assert.That(players.Any(p => p.LastName == "Ronaldo"));
                 Assert.That(players.Any(p => p.LastName == "Messi"));
@@ -65,6 +69,8 @@ namespace NoSqlKickoff.Tests.Exercises
             var ids = StoreListOfPlayers();
 
             var players = GetListOfPlayersById(ids);
+
+            players.PrintDump();
 
             Assert.That(players.Count, Is.EqualTo(3));
             Assert.That(players.Any(p => p.LastName == "Ronaldo"));
