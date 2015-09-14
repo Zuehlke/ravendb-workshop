@@ -95,7 +95,6 @@
     <None Include="Raven.Studio.Html5.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exercises\" />
