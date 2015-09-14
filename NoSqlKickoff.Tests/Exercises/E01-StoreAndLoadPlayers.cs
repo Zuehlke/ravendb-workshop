@@ -18,7 +18,8 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// Exercise 1: As a user I want save a list of the following players: 
+        /// TODO: Exercise 1
+        /// As a user I want save a list of the following players: 
         /// "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
         /// </summary>
         /// <returns>
