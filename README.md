@@ -18,7 +18,7 @@ In this tutorial, attendees will learn the most important concepts of document d
 * Filter and paged list of players:
 	* As a user I need to get a list of 5 players at once (paged list).
 	* As a user I need to get the second list of 5 players at once (paged list).
-	* As a user I want to be able to filter out the player "Christiano Ronaldo".
+	* As a user I want to find the player "Christiano Ronaldo".
 	* As a user I want to query for all players that start with a "C" in the firstname.
 	* As a user I want to query for all players whose last name contains the keyword "van".
 * Team member list:

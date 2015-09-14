@@ -7,6 +7,8 @@ using NUnit.Framework;
 using Raven.Client;
 using Raven.Tests.Helpers;
 
+using ServiceStack.Text;
+
 namespace NoSqlKickoff.Tests.Exercises
 {
     public class E02_QueryAutoIndexWithPaging : RavenTestBase
@@ -15,6 +17,7 @@ namespace NoSqlKickoff.Tests.Exercises
 
         /// <summary>
         /// Exercise 3: As a user I need to get a list of 5 players at once (paged list)
+        /// Exercise 4: As a user I need to get the second list of 5 players at once (paged list)
         /// </summary>
         /// <returns></returns>
         public List<Player> GetPagedListOfFivePlayers(int page)
@@ -27,6 +30,8 @@ namespace NoSqlKickoff.Tests.Exercises
         {
             var players = GetPagedListOfFivePlayers(1);
 
+            players.PrintDump();
+
             Assert.That(players.Count, Is.EqualTo(5));
         }
 
@@ -34,6 +39,8 @@ namespace NoSqlKickoff.Tests.Exercises
         public void GetPagedListOfFivePlayers_ShouldReturnTheSecondPageOfPlayers()
         {
             var players = GetPagedListOfFivePlayers(2);
+
+            players.PrintDump();
 
             Assert.That(players.Count, Is.EqualTo(5));
         }
