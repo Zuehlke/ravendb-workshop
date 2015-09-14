@@ -16,13 +16,13 @@ namespace NoSqlKickoff.Tests
     /// Use Case: Get index entries directly
     /// Goal: Query an index and get its values as object, totally ignoring the document store
     /// </summary>
-    public class UC_13_QueryPersonWithEmbeddedTeam : RavenTestBase
+    public class R13_MapReduce : RavenTestBase
     {
         private IDocumentStore _store;
 
-        private List<Team> _teams;
+        private List<Player> _players;
 
-        private List<PlayerWithTeam> _players;
+        private List<Team> _teams;
 
         [SetUp]
         public void SetUp()
@@ -31,7 +31,7 @@ namespace NoSqlKickoff.Tests
             _store.Initialize();
 
             // We first have to create the static indexes
-            IndexCreation.CreateIndexes(typeof(Player_Index_UC03).Assembly, _store);
+            IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             _teams = DataGenerator.CreateTeamList();
 
@@ -43,7 +43,7 @@ namespace NoSqlKickoff.Tests
                     session.Store(team);
                 }
 
-                _players = DataGenerator.CreatePlayerListWithTeams(_teams);
+                _players = DataGenerator.CreatePlayerListWithTeamIds(_teams);
 
                 foreach (var player in _players)
                 {
@@ -59,21 +59,15 @@ namespace NoSqlKickoff.Tests
         }
 
         [Test]
-        public void QueryAllPersonsThatPlayInTheirHomeCountry()
+        public void QueryMapReduceIndex()
         {
             using (var session = _store.OpenSession())
             {
-                // Not possible to compare on index fields !!
-                // var playersThatPlayInTheirHomeCountry = session.Query<Player_Index_UC13.IndexEntry, Player_Index_UC13>()
-                //    .Where(p => p.TeamCountryName == p.Nationality)
-                //    .ToList();
-
-                var playersThatPlayInTheirHomeCountry = session.Query<Player_Index_UC13.IndexEntry, Player_Index_UC13>()
-                    .Where(p => p.PlaysInHisHomeCountry)
-                    .OfType<PlayerWithTeam>()
+                var countriesWithMoreThan4Players = session.Query<Player_Index_R13.IndexEntry, Player_Index_R13>()
+                    .Where(e => e.NumberOfPlayers > 4)
                     .ToList();
 
-                Assert.That(playersThatPlayInTheirHomeCountry.Count(), Is.EqualTo(8));
+                Assert.That(countriesWithMoreThan4Players.Count(), Is.EqualTo(1));
             }
         }
     }

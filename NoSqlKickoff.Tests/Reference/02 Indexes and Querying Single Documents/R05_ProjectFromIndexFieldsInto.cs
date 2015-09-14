@@ -17,7 +17,7 @@ namespace NoSqlKickoff.Tests
     /// Goal: Query an index and get its values as object, partially filling a document from the index or 
     /// totally ignoring the document store
     /// </summary>
-    public class UC_05_ProjectFromIndexFieldsInto : RavenTestBase
+    public class R05_ProjectFromIndexFieldsInto : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -30,7 +30,7 @@ namespace NoSqlKickoff.Tests
             _store.Initialize();
 
             // We first have to create the static indexes
-            IndexCreation.CreateIndexes(typeof(Player_Index_UC03).Assembly, _store);
+            IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             _players = DataGenerator.CreatePlayerList();
 
@@ -61,7 +61,7 @@ namespace NoSqlKickoff.Tests
                 //        .ToList();
 
                 // Solution: ProjectFromIndexFieldsInto
-                var filteredResults = session.Query<Player_Index_UC05.IndexEntry, Player_Index_UC05>()
+                var filteredResults = session.Query<Player_Index_R05.IndexEntry, Player_Index_R05>()
                      .Where(p => p.FullName.StartsWith("C"))
                      .ProjectFromIndexFieldsInto<PlayerWithFullName>()
                      .ToList();

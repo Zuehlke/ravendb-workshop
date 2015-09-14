@@ -14,7 +14,7 @@ namespace NoSqlKickoff.Tests
     /// Use Case: Simple querying against an automatically created index
     /// Goal: Query the Player collection with Filtering and Paging
     /// </summary>
-    public class UC_02_Querying_AutoIndex : RavenTestBase
+    public class R02_Querying_AutoIndex : RavenTestBase
     {
         private IDocumentStore _store;
 

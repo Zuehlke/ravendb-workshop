@@ -14,7 +14,7 @@ namespace NoSqlKickoff.Tests
     /// Goal: Store one or many players in the database and then load them from the database by their id
     /// </summary>
     [TestFixture]
-    public class UC_01_StoreAndLoad : RavenTestBase
+    public class R01_StoreAndLoad : RavenTestBase
     {
         private IDocumentStore _store;
 

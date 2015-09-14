@@ -3,19 +3,21 @@ using System.Linq;
 
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Model;
+using NoSqlKickoff.Transformers;
 
 using NUnit.Framework;
 
 using Raven.Client;
 using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
+using Raven.Client.Linq;
 
 namespace NoSqlKickoff.Tests
 {
-    public class UC_09_LoadDocumentInIndex : RavenTestBase
+    public class R10_LoadDocumentInTransformer : RavenTestBase
     {
         private IDocumentStore _store;
-        
+
         private List<Player> _players;
 
         private List<Team> _teams;
@@ -27,7 +29,7 @@ namespace NoSqlKickoff.Tests
             _store.Initialize();
 
             // We first have to create the static indexes
-            IndexCreation.CreateIndexes(typeof(Player_Index_UC03).Assembly, _store);
+            IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             _teams = DataGenerator.CreateTeamList();
 
@@ -55,16 +57,17 @@ namespace NoSqlKickoff.Tests
         }
 
         [Test]
-        public void QueryWithIndexOnTeamName()
+        public void LoadDocumentInIndexAndTransformer()
         {
             using (var session = _store.OpenSession())
             {
-                var playersOfItalianTeams = session.Query<Player_Index_UC09.IndexEntry, Player_Index_UC09>()
+                var playersOfItalianTeams = session.Query<Player_Index_R10.IndexEntry, Player_Index_R10>()
                     .Where(p => p.CountryOfTeam == "Italy")
-                    .OfType<Player>()
+                    .TransformWith<PlayerWithTeamTransformer, PlayerWithTeam>()
                     .ToList();
 
                 Assert.That(playersOfItalianTeams.Count(), Is.EqualTo(4));
+                Assert.IsTrue(playersOfItalianTeams.All(p => p.Team != null));
             }
         }
     }

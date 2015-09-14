@@ -6,20 +6,22 @@ using Raven.Client.Indexes;
 
 namespace NoSqlKickoff.Indexes
 {
-    public class Player_Index_UC10 : AbstractIndexCreationTask<Player>
+    public class Player_Index_R06 : AbstractIndexCreationTask<Player>
     {
         public class IndexEntry
         {
-            public string CountryOfTeam { get; set; }
+            public string FirstName { get; set; }
+
+            public string FullName { get; set; }
         }
 
-        public Player_Index_UC10()
+        public Player_Index_R06()
         {
             Map = players => from player in players
-                             let team = LoadDocument<Team>(player.TeamId)
                              select new IndexEntry
                              {
-                                 CountryOfTeam = team.Country
+                                 FirstName = player.FirstName,
+                                 FullName = player.FirstName + " " + player.LastName
                              };
         }
     }

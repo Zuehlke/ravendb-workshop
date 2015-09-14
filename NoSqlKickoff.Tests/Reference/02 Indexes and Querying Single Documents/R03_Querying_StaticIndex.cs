@@ -16,7 +16,7 @@ namespace NoSqlKickoff.Tests
     /// Use Case: Simple querying against a statically defined index
     /// Goal: Query the Player collection
     /// </summary>
-    public class UC_03_Querying_StaticIndex : RavenTestBase
+    public class R03_Querying_StaticIndex : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -29,7 +29,7 @@ namespace NoSqlKickoff.Tests
             _store.Initialize();
 
             // We first have to create the static indexes
-            IndexCreation.CreateIndexes(typeof(Player_Index_UC03).Assembly, _store);
+            IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             _players = DataGenerator.CreatePlayerList();
 
@@ -54,7 +54,7 @@ namespace NoSqlKickoff.Tests
         {
             using (var session = _store.OpenSession())
             {
-                var allPlayers = session.Query<Player, Player_Index_UC03>().ToList();
+                var allPlayers = session.Query<Player, Player_Index_R03>().ToList();
 
                 Assert.That(allPlayers.Count(), Is.EqualTo(_players.Count));
             }
@@ -65,7 +65,7 @@ namespace NoSqlKickoff.Tests
         {
             using (var session = _store.OpenSession())
             {
-                var filteredResults = session.Query<Player, Player_Index_UC03>()
+                var filteredResults = session.Query<Player, Player_Index_R03>()
                     .Where(p => p.FirstName.StartsWith("C"))
                     .ToList();
 

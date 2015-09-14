@@ -49,16 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Indexes\Player_Index_UC13.cs" />
-    <Compile Include="Indexes\Player_Index_UC12.cs" />
-    <Compile Include="Indexes\Player_Index_UC11.cs" />
-    <Compile Include="Indexes\Player_Index_UC10.cs" />
-    <Compile Include="Indexes\Player_Index_UC09.cs" />
-    <Compile Include="Indexes\Player_Index_UC07.cs" />
-    <Compile Include="Indexes\Player_Index_UC06.cs" />
-    <Compile Include="Indexes\Player_Index_UC05.cs" />
-    <Compile Include="Indexes\Player_Index_UC04.cs" />
-    <Compile Include="Indexes\Player_Index_UC03.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R12.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R13.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R11.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R10.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R09.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R07.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R06.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R05.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R04.cs" />
+    <Compile Include="Indexes\Reference\Player_Index_R03.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\PlayerWithFullName.cs" />
     <Compile Include="Model\PlayerWithTeam.cs" />

@@ -12,7 +12,7 @@ using Raven.Tests.Helpers;
 
 namespace NoSqlKickoff.Tests
 {
-    public class UC_08_Include : RavenTestBase
+    public class R08_Include : RavenTestBase
     {
         private IDocumentStore _store;
 
@@ -27,7 +27,7 @@ namespace NoSqlKickoff.Tests
             _store.Initialize();
 
             // We first have to create the static indexes
-            IndexCreation.CreateIndexes(typeof(Player_Index_UC03).Assembly, _store);
+            IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             _teams = DataGenerator.CreateTeamList();
 
