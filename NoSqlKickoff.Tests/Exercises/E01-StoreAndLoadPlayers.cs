@@ -17,7 +17,8 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// Exercise 1: As a user I want save a list of the following players: 
+        /// TODO: Exercise 1
+        /// As a user I want save a list of the following players: 
         /// "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
         /// </summary>
         /// <returns>
@@ -29,7 +30,8 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// Exercise 2: As a user I want to be able to receive back the whole 
+        /// TODO: Exercise 2
+        /// As a user I want to be able to receive back the whole 
         /// list of players ("Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger") 
         /// I stored before and load them by their id for verification
         /// </summary>

@@ -24,10 +24,11 @@ The exercises are located in `NoSqlKickoff.Tests/Exercises`
 	* As a user I need to get the second list of 5 players at once (paged list).
 	* As a user I want to find the player "Christiano Ronaldo".
 	* As a user I want to query for all players that start with a "C" in the firstname.
-3. Team member list:
-	* Return the player list of Dortmund
-	* Return a list of players of AC Milan from the 1990 season
-4. Reporting and statistics:
+3. Indexing and querying in single documents:
+	* As a user I want to find all players whose fullname contains the keyword "van".
+4. Modelling:
+	* As a user I want to know what players had been employed by Dortmund for the season "2013-2014". 
+5. Reporting and statistics:
 	* Return the total number of players who ever played in each team
 		* Return the total number of players who ever played in Real Madrid
 	* Return the number of active players per team (players that currently play in that team)
@@ -37,8 +38,6 @@ The exercises are located in `NoSqlKickoff.Tests/Exercises`
 		* only for FC Barcelona
 	* Return the average salary per nationality of player
 	* Return the average salary per country of team
-5. Full-text search:
-	* As a user I want to query for all players whose last name contains the keyword "van".
 
 ##Contributors
 - [mzoellner](https://github.com/mzoellner) (Michael Zöllner)
