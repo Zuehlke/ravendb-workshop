@@ -15,12 +15,6 @@ namespace NoSqlKickoff.Tests.Exercises
     {
         private IDocumentStore _store;
 
-        [SetUp]
-        public void SetUp()
-        {
-            _store = NewDocumentStore();
-        }
-
         /// <summary>
         /// Exercise 1: As a user I want save a list of the following players: 
         /// "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
@@ -41,6 +35,12 @@ namespace NoSqlKickoff.Tests.Exercises
         public List<Player> GetListOfPlayersById(string[] ids)
         {
             return new List<Player>();
+        }
+
+        [SetUp]
+        public void SetUp()
+        {
+            _store = NewDocumentStore();
         }
 
         [Test]

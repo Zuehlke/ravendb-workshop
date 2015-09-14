@@ -120,16 +120,28 @@ namespace NoSqlKickoff.Tests
         private static readonly List<Player> PlayersFromRoma = new List<Player>
         {
             new Player { FirstName = "Rudi", LastName = "Völler", Nationality = new Nationality { Name = "Germany" }},
+            new Player { FirstName = "Ashley", LastName = "Cole", Nationality = new Nationality { Name = "England" }},
+            new Player { FirstName = "Federico", LastName = "Balzaretti", Nationality = new Nationality { Name = "Italy" }},
+            new Player { FirstName = "Francesco", LastName = "Totti", Nationality = new Nationality { Name = "Italy" }},
+            new Player { FirstName = "Daniele", LastName = "De Rossi", Nationality = new Nationality { Name = "Italy" }},
         };
 
         private static readonly List<Player> PlayersFromDortmund = new List<Player>
         {
             new Player { FirstName = "Stephane", LastName = "Chapuisat", Nationality = new Nationality { Name = "Switzerland" }},
+            new Player { FirstName = "Marco", LastName = "Reus", Nationality = new Nationality { Name = "Germany" }},
+            new Player { FirstName = "Jürgen", LastName = "Kohler", Nationality = new Nationality { Name = "Germany" }},
+            new Player { FirstName = "Stefan", LastName = "Reuter", Nationality = new Nationality { Name = "Germany" }},
+            new Player { FirstName = "Michael", LastName = "Zorc", Nationality = new Nationality { Name = "Germany" }}
         };
 
         private static readonly List<Player> PlayersFromAjax = new List<Player> 
         { 
             new Player { FirstName = "Johann", LastName = "Cruyff", Nationality = new Nationality { Name = "Netherlands" }},
+            new Player { FirstName = "Bas", LastName = "Kuipers", Nationality = new Nationality { Name = "Netherlands" }},
+            new Player { FirstName = "Ronald", LastName = "de Boer", Nationality = new Nationality { Name = "Netherlands" }},
+            new Player { FirstName = "Peter", LastName = "Larsson", Nationality = new Nationality { Name = "Sweden" }},
+            new Player { FirstName = "André", LastName = "Onana", Nationality = new Nationality { Name = "Cameroun" }},
         };
 
         private static readonly List<Player> PlayersFromManchester = new List<Player>
