@@ -76,27 +76,45 @@ namespace NoSqlKickoff.Tests
         {
             new Player { FirstName = "Christiano", LastName = "Ronaldo", Nationality = new Nationality { Name = "Portugal" }},
             new Player { FirstName = "Alfredo", LastName = "di Stefano", Nationality = new Nationality { Name = "Argentina" }},
+            new Player { FirstName = "Iker", LastName = "Casillas", Nationality = new Nationality { Name = "Spain" }},
+            new Player { FirstName = "Özil", LastName = "Casillas", Nationality = new Nationality { Name = "Germany" }},
             new Player { FirstName = "Ferenc", LastName = "Puskas", Nationality = new Nationality { Name = "Hungary" }}
         };
 
         private static readonly List<Player> PlayersFromBarcelona = new List<Player>
         {
-            new Player { FirstName = "Lionel", LastName = "Messi", Nationality = new Nationality { Name = "Argentina" }}
+            new Player { FirstName = "Lionel", LastName = "Messi", Nationality = new Nationality { Name = "Argentina" }},
+            new Player { FirstName = "Jordi", LastName = "Alba", Nationality = new Nationality { Name = "Spain" }},
+            new Player { FirstName = "Iniesta", LastName = "Andrés", Nationality = new Nationality { Name = "Spain" }},
+            new Player { FirstName = "Puyol", LastName = "Carles", Nationality = new Nationality { Name = "Spain" }},
+            new Player { FirstName = "Ivan", LastName = "Rakitic", Nationality = new Nationality { Name = "Croatia" }}
         };
 
         private static readonly List<Player> PlayersFromMilan = new List<Player>
         {
             new Player { FirstName = "Paolo", LastName = "Maldini", Nationality = new Nationality { Name = "Italy" }},
+            new Player { FirstName = "Mario", LastName = "Balotelli", Nationality = new Nationality { Name = "Italy" }},
+            new Player { FirstName = "Franco", LastName = "Baresi", Nationality = new Nationality { Name = "Italy" }},
+            new Player { FirstName = "Clarence", LastName = "Seedorf", Nationality = new Nationality { Name = "Netherlands" }},
+            new Player { FirstName = "Kevin-Prince", LastName = "Boateng", Nationality = new Nationality { Name = "Ghana" }}
         };
 
         private static readonly List<Player> PlayersFromJuve = new List<Player>
         {
             new Player { FirstName = "Zinedine", LastName = "Zidane", Nationality = new Nationality { Name = "France" }},
+            new Player { FirstName = "Stephan", LastName = "Lichtsteiner", Nationality = new Nationality { Name = "Switzerland" }},
+            new Player { FirstName = "Gianluigi", LastName = "Buffon", Nationality = new Nationality { Name = "Italy" }},
+            new Player { FirstName = "Pavel", LastName = "Nedvěd", Nationality = new Nationality { Name = "Czech Republic" }},
+            new Player { FirstName = "Michel", LastName = "Platini", Nationality = new Nationality { Name = "France" }}
         };
 
         private static readonly List<Player> PlayersFromSantos = new List<Player>
         {
-            new Player { FirstName = "Pele", LastName = "", Nationality = new Nationality { Name = "Brazil" }}
+            new Player { FirstName = "Pele", LastName = "", Nationality = new Nationality { Name = "Brazil" }},
+            new Player { FirstName = "Alex", LastName = "", Nationality = new Nationality { Name = "Brazil" }},
+            new Player { FirstName = "Carlos", LastName = "Galván", Nationality = new Nationality { Name = "Brazil" }},
+            new Player { FirstName = "Basílio", LastName = "", Nationality = new Nationality { Name = "Brazil" }},
+            new Player { FirstName = "Arouca", LastName = "", Nationality = new Nationality { Name = "Argentina" }}
         };
 
         private static readonly List<Player> PlayersFromRoma = new List<Player>
