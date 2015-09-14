@@ -7,10 +7,12 @@ In this tutorial, attendees will learn the most important concepts of document d
 ## How to start the solution
 * Open the solution
 * Build the solution (Ctrl + Shift + B) to get the NuGet packages
-* start the ravendb server located in packages/RavenDb.Server.%version%/RavenDb.Server.exe
+* start the ravendb server located in `packages/RavenDb.Server.%version%/RavenDb.Server.exe`
 * Now you are ready to do the exercises
 
 ##Use Cases / Exercises
+
+The exercises are located in `NoSqlKickoff.Tests/Exercises`
 
 1. Store and load players:
 	* As a user I want save a list of the following players: "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
