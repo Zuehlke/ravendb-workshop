@@ -17,7 +17,8 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// Exercise 1: As a user I want save a list of the following players: 
+        /// TODO: Exercise 1
+        /// As a user I want save a list of the following players: 
         /// "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
         /// </summary>
         /// <returns>
@@ -25,17 +26,40 @@ namespace NoSqlKickoff.Tests.Exercises
         /// </returns>
         public string[] StoreListOfPlayers()
         {
-            return new string[]{ };
+            var ids = new List<string>();
+
+            using (var session = _store.OpenSession())
+            {
+                var christiano = new Player { FirstName = "Christiano", LastName = "Ronaldo" };
+                var lionel = new Player { FirstName = "Lionel", LastName = "Messi" };
+                var bastian = new Player { FirstName = "Bastian", LastName = "Schweinsteiger" };
+                
+                session.Store(christiano);
+                session.Store(lionel);
+                session.Store(bastian);
+                
+                ids.Add(christiano.Id);
+                ids.Add(lionel.Id);
+                ids.Add(bastian.Id);
+
+                session.SaveChanges();
+            }
+
+            return ids.ToArray();
         }
 
         /// <summary>
-        /// Exercise 2: As a user I want to be able to receive back the whole 
-        /// list of players ("Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger") 
-        /// I stored before and load them by their id for verification
+        /// TODO: Exercise 2
+        /// As a user I want to be able to receive back the list of players 
+        /// I stored before ("Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger") 
+        /// given a list of their ids
         /// </summary>
         public List<Player> GetListOfPlayersById(string[] ids)
         {
-            return new List<Player>();
+            using (var session = _store.OpenSession())
+            {
+                return session.Load<Player>(ids).ToList();
+            }
         }
 
         [SetUp]
@@ -53,6 +77,13 @@ namespace NoSqlKickoff.Tests.Exercises
             {
                 var players = session.Query<Player>().ToList();
 
+                // oops, at this point the player list is empty, because the dynamic index was just created and is still stale
+                // We have to wait for indexing here in order to get some results
+
+                WaitForIndexing(_store);
+
+                players = session.Query<Player>().ToList();
+
                 players.PrintDump();
 
                 Assert.That(players.Count, Is.EqualTo(3));
@@ -66,6 +97,8 @@ namespace NoSqlKickoff.Tests.Exercises
         public void GetListOfPlayersById_ShouldReturnAListOfPlayers()
         {
             var ids = StoreListOfPlayers();
+
+            WaitForIndexing(_store);
 
             var players = GetListOfPlayersById(ids);
 

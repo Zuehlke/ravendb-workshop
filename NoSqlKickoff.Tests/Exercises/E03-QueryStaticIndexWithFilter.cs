@@ -1,38 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
+using NoSqlKickoff.Indexes.Exercises;
 using NoSqlKickoff.Model;
 
 using NUnit.Framework;
 
 using Raven.Client;
+using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
 
 using ServiceStack.Text;
 
 namespace NoSqlKickoff.Tests.Exercises
 {
-    public class E03_QueryAutoIndexWithFilter : RavenTestBase
+    public class E03_QueryStaticIndexWithFilter : RavenTestBase
     {
         private IDocumentStore _store;
 
         /// <summary>
-        /// Exercise 5: As a user I want to find the player "Christiano Ronaldo"
+        /// TODO: Exercise 5
+        /// As a user I want to find the player "Christiano Ronaldo"
         /// </summary>
         public Player FindChristiano()
         {
-            return new Player();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<Player, E03_PlayerIndex>().SingleOrDefault(p => p.FirstName == "Christiano" && p.LastName == "Ronaldo");
+            }
         }
 
         /// <summary>
-        /// Exercise 6: As a user I want to query for all players that start with a "C" in the firstname
+        /// TODO: Exercise 6
+        /// As a user I want to query for all players that start with a "C" in the firstname
         /// </summary>
         public List<Player> FindPlayersStartingWithC()
         {
-            return new List<Player>();
+            using (var sesion = _store.OpenSession())
+            {
+                return sesion.Query<Player, E03_PlayerIndex>().Where(p => p.FirstName.StartsWith("C")).ToList();
+            }
         }
 
         [Test]
@@ -52,14 +59,16 @@ namespace NoSqlKickoff.Tests.Exercises
 
             players.PrintDump();
 
-            Assert.That(players.Count, Is.AtLeast(1));
-            Assert.IsTrue(players.All(p => p.FirstName.StartsWith("c")));
+            Assert.That(players.Count, Is.AtLeast(5));
+            Assert.IsTrue(players.All(p => p.FirstName.StartsWith("C")));
         }
 
         [SetUp]
         public void SetUp()
         {
             _store = NewDocumentStore();
+
+            IndexCreation.CreateIndexes(typeof(Player).Assembly, _store);
 
             var players = DataGenerator.CreatePlayerList();
 
@@ -70,6 +79,8 @@ namespace NoSqlKickoff.Tests.Exercises
                     bulkInsert.Store(player);
                 }
             }
+
+            WaitForIndexing(_store);
         }
     }
 }

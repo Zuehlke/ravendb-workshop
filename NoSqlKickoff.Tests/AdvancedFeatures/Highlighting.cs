@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using Lucene.Net.Search.Vectorhighlight;
+
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.AdvancedFeatures;
 using NoSqlKickoff.Model;
+
 using NUnit.Framework;
+
 using Raven.Client;
 using Raven.Client.Indexes;
 using Raven.Tests.Helpers;

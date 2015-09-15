@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Indexes\AdvancedFeatures\Player_Index_Suggestions.cs" />
+    <Compile Include="Indexes\Exercises\E03_PlayerIndex.cs" />
     <Compile Include="Indexes\Exercises\E04_EmploymentIndex.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R12.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R13.cs" />

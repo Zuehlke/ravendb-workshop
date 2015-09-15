@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 using NoSqlKickoff.Model;
 
@@ -16,13 +17,17 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// Exercise 3: As a user I need to get a list of 5 players at once (paged list)
-        /// Exercise 4: As a user I need to get the second list of 5 players at once (paged list)
+        /// TODO: Exercise 3 and 4
+        /// As a user I need to get a list of 5 players at once (paged list)
+        /// As a user I need to get the second list of 5 players at once (paged list)
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of 5 players</returns>
         public List<Player> GetPagedListOfFivePlayers(int page)
         {
-            return new List<Player>();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<Player>().Take(5).Skip(page - 1).ToList();
+            }
         }
 
         [Test]
@@ -59,6 +64,14 @@ namespace NoSqlKickoff.Tests.Exercises
                     bulkInsert.Store(player);
                 }
             }
+
+            // nasty: we have to initialize the dynamic index
+            using (var session = _store.OpenSession())
+            {
+                session.Query<Player>().Any();
+            }
+
+            WaitForIndexing(_store);
         }
     }
 }
