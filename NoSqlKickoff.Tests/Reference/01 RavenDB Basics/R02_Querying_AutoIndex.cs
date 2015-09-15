@@ -8,7 +8,7 @@ using NUnit.Framework;
 using Raven.Client;
 using Raven.Tests.Helpers;
 
-namespace NoSqlKickoff.Tests
+namespace NoSqlKickoff.Tests.Reference
 {
     /// <summary>
     /// Use Case: Simple querying against an automatically created index
@@ -85,7 +85,7 @@ namespace NoSqlKickoff.Tests
                     .Where(p => p.FirstName.StartsWith("C"))
                     .ToList();
 
-                Assert.That(filteredResults.Count(), Is.EqualTo(1));
+                Assert.That(filteredResults.Count(), Is.EqualTo(5));
             }
         }
     }

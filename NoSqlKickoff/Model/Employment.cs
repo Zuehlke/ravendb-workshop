@@ -1,11 +1,9 @@
-﻿using System;
-
-using Raven.Imports.Newtonsoft.Json;
-
-namespace NoSqlKickoff.Model
+﻿namespace NoSqlKickoff.Model
 {
     public class Employment
     {
+        public string Id { get; set; }
+
         public string PlayerId { get; set; }
 
         public string TeamId { get; set; }

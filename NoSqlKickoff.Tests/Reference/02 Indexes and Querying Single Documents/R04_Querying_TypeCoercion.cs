@@ -10,7 +10,7 @@ using Raven.Client;
 using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
 
-namespace NoSqlKickoff.Tests
+namespace NoSqlKickoff.Tests.Reference
 {
     /// <summary>
     /// Use Case: Query result type coercion
@@ -77,7 +77,7 @@ namespace NoSqlKickoff.Tests
                      .OfType<Player>()
                      .ToList();
                 
-                Assert.That(filteredResults.Count(), Is.EqualTo(1));
+                Assert.That(filteredResults.Count(), Is.EqualTo(5));
             }
         }
 
@@ -97,7 +97,7 @@ namespace NoSqlKickoff.Tests
                      .OfType<Player>()
                      .ToList();
 
-                Assert.That(filteredResults.Count(), Is.EqualTo(1));
+                Assert.That(filteredResults.Count(), Is.EqualTo(5));
             }
         }
 
@@ -110,7 +110,7 @@ namespace NoSqlKickoff.Tests
                     .Where(p => p.Nationality.Name == "Germany")
                     .ToList();
 
-                Assert.That(filteredResults.Count(), Is.EqualTo(6));
+                Assert.That(filteredResults.Count(), Is.EqualTo(17));
             }
         }
 
@@ -124,7 +124,7 @@ namespace NoSqlKickoff.Tests
                     .OfType<Player>()
                     .ToList();
 
-                Assert.That(filteredResults.Count(), Is.EqualTo(6));
+                Assert.That(filteredResults.Count(), Is.EqualTo(17));
             }
         }
     }

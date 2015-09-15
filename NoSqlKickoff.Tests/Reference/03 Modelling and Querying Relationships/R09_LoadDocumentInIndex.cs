@@ -10,7 +10,7 @@ using Raven.Client;
 using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
 
-namespace NoSqlKickoff.Tests
+namespace NoSqlKickoff.Tests.Reference
 {
     public class R09_LoadDocumentInIndex : RavenTestBase
     {
@@ -39,7 +39,7 @@ namespace NoSqlKickoff.Tests
                     session.Store(team);
                 }
 
-                _players = DataGenerator.CreatePlayerListWithTeamIds(_teams);
+                _players = DataGenerator.CreatePlayerListWithTeamIds();
 
                 foreach (var player in _players)
                 {
@@ -64,7 +64,7 @@ namespace NoSqlKickoff.Tests
                     .OfType<Player>()
                     .ToList();
 
-                Assert.That(playersOfItalianTeams.Count(), Is.EqualTo(4));
+                Assert.That(playersOfItalianTeams.Count(), Is.EqualTo(20));
             }
         }
     }

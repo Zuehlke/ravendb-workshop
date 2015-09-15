@@ -10,7 +10,7 @@ using Raven.Client;
 using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
 
-namespace NoSqlKickoff.Tests
+namespace NoSqlKickoff.Tests.Reference
 {
     /// <summary>
     /// Use Case: Simple querying against a statically defined index
@@ -69,7 +69,7 @@ namespace NoSqlKickoff.Tests
                     .Where(p => p.FirstName.StartsWith("C"))
                     .ToList();
 
-                Assert.That(filteredResults.Count(), Is.EqualTo(1));
+                Assert.That(filteredResults.Count(), Is.EqualTo(5));
             }
         }
     }

@@ -12,7 +12,7 @@ using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
 using Raven.Client.Linq;
 
-namespace NoSqlKickoff.Tests
+namespace NoSqlKickoff.Tests.Reference
 {
     public class R07_SimpleTransformer : RavenTestBase
     {
@@ -57,8 +57,7 @@ namespace NoSqlKickoff.Tests
                      .TransformWith<PlayerFullNameTransformer, PlayerWithFullName>()
                      .ToList();
 
-                Assert.That(filteredResults.Count(), Is.EqualTo(1));
-                Assert.That(filteredResults.Single().FullName, Is.EqualTo("Christiano Ronaldo"));
+                Assert.That(filteredResults.Count(), Is.EqualTo(5));
             }  
         }
     }

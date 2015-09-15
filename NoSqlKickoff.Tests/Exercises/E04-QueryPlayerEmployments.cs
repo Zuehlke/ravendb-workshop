@@ -1,50 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
+using NoSqlKickoff.Indexes;
+using NoSqlKickoff.Indexes.Exercises;
 using NoSqlKickoff.Model;
+using NoSqlKickoff.Transformers;
 
 using NUnit.Framework;
-using Raven.Client.Linq;
+
+using Raven.Abstractions.Data;
 using Raven.Client;
+using Raven.Client.Indexes;
+using Raven.Client.Linq;
 using Raven.Tests.Helpers;
 
 using ServiceStack.Text;
 
 namespace NoSqlKickoff.Tests.Exercises
 {
-    using NoSqlKickoff.Indexes;
-    using NoSqlKickoff.Indexes.Exercises;
-    using NoSqlKickoff.Transformers;
-
-    using Raven.Abstractions.Data;
-    using Raven.Client.Indexes;
-
     public class E04_QueryPlayerEmployments : RavenTestBase
     {
         private IDocumentStore _store;
         
         /// <summary>
-        /// Exercise 7: As a user I want to know what players had been employed by Dortmund for the season "2013-2014".
+        /// Exercise 7: As a user I want to know what players had been employed by Borussia Dortmund for the season "2013-2014".
         /// TODO: Keep player, team and employment seperate!
         /// </summary>
         public List<PlayerEmployment> FindPlayerEmploymentsUsingJoin()
         {
-            List<PlayerEmployment> playerEmploymentList;
             using (var session = _store.OpenSession())
             {
-                playerEmploymentList = session.Query<E04_EmploymentIndex.IndexEntry, E04_EmploymentIndex>()
-                    .Where(x => x.Season == "2013-2014" && x.TeamName == "Dortmund")
+                return session.Query<E04_EmploymentIndex.IndexEntry, E04_EmploymentIndex>()
+                    .Where(x => x.Season == "2013-2014" && x.TeamName == "Borussia Dortmund")
                     .TransformWith<PlayerEmploymentTransformer, PlayerEmployment>().ToList();
             }
-
-            return playerEmploymentList;
         }
 
         /// <summary>
-        /// Exercise 8: As a user I want to know what players had been employed by Dortmund for the season "2013-2014".
+        /// Exercise 8: As a user I want to know what players had been employed by Borussia Dortmund for the season "2013-2014".
         /// TODO: Embed employment soley in player
         /// </summary>
         public List<Player> FindPlayerEmploymentsUsingEmploymentSoleyInPlayer()
@@ -53,7 +46,7 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// Exercise 9: As a user I want to know what players had been employed by Dortmund for the season "2013-2014".
+        /// Exercise 9: As a user I want to know what players had been employed by Borussia Dortmund for the season "2013-2014".
         /// TODO: Embed employment infos partially in player
         /// </summary>
         public List<Player> FindPlayerEmploymentsUsingEmploymentPartiallyInPlayer()
@@ -64,10 +57,26 @@ namespace NoSqlKickoff.Tests.Exercises
         [Test]
         public void FindPlayerEmploymentsUsingJoin_ShouldReturnAllPlayersOfDortmundIn20132014()
         {
-            using (var session = _store.OpenSession())
+            var playerList = DataGenerator.CreatePlayerList();
+            var teamList = DataGenerator.CreateTeamList();
+            var employmentList = DataGenerator.CreateEmploymentList();
+
+            using (var bulkInsert = _store.BulkInsert(null, new BulkInsertOptions { OverwriteExisting = true }))
             {
-                session.Store(new Employment());
-                session.SaveChanges();
+                foreach (var player in playerList)
+                {
+                    bulkInsert.Store(player);
+                }
+
+                foreach (var team in teamList)
+                {
+                    bulkInsert.Store(team);
+                }
+
+                foreach (var employment in employmentList)
+                {
+                    bulkInsert.Store(employment);
+                }
             }
 
             WaitForIndexing(_store);

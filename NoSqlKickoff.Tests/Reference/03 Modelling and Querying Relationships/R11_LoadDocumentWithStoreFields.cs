@@ -10,7 +10,7 @@ using Raven.Client;
 using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
 
-namespace NoSqlKickoff.Tests
+namespace NoSqlKickoff.Tests.Reference
 {
     /// <summary>
     /// Use Case: Get index entries directly
@@ -43,7 +43,7 @@ namespace NoSqlKickoff.Tests
                     session.Store(team);
                 }
 
-                _players = DataGenerator.CreatePlayerListWithTeamIds(_teams);
+                _players = DataGenerator.CreatePlayerListWithTeamIds();
 
                 foreach (var player in _players)
                 {
@@ -68,7 +68,7 @@ namespace NoSqlKickoff.Tests
                     .ProjectFromIndexFieldsInto<PlayerWithTeam>()
                     .ToList();
 
-                Assert.That(playersOfItalianTeams.Count(), Is.EqualTo(4));
+                Assert.That(playersOfItalianTeams.Count(), Is.EqualTo(20));
                 Assert.IsTrue(playersOfItalianTeams.All(p => p.Team != null));
             }
         }

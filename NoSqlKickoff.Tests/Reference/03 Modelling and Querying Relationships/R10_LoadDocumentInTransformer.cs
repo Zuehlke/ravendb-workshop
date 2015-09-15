@@ -12,7 +12,7 @@ using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
 using Raven.Client.Linq;
 
-namespace NoSqlKickoff.Tests
+namespace NoSqlKickoff.Tests.Reference
 {
     public class R10_LoadDocumentInTransformer : RavenTestBase
     {
@@ -41,7 +41,7 @@ namespace NoSqlKickoff.Tests
                     session.Store(team);
                 }
 
-                _players = DataGenerator.CreatePlayerListWithTeamIds(_teams);
+                _players = DataGenerator.CreatePlayerListWithTeamIds();
 
                 foreach (var player in _players)
                 {
@@ -66,7 +66,7 @@ namespace NoSqlKickoff.Tests
                     .TransformWith<PlayerWithTeamTransformer, PlayerWithTeam>()
                     .ToList();
 
-                Assert.That(playersOfItalianTeams.Count(), Is.EqualTo(4));
+                Assert.That(playersOfItalianTeams.Count(), Is.EqualTo(20));
                 Assert.IsTrue(playersOfItalianTeams.All(p => p.Team != null));
             }
         }

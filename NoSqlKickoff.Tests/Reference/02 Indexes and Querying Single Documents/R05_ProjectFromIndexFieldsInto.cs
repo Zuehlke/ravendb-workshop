@@ -10,7 +10,7 @@ using Raven.Client;
 using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
 
-namespace NoSqlKickoff.Tests
+namespace NoSqlKickoff.Tests.Reference
 {
     /// <summary>
     /// Use Case: Get index entries directly
@@ -66,8 +66,7 @@ namespace NoSqlKickoff.Tests
                      .ProjectFromIndexFieldsInto<PlayerWithFullName>()
                      .ToList();
 
-                Assert.That(filteredResults.Count(), Is.EqualTo(1));
-                Assert.That(filteredResults.Single().FullName, Is.EqualTo("Christiano Ronaldo"));
+                Assert.That(filteredResults.Count(), Is.EqualTo(5));
             }
         }
 
