@@ -30,7 +30,7 @@ namespace NoSqlKickoff.Tests.Exercises
         {
             using (var session = _store.OpenSession())
             {
-                return session.Query<E04_EmploymentIndex.IndexEntry, E04_EmploymentIndex>()
+                return session.Query<E06_EmploymentIndex.IndexEntry, E06_EmploymentIndex>()
                     .Where(x => x.Season == "2013-2014" && x.TeamName == "Borussia Dortmund")
                     .TransformWith<PlayerEmploymentTransformer, PlayerEmployment>().ToList();
             }

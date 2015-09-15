@@ -9,7 +9,7 @@ namespace NoSqlKickoff.Indexes.Exercises
 {
     using NoSqlKickoff.Model;
 
-    public class E04_EmploymentIndex : AbstractIndexCreationTask<Employment>
+    public class E06_EmploymentIndex : AbstractIndexCreationTask<Employment>
     {
         public class IndexEntry
         {
@@ -18,7 +18,7 @@ namespace NoSqlKickoff.Indexes.Exercises
             public string Season { get; set; }
         }
         
-        public E04_EmploymentIndex()
+        public E06_EmploymentIndex()
         {
             Map = employments => from employment in employments
                                  let team = LoadDocument<Team>(employment.TeamId)
