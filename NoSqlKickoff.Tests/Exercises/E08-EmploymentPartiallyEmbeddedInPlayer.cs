@@ -12,7 +12,7 @@ using ServiceStack.Text;
 
 namespace NoSqlKickoff.Tests.Exercises
 {
-    class E07_QueryEmploymentEmbeddedInPlayer
+    class E08_QueryEmploymentEmbeddedInPlayer
     {
 
         /// <summary>

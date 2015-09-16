@@ -4,49 +4,51 @@ using System.Linq;
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
 using NoSqlKickoff.Model;
-using NoSqlKickoff.Transformers;
 
 using NUnit.Framework;
 
 using Raven.Abstractions.Data;
 using Raven.Client;
 using Raven.Client.Indexes;
-using Raven.Client.Linq;
 using Raven.Tests.Helpers;
 
 using ServiceStack.Text;
 
 namespace NoSqlKickoff.Tests.Exercises
 {
-    public class E06_EmploymentInSeparateCollection : RavenTestBase
+    public class E07_EmploymentEmbeddedInPlayer : RavenTestBase
     {
         private IDocumentStore _store;
-        
+
+
         /// <summary>
-        /// TODO: Exercise 9a
+        /// TODO: Exercise 9b
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
-        public List<PlayerEmployment> FindPlayerEmploymentsUsingJoin()
+        public List<Player> FindPlayersOfDortmundIn1314()
         {
             using (var session = _store.OpenSession())
             {
-                return session.Query<E06_EmploymentIndex.IndexEntry, E06_EmploymentIndex>()
-                    .Where(x => x.Season == "2013-2014" && x.TeamName == "Borussia Dortmund")
-                    .TransformWith<PlayerEmploymentTransformer, PlayerEmployment>().ToList();
+                return session.Query<E07_PlayerIndex.IndexEntry, E07_PlayerIndex>()
+                    .Where(e => e.TeamName == "Borussia Dortmund" && e.Season == "2013-2014")
+                    .OfType<Player>()
+                    .ToList();
             }
         }
 
-        [Test]
-        public void FindPlayerEmploymentsUsingJoin_ShouldReturnAllPlayersOfDortmundIn1314()
-        {    
-            var playerEmployments = FindPlayerEmploymentsUsingJoin();
+        //TODO: add more exercises to show different problems: All employments of a player, Update of employment, Player Search which returns player info and current employment
+        //TODO: one more case: Employments in separate collection but share same id prefix with team or player (also possible to do recurse on id list + LoadDocument
 
-            playerEmployments.PrintDump();
+        [Test]
+        public void FindPlayersOfDortmundIn1314_ShouldReturnAllPlayersOfDortmundIn20132014()
+        {
+            var players = FindPlayersOfDortmundIn1314();
 
             WaitForUserToContinueTheTest(_store);
 
-            //TODO: Update Assert when season data is correct
-            Assert.That(playerEmployments.Count, Is.AtLeast(1));
+            players.PrintDump();
+
+            Assert.That(players.Count, Is.AtLeast(1));
         }
 
         [SetUp]
@@ -56,13 +58,18 @@ namespace NoSqlKickoff.Tests.Exercises
 
             IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
-            var playerList = DataGenerator.CreatePlayerList();
+            var playerDictionary = DataGenerator.CreatePlayerList().ToDictionary(p => p.Id);
             var teamList = DataGenerator.CreateTeamList();
             var employmentList = DataGenerator.CreateEmploymentList();
 
+            foreach (var employment in employmentList)
+            {
+                playerDictionary[employment.PlayerId].Employments.Add(employment);
+            }
+
             using (var bulkInsert = _store.BulkInsert(null, new BulkInsertOptions { OverwriteExisting = true }))
             {
-                foreach (var player in playerList)
+                foreach (var player in playerDictionary.Values)
                 {
                     bulkInsert.Store(player);
                 }
@@ -70,11 +77,6 @@ namespace NoSqlKickoff.Tests.Exercises
                 foreach (var team in teamList)
                 {
                     bulkInsert.Store(team);
-                }
-
-                foreach (var employment in employmentList)
-                {
-                    bulkInsert.Store(employment);
                 }
             }
 

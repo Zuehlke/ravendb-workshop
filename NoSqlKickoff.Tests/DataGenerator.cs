@@ -337,7 +337,13 @@ namespace NoSqlKickoff.Tests
             new Employment { Id = "Employments/111", PlayerId = "Players/111", TeamId = "Teams/10", Season = "2007-2008", Salary = 1000000 },
             new Employment { Id = "Employments/112", PlayerId = "Players/112", TeamId = "Teams/10", Season = "2007-2008", Salary = 1000000 },
             new Employment { Id = "Employments/113", PlayerId = "Players/113", TeamId = "Teams/10", Season = "2007-2008", Salary = 1000000 },
-            new Employment { Id = "Employments/114", PlayerId = "Players/114", TeamId = "Teams/10", Season = "2007-2008", Salary = 1000000 }
+            new Employment { Id = "Employments/114", PlayerId = "Players/114", TeamId = "Teams/10", Season = "2007-2008", Salary = 1000000 },
+            new Employment { Id = "Employments/115", PlayerId = "Players/245", TeamId = "Teams/10", Season = "2007-2008", Salary = 1000000 }, // Higuain
+            new Employment { Id = "Employments/116", PlayerId = "Players/245", TeamId = "Teams/10", Season = "2008-2009", Salary = 1000000 }, // Higuain
+            new Employment { Id = "Employments/117", PlayerId = "Players/245", TeamId = "Teams/10", Season = "2009-2010", Salary = 1000000 }, // Higuain
+            new Employment { Id = "Employments/118", PlayerId = "Players/245", TeamId = "Teams/10", Season = "2010-2011", Salary = 1000000 }, // Higuain
+            new Employment { Id = "Employments/119", PlayerId = "Players/245", TeamId = "Teams/10", Season = "2011-2012", Salary = 1000000 }, // Higuain
+            new Employment { Id = "Employments/120", PlayerId = "Players/245", TeamId = "Teams/10", Season = "2012-2013", Salary = 1000000 }, // Higuain
         };
 
         private static readonly List<Employment> EmploymentsFromBarcelona = new List<Employment>
@@ -455,7 +461,19 @@ namespace NoSqlKickoff.Tests
             new Employment { Id = "Employments/242", PlayerId = "Players/242", TeamId = "Teams/45", Season = "2000-2001", Salary = 1000000 },
             new Employment { Id = "Employments/243", PlayerId = "Players/243", TeamId = "Teams/45", Season = "2000-2001", Salary = 1000000 },
             new Employment { Id = "Employments/244", PlayerId = "Players/244", TeamId = "Teams/45", Season = "2000-2001", Salary = 1000000 },
-            new Employment { Id = "Employments/245", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2000-2001", Salary = 1000000 }
+            new Employment { Id = "Employments/245", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2013-2014", Salary = 1000000 }, //Higuain
+            new Employment { Id = "Employments/246", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2014-2015", Salary = 1000000 }, //Higuain
+            new Employment { Id = "Employments/247", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2015-2016", Salary = 1000000 },  //Higuain
+            new Employment { Id = "Employments/248", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2016-2017", Salary = 1000000 },  //Higuain
+            new Employment { Id = "Employments/249", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2017-2018", Salary = 1000000 },  //Higuain
+            new Employment { Id = "Employments/250", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2018-2019", Salary = 1000000 },  //Higuain
+            new Employment { Id = "Employments/251", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2019-2020", Salary = 1000000 },  //Higuain
+            new Employment { Id = "Employments/252", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2020-2021", Salary = 1000000 },  //Higuain
+            new Employment { Id = "Employments/253", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2021-2022", Salary = 1000000 },  //Higuain
+            new Employment { Id = "Employments/254", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2022-2023", Salary = 1000000 },  //Higuain
+            new Employment { Id = "Employments/255", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2023-2024", Salary = 1000000 },  //Higuain
+            new Employment { Id = "Employments/256", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2023-2024", Salary = 1000000 },  //Higuain
+            new Employment { Id = "Employments/257", PlayerId = "Players/245", TeamId = "Teams/45", Season = "2023-2024", Salary = 1000000 }  //Higuain
         };
 
         #endregion

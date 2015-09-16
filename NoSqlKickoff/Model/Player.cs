@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using Raven.Imports.Newtonsoft.Json;
 
@@ -6,6 +7,11 @@ namespace NoSqlKickoff.Model
 {
     public class Player
     {
+        public Player()
+        {
+            Employments = new List<Employment>();
+        }
+
         public string Id { get; set; }
 
         public string FirstName { get; set; }
@@ -23,6 +29,8 @@ namespace NoSqlKickoff.Model
         // Navigation property
         [JsonIgnore]
         public Team TeamNavigationProperty { get; set; }
+
+        public List<Employment> Employments { get; set; }
     }
 
     public class Nationality
