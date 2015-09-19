@@ -1,4 +1,4 @@
-﻿namespace NoSqlKickoff.Model
+﻿namespace NoSqlKickoff.Model.Reference
 {
     public class Team
     {

@@ -4,7 +4,9 @@ using System.Text;
 
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.AdvancedFeatures;
-using NoSqlKickoff.Model;
+
+using NoSqlKickoff.Model.Reference;
+using NoSqlKickoff.Tests.Reference;
 
 using NUnit.Framework;
 

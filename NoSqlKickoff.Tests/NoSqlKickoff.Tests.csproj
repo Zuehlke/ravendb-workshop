@@ -83,7 +83,7 @@
     <Compile Include="Reference\03 Modelling and Querying Relationships\R11_LoadDocumentWithStoreFields.cs" />
     <Compile Include="Reference\04 Aggregations\R13_MapReduce.cs" />
     <Compile Include="Reference\03 Modelling and Querying Relationships\R12_QueryPersonWithEmbeddedTeam.cs" />
-    <Compile Include="DataGenerator.cs" />
+    <Compile Include="Exercises\DataGenerator.cs" />
     <Compile Include="LinqExtensions.cs" />
     <Compile Include="Reference\01 RavenDB Basics\R02_Querying_AutoIndex.cs" />
     <Compile Include="Reference\01 RavenDB Basics\R01_StoreAndLoad.cs" />
@@ -95,6 +95,7 @@
     <Compile Include="Reference\02 Indexes and Querying Single Documents\R06_Select.cs" />
     <Compile Include="Reference\02 Indexes and Querying Single Documents\R05_ProjectFromIndexFieldsInto.cs" />
     <Compile Include="Reference\02 Indexes and Querying Single Documents\R07_SimpleTransformer.cs" />
+    <Compile Include="Reference\DataGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

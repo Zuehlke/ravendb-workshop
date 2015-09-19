@@ -1,4 +1,4 @@
-﻿namespace NoSqlKickoff.Model
+﻿namespace NoSqlKickoff.Model.Exercises
 {
     public class Employment
     {

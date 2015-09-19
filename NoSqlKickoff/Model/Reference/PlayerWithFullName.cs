@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NoSqlKickoff.Model
+namespace NoSqlKickoff.Model.Reference
 {
     public class PlayerWithFullName
     {

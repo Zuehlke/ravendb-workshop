@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 
-using NoSqlKickoff.Model;
+using NoSqlKickoff.Model.Reference;
 
 using Raven.Client.Indexes;
 
-namespace NoSqlKickoff.Transformers
+namespace NoSqlKickoff.Transformers.Reference
 {
     public class PlayerFullNameTransformer : AbstractTransformerCreationTask<Player>
     {
@@ -18,8 +18,6 @@ namespace NoSqlKickoff.Transformers
                                                          LastName = player.LastName,
                                                          Nationality = player.Nationality,
                                                          Id = player.Id,
-                                                         MiddleName = player.MiddleName,
-                                                         DateOfBirth = player.DateOfBirth,
                                                          FullName = string.Format("{0} {1}", player.FirstName, player.LastName)
                                                      };
         }

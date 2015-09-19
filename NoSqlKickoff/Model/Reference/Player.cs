@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using NoSqlKickoff.Model.Exercises;
 
 using Raven.Imports.Newtonsoft.Json;
 
-namespace NoSqlKickoff.Model
+namespace NoSqlKickoff.Model.Reference
 {
     public class Player
     {
@@ -18,10 +19,6 @@ namespace NoSqlKickoff.Model
 
         public string LastName { get; set; }
 
-        public string MiddleName { get; set; }
-
-        public DateTime DateOfBirth { get; set; }
-
         public Nationality Nationality { get; set; }
 
         public string TeamId { get; set; }
@@ -31,10 +28,5 @@ namespace NoSqlKickoff.Model
         public Team TeamNavigationProperty { get; set; }
 
         public List<Employment> Employments { get; set; }
-    }
-
-    public class Nationality
-    {
-        public string Name { get; set; }
     }
 }

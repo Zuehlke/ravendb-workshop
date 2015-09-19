@@ -5,6 +5,7 @@ using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
 using NoSqlKickoff.Model;
 using NoSqlKickoff.Transformers;
+using NoSqlKickoff.Transformers.Exercises;
 
 using NUnit.Framework;
 

@@ -2,8 +2,11 @@
 using System.Linq;
 
 using NoSqlKickoff.Indexes;
+using NoSqlKickoff.Indexes.Reference;
 using NoSqlKickoff.Model;
+using NoSqlKickoff.Model.Reference;
 using NoSqlKickoff.Transformers;
+using NoSqlKickoff.Transformers.Reference;
 
 using NUnit.Framework;
 

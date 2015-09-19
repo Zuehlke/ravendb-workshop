@@ -3,6 +3,7 @@ using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
 using NoSqlKickoff.Model;
+using NoSqlKickoff.Model.Exercises;
 
 using NUnit.Framework;
 

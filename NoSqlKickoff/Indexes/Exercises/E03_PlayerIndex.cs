@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 
 using NoSqlKickoff.Model;
+using NoSqlKickoff.Model.Exercises;
 
 using Raven.Client.Indexes;
 

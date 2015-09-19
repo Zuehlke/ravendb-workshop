@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-using NoSqlKickoff.Model;
+using NoSqlKickoff.Model.Reference;
 
 using NUnit.Framework;
 
