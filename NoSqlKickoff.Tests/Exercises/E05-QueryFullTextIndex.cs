@@ -2,7 +2,7 @@
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
-using NoSqlKickoff.Model;
+
 using NoSqlKickoff.Model.Exercises;
 
 using NUnit.Framework;
@@ -21,29 +21,58 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 8
-        /// As a user I want to find players that contain the name fragment "van"
+        /// TODO: Exercise 9
+        /// As a user I want to find players that contain the name fragment "van", "di" or "de"
         /// </summary>
-        public List<Player> FindPlayersWithVan()
+        public List<Player> FindPlayersWithNameFragments()
         {
             using (var session = _store.OpenSession())
             {
                 return session.Query<Player, E05_PlayerFullTextIndex>()
-                    .Search(p => p.FirstName, "van*", escapeQueryOptions: EscapeQueryOptions.AllowPostfixWildcard)
-                    .Search(p => p.LastName, "van*", escapeQueryOptions: EscapeQueryOptions.AllowPostfixWildcard)
+                    .Search(p => p.LastName, "van")
+                    .Search(p => p.LastName, "di")
+                    .Search(p => p.LastName, "de")
+                    .ToList();
+            }
+        }
+
+        /// <summary>
+        /// TODO: Exercise 10
+        /// As a user I want to find players whose first name ends with "an"
+        /// </summary>
+        /// <returns></returns>
+        public List<Player> FindPlayerWithFirstNameEndingWithAn()
+        {
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<Player, E05_PlayerFullTextIndex>()
+                    .Search(p => p.FirstName, "*an", escapeQueryOptions: EscapeQueryOptions.AllowAllWildcards)
                     .ToList();
             }
         }
 
         [Test]
-        public void FindPlayersWithVan_ShouldReturnAListOfPlayersWithVan()
+        public void FindPlayersWithNameFragments_ShouldReturnAListOfPlayersWithNameFragments()
         {
-            var playersWithVan = FindPlayersWithVan();
+            var playersWithNameFragments = FindPlayersWithNameFragments();
 
-            playersWithVan.PrintDump();
+            playersWithNameFragments.PrintDump();
 
-            Assert.That(playersWithVan.Count, Is.AtLeast(1));
-            Assert.IsTrue(playersWithVan.All(p => p.LastName.Contains("van")));
+            Assert.That(playersWithNameFragments.Count, Is.AtLeast(1));
+            Assert.IsTrue(playersWithNameFragments.Any(p => p.LastName.Contains("van")));
+            Assert.IsTrue(playersWithNameFragments.Any(p => p.LastName.Contains("di")));
+            Assert.IsTrue(playersWithNameFragments.Any(p => p.LastName.Contains("de")));
+        }
+
+        [Test]
+        public void FindPlayerWithFirstNameEndingWithAn_ShouldReturnAListOfPlayersEndingWithAn()
+        {
+            var playersEndingWithAn = FindPlayerWithFirstNameEndingWithAn();
+
+            playersEndingWithAn.PrintDump();
+
+            Assert.That(playersEndingWithAn.Count, Is.AtLeast(1));
+            Assert.IsTrue(playersEndingWithAn.All(p => p.FirstName.EndsWith("an")));
         }
 
         [SetUp]

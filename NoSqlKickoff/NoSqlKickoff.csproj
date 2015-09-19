@@ -73,7 +73,7 @@
     <Compile Include="Model\Reference\PlayerWithTeam.cs" />
     <Compile Include="Model\Reference\Team.cs" />
     <Compile Include="Model\Exercises\Team.cs" />
-    <Compile Include="Model\PlayerEmployment.cs" />
+    <Compile Include="Model\Exercises\PlayerEmployment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transformers\Reference\PlayerFullNameTransformer.cs" />
     <Compile Include="Transformers\Reference\PlayerWithTeamTransformer.cs" />

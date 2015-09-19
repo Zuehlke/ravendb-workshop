@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using NoSqlKickoff.Model;
 using NoSqlKickoff.Model.Exercises;
 
 using NUnit.Framework;
@@ -19,7 +18,7 @@ namespace NoSqlKickoff.Tests.Exercises
 
         /// <summary>
         /// TODO: Exercise 1
-        /// As a user I want save a list of the following players: 
+        /// As a user I want store a list of the following players: 
         /// "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
         /// </summary>
         /// <returns>
@@ -98,8 +97,6 @@ namespace NoSqlKickoff.Tests.Exercises
         public void GetListOfPlayersById_ShouldReturnAListOfPlayers()
         {
             var ids = StoreListOfPlayers();
-
-            WaitForIndexing(_store);
 
             var players = GetListOfPlayersById(ids);
 

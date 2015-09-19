@@ -16,7 +16,8 @@ namespace NoSqlKickoff.Indexes.Exercises
             Map = players => from player in players
                                  select new
                                             {
-                                                player.FirstName, player.LastName
+                                                player.FirstName, 
+                                                player.LastName
                                             
                                             };
 

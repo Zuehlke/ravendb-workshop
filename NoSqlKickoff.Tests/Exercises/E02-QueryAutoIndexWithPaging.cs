@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using NoSqlKickoff.Model;
 using NoSqlKickoff.Model.Exercises;
 
 using NUnit.Framework;
@@ -19,8 +18,8 @@ namespace NoSqlKickoff.Tests.Exercises
 
         /// <summary>
         /// TODO: Exercise 3 and 4
-        /// As a user I need to get a list of 5 players at once (paged list)
-        /// As a user I need to get the second list of 5 players at once (paged list)
+        /// As a user I want to get a list of 5 players at once (paged list)
+        /// As a user I want to get the second list of 5 players at once (paged list)
         /// </summary>
         /// <returns>A list of 5 players</returns>
         public List<Player> GetPagedListOfFivePlayers(int page)

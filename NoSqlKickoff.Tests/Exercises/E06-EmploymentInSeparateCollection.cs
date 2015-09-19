@@ -3,8 +3,7 @@ using System.Linq;
 
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
-using NoSqlKickoff.Model;
-using NoSqlKickoff.Transformers;
+using NoSqlKickoff.Model.Exercises;
 using NoSqlKickoff.Transformers.Exercises;
 
 using NUnit.Framework;

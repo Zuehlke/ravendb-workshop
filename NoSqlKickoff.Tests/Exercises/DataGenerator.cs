@@ -77,7 +77,7 @@ namespace NoSqlKickoff.Tests.Exercises
             new Player { Id = "Players/110", FirstName = "Christiano", LastName = "Ronaldo", Nationality = new Nationality { Name = "Portugal" }},
             new Player { Id = "Players/111", FirstName = "Alfredo", LastName = "di Stefano", Nationality = new Nationality { Name = "Argentina" }},
             new Player { Id = "Players/112", FirstName = "Iker", LastName = "Casillas", Nationality = new Nationality { Name = "Spain" }},
-            new Player { Id = "Players/113", FirstName = "Özil", LastName = "Casillas", Nationality = new Nationality { Name = "Germany" }},
+            new Player { Id = "Players/113", FirstName = "Mesut", LastName = "Özil", Nationality = new Nationality { Name = "Germany" }},
             new Player { Id = "Players/114", FirstName = "Ferenc", LastName = "Puskas", Nationality = new Nationality { Name = "Hungary" }}
         };
 

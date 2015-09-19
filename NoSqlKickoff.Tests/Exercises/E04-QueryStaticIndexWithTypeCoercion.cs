@@ -1,7 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
-using NoSqlKickoff.Model;
 using NoSqlKickoff.Model.Exercises;
 
 using NUnit.Framework;
@@ -34,6 +34,22 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
+        /// <summary>
+        /// TODO: Exercise 8
+        /// As a user I want to find all players that have the Nationality "Brazil"
+        /// </summary>
+        /// <returns>A list of brazilian players</returns>
+        public List<Player> FindBrazilianPlayers()
+        {
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E04_PlayerIndex.IndexEntry, E04_PlayerIndex>()
+                        .Where(p => p.Nationality == "Brazil")
+                        .OfType<Player>()
+                        .ToList();
+            }
+        }
+
         [Test]
         public void FindChristiano_ShouldReturnChristiano()
         {
@@ -42,6 +58,17 @@ namespace NoSqlKickoff.Tests.Exercises
             christiano.PrintDump();
 
             Assert.That(christiano.LastName, Is.EqualTo("Ronaldo"));
+        }
+
+        [Test]
+        public void FindBrazilianPlayers_ShouldReturnAListOfBrazilianPlayers()
+        {
+            var brazilisanPlayers = FindBrazilianPlayers();
+
+            brazilisanPlayers.PrintDump();
+
+            Assert.That(brazilisanPlayers.Count, Is.AtLeast(1));
+            Assert.That(brazilisanPlayers.All(p => p.Nationality.Name == "Brazil"), Is.True);
         }
 
         [SetUp]

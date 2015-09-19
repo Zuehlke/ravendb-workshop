@@ -69,6 +69,7 @@ namespace NoSqlKickoff.Tests.Exercises
         {
             _store = NewDocumentStore();
 
+            // We need to tell the server which indexes he should create
             IndexCreation.CreateIndexes(typeof(Player).Assembly, _store);
 
             var players = DataGenerator.CreatePlayerList();
