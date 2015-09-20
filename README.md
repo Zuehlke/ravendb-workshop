@@ -12,18 +12,21 @@ In this tutorial, attendees will learn the most important concepts of document d
 
 ##Use Cases / Exercises
 
-1. Store and load players:
-	* As a user I want save a list of the following players: "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
-	* As a user I want to be able to receive back the whole list of players ("Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger") I stored before and load them by their id for verification. 
-2. Filter and paged list of players:
-	* As a user I need to get a list of 5 players at once (paged list).
-	* As a user I need to get the second list of 5 players at once (paged list).
-	* As a user I want to find the player "Christiano Ronaldo".
-	* As a user I want to query for all players that start with a "C" in the firstname.
-3. Indexing and querying in single documents:
-	* As a user I want to find all players whose fullname contains the keyword "van".
-4. Modelling:
-	* As a user I want to know what players had been employed by Dortmund for the season "2013-2014". 
+1. RavenDB Basics
+	* Exercise 01: As a user I want store a list of the following players: "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
+	* Exercise 02: As a user I want to be able to receive back the whole list of players ("Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger") I stored before. 
+	* Exercise 03: As a user I want to get a list of 5 players at once (paged list).
+	* Exercise 04: As a user I want to get the second list of 5 players at once (paged list).
+3. Indexes and Querying Unrelated Documents
+	* Exercise 05: As a user I want to find the player "Christiano Ronaldo".
+	* Exercise 06: As a user I want to query for all players that start with a "C" in the first name
+	* Exercise 07: As a user I want to find the player "Christiano Ronaldo" by querying the full name
+	* Exercise 08: As a user I want to find all players that have the Nationality "Brazil"
+	* Exercise 09: As a user I want to find players that contain the name fragment "van", "di" or "de"
+	* Exercise 10: As a user I want to find players whose first name ends with "an"
+4. Modelling and Querying Relationships:
+	* Exercise 11a, 11b, 11c: As a user I want to know what players had been employed by Dortmund for the season "2013-2014". 
+	* Exercise 12a, 12b, 12c: As a user I want to find all employments of "Gonzalo Higuaín"
 5. Reporting and statistics:
 	* Return the total number of players who ever played in each team
 		* Return the total number of players who ever played in Real Madrid

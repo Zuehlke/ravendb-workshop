@@ -58,6 +58,7 @@
     <Compile Include="Indexes\Exercises\E08_PlayerIndex.cs" />
     <Compile Include="Indexes\Exercises\E07_PlayerIndex.cs" />
     <Compile Include="Indexes\Exercises\E08_PlayerFanOutIndex.cs" />
+    <Compile Include="Indexes\Exercises\E09_TeamWithPlayerCountIndex.cs" />
     <Compile Include="Indexes\Exercises\E08_TeamMapReduceIndex.cs" />
     <Compile Include="Indexes\Exercises\E08_TeamFanOutIndex.cs" />
     <Compile Include="Indexes\Exercises\E08_TeamIndex.cs" />
