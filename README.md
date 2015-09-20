@@ -27,16 +27,12 @@ In this tutorial, attendees will learn the most important concepts of document d
 4. Modelling and Querying Relationships:
 	* Exercise 11a, 11b, 11c: As a user I want to know what players had been employed by Dortmund for the season "2013-2014". 
 	* Exercise 12a, 12b, 12c: As a user I want to find all employments of "Gonzalo Higuaín"
-5. Reporting and statistics:
-	* Return the total number of players who ever played in each team
-		* Return the total number of players who ever played in Real Madrid
-	* Return the number of active players per team (players that currently play in that team)
-		* Return the total number of active players in Bayern München
-	* Return the average salary per team
-		* filtered by active players only
-		* only for FC Barcelona
-	* Return the average salary per nationality of player
-	* Return the average salary per country of team
+5. Aggregations (Map/Reduce):
+	* Exercise 13: As a user I want to have a list of all teams with the total number of players that ever played in each team
+	* Exercise 14: As a user I want to have the total number of players that ever played in "Real Madrid"
+	* Exercise 15: As a user I want to have a list of all teams with their average salary
+	* Exercise 16: As a user I want to have a list of all nationalities with their average salary
+	* Exercise 17: As a user I want to have a list of all countries with their average salary
 
 ##Contributors
 - [mzoellner](https://github.com/mzoellner) (Michael Zöllner)
