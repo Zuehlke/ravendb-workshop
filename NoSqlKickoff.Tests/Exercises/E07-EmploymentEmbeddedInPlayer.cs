@@ -3,7 +3,6 @@ using System.Linq;
 
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
-using NoSqlKickoff.Model;
 using NoSqlKickoff.Model.Exercises;
 
 using NUnit.Framework;
@@ -23,7 +22,7 @@ namespace NoSqlKickoff.Tests.Exercises
 
 
         /// <summary>
-        /// TODO: Exercise 9b
+        /// TODO: Exercise 11b
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
         public List<Player> FindPlayersOfDortmundIn1314()
@@ -49,7 +48,7 @@ namespace NoSqlKickoff.Tests.Exercises
 
             players.PrintDump();
 
-            Assert.That(players.Count, Is.AtLeast(1));
+            Assert.That(players.Count, Is.EqualTo(4));
         }
 
         [SetUp]

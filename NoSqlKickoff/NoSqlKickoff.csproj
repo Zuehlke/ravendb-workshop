@@ -53,7 +53,11 @@
     <Compile Include="Indexes\Exercises\E03_PlayerIndex.cs" />
     <Compile Include="Indexes\Exercises\E04_PlayerIndex.cs" />
     <Compile Include="Indexes\Exercises\E05_PlayerFullTextIndex.cs" />
+    <Compile Include="Indexes\Exercises\E06_EmploymentIndex2.cs" />
     <Compile Include="Indexes\Exercises\E06_EmploymentIndex.cs" />
+    <Compile Include="Indexes\Exercises\E08_TeamIndex3.cs" />
+    <Compile Include="Indexes\Exercises\E08_TeamIndex2.cs" />
+    <Compile Include="Indexes\Exercises\E08_TeamIndex.cs" />
     <Compile Include="Indexes\Exercises\E07_PlayerIndex.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R12.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R13.cs" />
@@ -65,6 +69,8 @@
     <Compile Include="Indexes\Reference\Player_Index_R05.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R04.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R03.cs" />
+    <Compile Include="Model\Exercises\EmploymentCopyInTeam.cs" />
+    <Compile Include="Model\Exercises\EmploymentCopyInPlayer.cs" />
     <Compile Include="Model\Exercises\Employment.cs" />
     <Compile Include="Model\Exercises\Player.cs" />
     <Compile Include="Model\Nationality.cs" />
@@ -73,11 +79,12 @@
     <Compile Include="Model\Reference\PlayerWithTeam.cs" />
     <Compile Include="Model\Reference\Team.cs" />
     <Compile Include="Model\Exercises\Team.cs" />
-    <Compile Include="Model\Exercises\PlayerEmployment.cs" />
+    <Compile Include="Model\Exercises\ReducedPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transformers\Exercises\TeamToSeasonTransformer.cs" />
     <Compile Include="Transformers\Reference\PlayerFullNameTransformer.cs" />
     <Compile Include="Transformers\Reference\PlayerWithTeamTransformer.cs" />
-    <Compile Include="Transformers\Exercises\PlayerEmploymentTransformer.cs" />
+    <Compile Include="Transformers\Exercises\EmploymentToReducedPlayerTransformer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 
-using NoSqlKickoff.Model;
 using NoSqlKickoff.Model.Exercises;
 
 using Raven.Client.Indexes;
@@ -28,6 +27,7 @@ namespace NoSqlKickoff.Indexes.Exercises
                                             Season = employment.Season
                                         };
 
+            // we need to configure the fan-out maximum
             MaxIndexOutputsPerDocument = 30;
         }
     }

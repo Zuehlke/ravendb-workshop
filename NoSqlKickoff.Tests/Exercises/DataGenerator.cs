@@ -330,18 +330,18 @@ namespace NoSqlKickoff.Tests.Exercises
 
         private static readonly List<Employment> EmploymentsFromDortmund = new List<Employment>
         {
-            new Employment { Id = "Employments/171", PlayerId = "Players/171", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
+            new Employment { Id = "Employments/171", PlayerId = "Players/171", TeamId = "Teams/25", Season = "1996-1997", Salary = 1000000 },
             new Employment { Id = "Employments/172", PlayerId = "Players/172", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
-            new Employment { Id = "Employments/173", PlayerId = "Players/173", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
-            new Employment { Id = "Employments/174", PlayerId = "Players/174", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
+            new Employment { Id = "Employments/173", PlayerId = "Players/173", TeamId = "Teams/25", Season = "1996-1997", Salary = 1000000 },
+            new Employment { Id = "Employments/174", PlayerId = "Players/174", TeamId = "Teams/25", Season = "1996-1997", Salary = 1000000 },
             new Employment { Id = "Employments/175", PlayerId = "Players/175", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
-            new Employment { Id = "Employments/176", PlayerId = "Players/176", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
-            new Employment { Id = "Employments/177", PlayerId = "Players/177", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
+            new Employment { Id = "Employments/176", PlayerId = "Players/176", TeamId = "Teams/25", Season = "1996-1997", Salary = 1000000 },
+            new Employment { Id = "Employments/177", PlayerId = "Players/177", TeamId = "Teams/25", Season = "1996-1997", Salary = 1000000 },
             new Employment { Id = "Employments/178", PlayerId = "Players/178", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
-            new Employment { Id = "Employments/179", PlayerId = "Players/179", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
-            new Employment { Id = "Employments/180", PlayerId = "Players/180", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
-            new Employment { Id = "Employments/181", PlayerId = "Players/181", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
-            new Employment { Id = "Employments/182", PlayerId = "Players/182", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 },
+            new Employment { Id = "Employments/179", PlayerId = "Players/179", TeamId = "Teams/25", Season = "1999-2000", Salary = 1000000 },
+            new Employment { Id = "Employments/180", PlayerId = "Players/180", TeamId = "Teams/25", Season = "1996-1997", Salary = 1000000 },
+            new Employment { Id = "Employments/181", PlayerId = "Players/181", TeamId = "Teams/25", Season = "2015-2016", Salary = 1000000 },
+            new Employment { Id = "Employments/182", PlayerId = "Players/182", TeamId = "Teams/25", Season = "2006-2007", Salary = 1000000 },
             new Employment { Id = "Employments/183", PlayerId = "Players/183", TeamId = "Teams/25", Season = "2013-2014", Salary = 1000000 }
         };
 

@@ -1,6 +1,6 @@
 ﻿namespace NoSqlKickoff.Model.Exercises
 {
-    public class PlayerEmployment
+    public class ReducedPlayer
     {
         public string FirstName { get; set; }
 

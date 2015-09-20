@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
@@ -23,30 +24,40 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
         
         /// <summary>
-        /// TODO: Exercise 9a
+        /// TODO: Exercise 11a
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
-        public List<PlayerEmployment> FindPlayerEmploymentsUsingJoin()
+        public List<ReducedPlayer> FindPlayerEmploymentsUsingJoin()
         {
             using (var session = _store.OpenSession())
             {
                 return session.Query<E06_EmploymentIndex.IndexEntry, E06_EmploymentIndex>()
                     .Where(x => x.Season == "2013-2014" && x.TeamName == "Borussia Dortmund")
-                    .TransformWith<PlayerEmploymentTransformer, PlayerEmployment>().ToList();
+                    .TransformWith<EmploymentToReducedPlayerTransformer, ReducedPlayer>().ToList();
+            }
+        }
+
+        public List<ReducedPlayer> FindPlayerEmploymentsUsingJoin2()
+        {
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E06_EmploymentIndex2.IndexEntry, E06_EmploymentIndex2>()
+                        .Where(x => x.Season == "2013-2014" && x.TeamName == "Borussia Dortmund")
+                        .ProjectFromIndexFieldsInto<ReducedPlayer>()
+                        .ToList();
             }
         }
 
         [Test]
         public void FindPlayerEmploymentsUsingJoin_ShouldReturnAllPlayersOfDortmundIn1314()
         {    
-            var playerEmployments = FindPlayerEmploymentsUsingJoin();
+            var playerEmployments = FindPlayerEmploymentsUsingJoin2();
 
             playerEmployments.PrintDump();
 
             WaitForUserToContinueTheTest(_store);
 
-            //TODO: Update Assert when season data is correct
-            Assert.That(playerEmployments.Count, Is.AtLeast(1));
+            Assert.That(playerEmployments.Count, Is.EqualTo(4));
         }
 
         [SetUp]
