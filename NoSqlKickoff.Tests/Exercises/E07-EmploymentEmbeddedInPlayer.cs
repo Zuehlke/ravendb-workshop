@@ -19,8 +19,7 @@ namespace NoSqlKickoff.Tests.Exercises
     public class E07_EmploymentEmbeddedInPlayer : RavenTestBase
     {
         private IDocumentStore _store;
-
-
+        
         /// <summary>
         /// TODO: Exercise 11b
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
@@ -35,9 +34,6 @@ namespace NoSqlKickoff.Tests.Exercises
                     .ToList();
             }
         }
-
-        //TODO: add more exercises to show different problems: All employments of a player, Update of employment, Player Search which returns player info and current employment
-        //TODO: one more case: Employments in separate collection but share same id prefix with team or player (also possible to do recurse on id list + LoadDocument
 
         [Test]
         public void FindPlayersOfDortmundIn1314_ShouldReturnAllPlayersOfDortmundIn20132014()

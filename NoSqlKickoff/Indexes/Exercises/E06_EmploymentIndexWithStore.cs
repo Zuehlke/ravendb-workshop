@@ -7,7 +7,7 @@ using Raven.Client.Indexes;
 
 namespace NoSqlKickoff.Indexes.Exercises
 {
-    public class E06_EmploymentIndex2 : AbstractIndexCreationTask<Employment, E06_EmploymentIndex2.IndexEntry>
+    public class E06_EmploymentIndexWithStore : AbstractIndexCreationTask<Employment, E06_EmploymentIndexWithStore.IndexEntry>
     {
         public class IndexEntry
         {
@@ -18,7 +18,7 @@ namespace NoSqlKickoff.Indexes.Exercises
             public string LastName { get; set; }
         }
         
-        public E06_EmploymentIndex2()
+        public E06_EmploymentIndexWithStore()
         {
             // TODO: Create Map property for Employment Index
             Map = employments => from employment in employments
@@ -32,10 +32,9 @@ namespace NoSqlKickoff.Indexes.Exercises
                                                 LastName = player.LastName
                                             };
 
-            Index(e => e.FirstName, FieldIndexing.No);
-            Index(e => e.LastName, FieldIndexing.No);
             Store(e => e.FirstName, FieldStorage.Yes);
             Store(e => e.LastName, FieldStorage.Yes);
+            Store(e => e.TeamName, FieldStorage.Yes);
         }
     }
 }

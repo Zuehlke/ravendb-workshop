@@ -27,7 +27,7 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 11a
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
-        public List<ReducedPlayer> FindPlayerEmploymentsUsingJoin()
+        public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingJoinAndTransformer()
         {
             using (var session = _store.OpenSession())
             {
@@ -37,27 +37,65 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
-        public List<ReducedPlayer> FindPlayerEmploymentsUsingJoin2()
+        public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingJoinAndIndexStore()
         {
             using (var session = _store.OpenSession())
             {
-                return session.Query<E06_EmploymentIndex2.IndexEntry, E06_EmploymentIndex2>()
+                return session.Query<E06_EmploymentIndexWithStore.IndexEntry, E06_EmploymentIndexWithStore>()
                         .Where(x => x.Season == "2013-2014" && x.TeamName == "Borussia Dortmund")
                         .ProjectFromIndexFieldsInto<ReducedPlayer>()
                         .ToList();
             }
         }
 
+        /// <summary>
+        /// TODO: Exercise 12a
+        /// As a user I want to find all employments of “Gonzalo Higuaín”
+        /// </summary>
+        public List<EmploymentWithTeam> FindEmploymentsOfHiguain_UsingJoinAndTransformer()
+        {
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E06_EmploymentIndex.IndexEntry, E06_EmploymentIndex>()
+                        .Where(x => x.FirstName == "Gonzalo" && x.LastName == "Higuaín")
+                        .TransformWith<EmploymentToEmploymentWithTeamTransformer, EmploymentWithTeam>()
+                        .ToList();
+            }
+        }
+
+        public List<EmploymentWithTeam> FindEmploymentsOfHiguain_UsingJoinAndIndexStore()
+        {
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E06_EmploymentIndexWithStore.IndexEntry, E06_EmploymentIndexWithStore>()
+                        .Where(x => x.FirstName == "Gonzalo" && x.LastName == "Higuaín")
+                        .ProjectFromIndexFieldsInto<EmploymentWithTeam>()
+                        .ToList();
+            }
+        }
+
+        //TODO: add more exercises to show different problems: Update of employment, Player Search which returns player info and current employment
+        
         [Test]
-        public void FindPlayerEmploymentsUsingJoin_ShouldReturnAllPlayersOfDortmundIn1314()
-        {    
-            var playerEmployments = FindPlayerEmploymentsUsingJoin2();
+        public void FindPlayersOfDortmundIn1314_ShouldReturnAllPlayersOfDortmundIn1314()
+        {
+            var playerEmployments = FindPlayersOfDortmundIn1314_UsingJoinAndTransformer();
 
             playerEmployments.PrintDump();
 
             WaitForUserToContinueTheTest(_store);
 
             Assert.That(playerEmployments.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindEmploymentsOfHiguain_ShouldReturnAllEmploymentsOfHiguain()
+        {
+            var employments = FindEmploymentsOfHiguain_UsingJoinAndIndexStore();
+
+            employments.PrintDump();
+
+            Assert.That(employments.Count, Is.EqualTo(19));
         }
 
         [SetUp]

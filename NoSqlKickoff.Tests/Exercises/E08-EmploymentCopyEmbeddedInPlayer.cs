@@ -55,11 +55,24 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
-        public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingFanOutIndex()
+        public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingTeamFanOutIndex()
         {
             using (var session = _store.OpenSession())
             {
-                var playersIn1314 = session.Query<E08_TeamIndex2.IndexEntry, E08_TeamIndex2>()
+                var playersIn1314 = session.Query<E08_TeamFanOutIndex.IndexEntry, E08_TeamFanOutIndex>()
+                    .Where(t => t.TeamName == "Borussia Dortmund" && t.Season == "2013-2014")
+                    .ProjectFromIndexFieldsInto<ReducedPlayer>()
+                    .ToList();
+
+                return playersIn1314;
+            }
+        }
+
+        public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingPlayerFanOutIndex()
+        {
+            using (var session = _store.OpenSession())
+            {
+                var playersIn1314 = session.Query<E08_PlayerFanOutIndex.IndexEntry, E08_PlayerFanOutIndex>()
                     .Where(t => t.TeamName == "Borussia Dortmund" && t.Season == "2013-2014")
                     .ProjectFromIndexFieldsInto<ReducedPlayer>()
                     .ToList();
@@ -72,19 +85,17 @@ namespace NoSqlKickoff.Tests.Exercises
         {
             using (var session = _store.OpenSession())
             {
-                var dortmundIn1314 = session.Query<E08_TeamIndex3.IndexEntry, E08_TeamIndex3>()
+                var dortmundIn1314 = session.Query<E08_TeamMapReduceIndex.IndexEntry, E08_TeamMapReduceIndex>()
                         .Single(t => t.TeamName == "Borussia Dortmund" && t.Season == "2013-2014");
 
                 return dortmundIn1314.Players.Select(p => new ReducedPlayer { FirstName = p.FirstName, LastName = p.LastName}).ToList();
             }
         }
 
-        // 4 Possibilities: In-memory cut out, Transformer cut out, Fan-out index, Map-Reduce Index
-
         [Test]
         public void FindPlayersOfDortmundIn1314_ShouldReturnAllPlayersOfDortmundIn20132014()
         {
-            var players = FindPlayersOfDortmundIn1314_UsingMapReduceIndex();
+            var players = FindPlayersOfDortmundIn1314_UsingPlayerFanOutIndex();
 
             players.PrintDump();
 

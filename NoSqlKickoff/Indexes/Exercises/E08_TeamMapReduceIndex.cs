@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 using NoSqlKickoff.Model.Exercises;
 
@@ -7,7 +6,7 @@ using Raven.Client.Indexes;
 
 namespace NoSqlKickoff.Indexes.Exercises
 {
-    public class E08_TeamIndex3 : AbstractIndexCreationTask<Team, E08_TeamIndex3.IndexEntry>
+    public class E08_TeamMapReduceIndex : AbstractIndexCreationTask<Team, E08_TeamMapReduceIndex.IndexEntry>
     {
         public class IndexEntry
         {
@@ -27,7 +26,7 @@ namespace NoSqlKickoff.Indexes.Exercises
             public string LastName { get; set; }
         }
 
-        public E08_TeamIndex3()
+        public E08_TeamMapReduceIndex()
         {
             // TODO: implement map property
             Map = teams => from team in teams
