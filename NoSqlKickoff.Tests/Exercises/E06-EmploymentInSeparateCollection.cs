@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
@@ -98,8 +97,8 @@ namespace NoSqlKickoff.Tests.Exercises
             Assert.That(employments.Count, Is.EqualTo(19));
         }
 
-        [SetUp]
-        public void SetUp()
+        [TestFixtureSetUp]
+        public void TestFixtureSetUp()
         {
             _store = NewDocumentStore();
 

@@ -10,25 +10,20 @@ namespace NoSqlKickoff.Indexes.Exercises
     {
         public class IndexEntry
         {
-            public string TeamName { get; set; }
+            public string FirstName { get; set; }
 
-            public string Season { get; set; }
+            public string LastName { get; set; }
         }
 
         public E07_PlayerIndex()
         {
             // TODO: implement map property
             Map = players => from player in players
-                             from employment in Recurse(player, p => p.Employments)
-                             let team = LoadDocument<Team>(employment.TeamId)
                              select new IndexEntry
                                         {
-                                            TeamName = team.Name, 
-                                            Season = employment.Season
+                                            FirstName = player.FirstName,
+                                            LastName = player.LastName
                                         };
-
-            // we need to configure the fan-out maximum
-            MaxIndexOutputsPerDocument = 30;
         }
     }
 }

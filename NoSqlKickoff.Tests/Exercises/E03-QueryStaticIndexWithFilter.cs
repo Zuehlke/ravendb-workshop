@@ -63,8 +63,8 @@ namespace NoSqlKickoff.Tests.Exercises
             Assert.IsTrue(players.All(p => p.FirstName.StartsWith("C")));
         }
 
-        [SetUp]
-        public void SetUp()
+        [TestFixtureSetUp]
+        public void TestFixtureSetUp()
         {
             _store = NewDocumentStore();
 

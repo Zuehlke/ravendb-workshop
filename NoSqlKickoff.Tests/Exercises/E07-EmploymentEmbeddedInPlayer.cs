@@ -28,10 +28,27 @@ namespace NoSqlKickoff.Tests.Exercises
         {
             using (var session = _store.OpenSession())
             {
-                return session.Query<E07_PlayerIndex.IndexEntry, E07_PlayerIndex>()
+                return session.Query<E07_PlayerFanOutIndex.IndexEntry, E07_PlayerFanOutIndex>()
                     .Where(e => e.TeamName == "Borussia Dortmund" && e.Season == "2013-2014")
                     .OfType<Player>()
                     .ToList();
+            }
+        }
+
+        /// <summary>
+        /// TODO: Exercise 12a
+        /// As a user I want to find all employments of “Gonzalo Higuaín”
+        /// </summary>
+        public List<Employment> FindEmploymentsOfHiguain()
+        {
+            using (var session = _store.OpenSession())
+            {
+                var higuain = session.Query<E07_PlayerIndex.IndexEntry, E07_PlayerIndex>()
+                    .Where(x => x.FirstName == "Gonzalo" && x.LastName == "Higuaín")
+                    .OfType<Player>()
+                    .Single();
+
+                return higuain.Employments;
             }
         }
 
@@ -47,19 +64,31 @@ namespace NoSqlKickoff.Tests.Exercises
             Assert.That(players.Count, Is.EqualTo(4));
         }
 
-        [SetUp]
-        public void SetUp()
+        [Test]
+        public void FindEmploymentsOfHiguain_ShouldReturnAllEmploymentsOfHiguain()
+        {
+            var employments = FindEmploymentsOfHiguain();
+
+            employments.PrintDump();
+
+            Assert.That(employments.Count, Is.EqualTo(19));
+        }
+
+        [TestFixtureSetUp]
+        public void TestFixtureSetUp()
         {
             _store = NewDocumentStore();
 
             IndexCreation.CreateIndexes(typeof(Player_Index_R03).Assembly, _store);
 
             var playerDictionary = DataGenerator.CreatePlayerList().ToDictionary(p => p.Id);
-            var teamList = DataGenerator.CreateTeamList();
+            var teamDictionary = DataGenerator.CreateTeamList().ToDictionary(p => p.Id);
             var employmentList = DataGenerator.CreateEmploymentList();
 
             foreach (var employment in employmentList)
             {
+                var team = teamDictionary[employment.TeamId];
+                employment.TeamName = team.Name;
                 playerDictionary[employment.PlayerId].Employments.Add(employment);
             }
 
@@ -70,7 +99,7 @@ namespace NoSqlKickoff.Tests.Exercises
                     bulkInsert.Store(player);
                 }
 
-                foreach (var team in teamList)
+                foreach (var team in teamDictionary.Values)
                 {
                     bulkInsert.Store(team);
                 }

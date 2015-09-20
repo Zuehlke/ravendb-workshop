@@ -92,6 +92,15 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
+        /// <summary>
+        /// TODO: Exercise 12a
+        /// As a user I want to find all employments of “Gonzalo Higuaín”
+        /// </summary>
+        public List<EmploymentWithTeam> FindEmploymentsOfHiguain()
+        {
+            return null;
+        }
+
         [Test]
         public void FindPlayersOfDortmundIn1314_ShouldReturnAllPlayersOfDortmundIn20132014()
         {
@@ -104,8 +113,18 @@ namespace NoSqlKickoff.Tests.Exercises
             Assert.That(players.Count, Is.EqualTo(4));
         }
 
-        [SetUp]
-        public void SetUp()
+        [Test]
+        public void FindEmploymentsOfHiguain_ShouldReturnAllEmploymentsOfHiguain()
+        {
+            var employments = FindEmploymentsOfHiguain();
+
+            employments.PrintDump();
+
+            Assert.That(employments.Count, Is.EqualTo(19));
+        }
+
+        [TestFixtureSetUp]
+        public void TestFixtureSetUp()
         {
             _store = NewDocumentStore();
 

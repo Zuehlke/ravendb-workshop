@@ -49,9 +49,9 @@ namespace NoSqlKickoff.Tests.Exercises
 
             Assert.That(players.Count, Is.EqualTo(5));
         }
-        
-        [SetUp]
-        public void SetUp()
+
+        [TestFixtureSetUp]
+        public void TestFixtureSetUp()
         {
             _store = NewDocumentStore();
 
