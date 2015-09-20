@@ -96,9 +96,17 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 12a
         /// As a user I want to find all employments of “Gonzalo Higuaín”
         /// </summary>
-        public List<EmploymentWithTeam> FindEmploymentsOfHiguain()
+        public List<EmploymentCopyInPlayer> FindEmploymentsOfHiguain()
         {
-            return null;
+            using (var session = _store.OpenSession())
+            {
+                var higuain = session.Query<E08_PlayerIndex.IndexEntry, E08_PlayerIndex>()
+                                .Where(x => x.FirstName == "Gonzalo" && x.LastName == "Higuaín")
+                                .OfType<Player>()
+                                .Single();
+
+                return higuain.EmploymentCopies.ToList();
+            }
         }
 
         [Test]
