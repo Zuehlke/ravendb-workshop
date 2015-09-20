@@ -79,8 +79,10 @@ namespace NoSqlKickoff.Tests.Exercises
 
                 // oops, at this point the player list is empty, because the dynamic index was just created and is still stale
                 // We have to wait for indexing here in order to get some results
-
                 WaitForIndexing(_store);
+
+                // if you run this test in debug mode, you can access the management web UI
+                WaitForUserToContinueTheTest(_store);
 
                 players = session.Query<Player>().ToList();
 
