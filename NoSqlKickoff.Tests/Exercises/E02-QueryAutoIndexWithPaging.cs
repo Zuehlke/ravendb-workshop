@@ -37,6 +37,8 @@ namespace NoSqlKickoff.Tests.Exercises
 
             players.PrintDump();
 
+            WaitForUserToContinueTheTest(_store);
+
             Assert.That(players.Count, Is.EqualTo(5));
         }
 
