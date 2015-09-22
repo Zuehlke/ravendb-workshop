@@ -117,7 +117,6 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// TODO: Exercise 12c
         /// As a user I want to find all employments of “Gonzalo Higuaín”
         /// </summary>
         /// <returns>
@@ -129,10 +128,15 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R04_Querying_TypeCoercion"/>
         public List<EmploymentCopyInPlayer> FindEmploymentsOfHiguain()
         {
-            // HINT: Query()
-            // HINT: OfType()
+            using (var session = _store.OpenSession())
+            {
+                var higuain = session.Query<E08_PlayerIndex.IndexEntry, E08_PlayerIndex>()
+                                .Where(x => x.FirstName == "Gonzalo" && x.LastName == "Higuaín")
+                                .OfType<Player>()
+                                .Single();
 
-            throw new NotImplementedException();
+                return higuain.EmploymentCopies.ToList();
+            }
         }
         
         [Test]
