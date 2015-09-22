@@ -27,10 +27,17 @@ namespace NoSqlKickoff.Indexes.Exercises
         
         public E06_EmploymentIndexWithStore()
         {
-            // TODO: Implement the Map property
-            // HINT: employments => from employment in employments
-            // HINT: LoadDocument()
-            // HINT: Store()
+            // TODO: Create Map property for Employment Index
+            Map = employments => from employment in employments
+                                 let team = LoadDocument<Team>(employment.TeamId)
+                                 let player = LoadDocument<Player>(employment.PlayerId)
+                                 select new IndexEntry
+                                            {
+                                                Season = employment.Season,
+                                                TeamName = team.Name
+                                            };
+
+            Store(e => e.TeamName, FieldStorage.Yes);
         }
     }
 }

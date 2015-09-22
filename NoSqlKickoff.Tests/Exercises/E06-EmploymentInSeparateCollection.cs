@@ -47,7 +47,6 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// TODO: Exercise 11a (II)
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
         /// <returns>
@@ -61,10 +60,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R11_LoadDocumentWithStoreFields"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingJoinAndIndexStore()
         {
-            // HINT: Query()
-            // HINT: ProjectFromIndexFieldsInto()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E06_EmploymentIndexWithStore.IndexEntry, E06_EmploymentIndexWithStore>()
+                        .Where(x => x.Season == "2013-2014" && x.TeamName == "Borussia Dortmund")
+                        .ProjectFromIndexFieldsInto<ReducedPlayer>()
+                        .ToList();
+            }
         }
         
         [Test]
