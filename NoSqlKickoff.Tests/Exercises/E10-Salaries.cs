@@ -61,6 +61,24 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
+        /// <summary>
+        /// TODO: Exercise 17
+        /// As a user I want to have a list of all countries with their average salary
+        /// </summary>
+        /// <returns>
+        /// A list of all countries with their average salary
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/map-reduce-indexes
+        /// </remarks>
+        /// <see cref="R13_MapReduce"/>
+        public List<E10_CountryWithAverageSalaryIndex.IndexEntry> GetListOfCountriesWithAverageSalary()
+        {
+            // HINT: Query()
+
+            throw new NotImplementedException();
+        }
+
         [Test]
         public void GetListOfTeamsWithAverageSalary_ShouldReturnListOfTeamsWithAverageSalary()
         {
@@ -81,6 +99,17 @@ namespace NoSqlKickoff.Tests.Exercises
 
             Assert.That(nationalitiesWithAverageSalary.Count, Is.EqualTo(25));
             Assert.That(nationalitiesWithAverageSalary.Single(t => t.Nationality == "Germany").AverageSalary, Is.GreaterThan(1000000));
+        }
+
+        [Test]
+        public void GetListOfCountriesWithAverageSalary_ShouldReturnListOfCountriesWithAverageSalary()
+        {
+            var countriesWithAverageSalary = GetListOfCountriesWithAverageSalary();
+
+            countriesWithAverageSalary.PrintDump();
+
+            Assert.That(countriesWithAverageSalary.Count, Is.EqualTo(6));
+            Assert.That(countriesWithAverageSalary.Single(t => t.Country == "Germany").AverageSalary, Is.GreaterThan(1000000));
         }
 
         [TestFixtureSetUp]

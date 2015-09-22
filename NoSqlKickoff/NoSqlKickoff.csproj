@@ -62,6 +62,7 @@
     <Compile Include="Indexes\Exercises\E08_TeamFanOutIndex.cs" />
     <Compile Include="Indexes\Exercises\E08_TeamIndex.cs" />
     <Compile Include="Indexes\Exercises\E09_TeamWithPlayerCountIndex.cs" />
+    <Compile Include="Indexes\Exercises\E10_CountryWithAverageSalaryIndex.cs" />
     <Compile Include="Indexes\Exercises\E10_NationalityWithAverageSalaryIndex.cs" />
     <Compile Include="Indexes\Exercises\E10_TeamWithAverageSalaryIndex.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R12.cs" />
