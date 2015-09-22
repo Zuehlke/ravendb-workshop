@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Model.Exercises;
@@ -19,7 +18,6 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 1
         /// As a user I want to store a list of the following players: 
         /// "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
         /// </summary>
@@ -35,15 +33,29 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R01_StoreAndLoad"/>
         public string[] StoreListOfPlayers()
         {
-            // HINT: OpenSession()
-            // HINT: Store()
-            // HINT: SaveChanges()
+            var ids = new List<string>();
 
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                var christiano = new Player { FirstName = "Christiano", LastName = "Ronaldo" };
+                var lionel = new Player { FirstName = "Lionel", LastName = "Messi" };
+                var bastian = new Player { FirstName = "Bastian", LastName = "Schweinsteiger" };
+                
+                session.Store(christiano);
+                session.Store(lionel);
+                session.Store(bastian);
+                
+                ids.Add(christiano.Id);
+                ids.Add(lionel.Id);
+                ids.Add(bastian.Id);
+
+                session.SaveChanges();
+            }
+
+            return ids.ToArray();
         }
 
         /// <summary>
-        /// TODO: Exercise 2
         /// As a user I want to be able to receive back the list of players 
         /// I stored before ("Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger") 
         /// given a list of their ids
@@ -57,10 +69,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R01_StoreAndLoad"/>
         public List<Player> GetListOfPlayersById(string[] ids)
         {
-            // HINT: OpenSession()
-            // HINT: Load()
-            
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Load<Player>(ids).ToList();
+            }
         }
 
         [SetUp]
