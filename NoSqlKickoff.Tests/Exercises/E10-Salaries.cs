@@ -41,6 +41,24 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
+        /// <summary>
+        /// TODO: Exercise 16
+        /// As a user I want to have a list of all nationalities with their average salary
+        /// </summary>
+        /// <returns>
+        /// A list of all nationalities with their average salary
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/map-reduce-indexes
+        /// </remarks>
+        /// <see cref="R13_MapReduce"/>
+        public List<E10_NationalityWithAverageSalaryIndex.IndexEntry> GetListOfNationalitiesWithAverageSalary()
+        {
+            // HINT: Query()
+
+            throw new NotImplementedException();
+        }
+
         [Test]
         public void GetListOfTeamsWithAverageSalary_ShouldReturnListOfTeamsWithAverageSalary()
         {
@@ -50,6 +68,17 @@ namespace NoSqlKickoff.Tests.Exercises
 
             Assert.That(teamsWithAverageSalary.Count, Is.EqualTo(13));
             Assert.That(teamsWithAverageSalary.Single(t => t.TeamName == "Real Madrid").AverageSalary, Is.EqualTo(2000000));
+        }
+
+        [Test]
+        public void GetListOfNationalitiesWithAverageSalary_ShouldReturnListOfNationalitiesWithAverageSalary()
+        {
+            var nationalitiesWithAverageSalary = GetListOfNationalitiesWithAverageSalary();
+
+            nationalitiesWithAverageSalary.PrintDump();
+
+            Assert.That(nationalitiesWithAverageSalary.Count, Is.EqualTo(25));
+            Assert.That(nationalitiesWithAverageSalary.Single(t => t.Nationality == "Germany").AverageSalary, Is.GreaterThan(1000000));
         }
 
         [TestFixtureSetUp]
