@@ -92,6 +92,25 @@ namespace NoSqlKickoff.Tests.Exercises
                 return playersIn1314;
             }
         }
+
+        /// <summary>
+        /// TODO: Exercise 11c (IV)
+        /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
+        /// </summary>
+        /// <returns>
+        /// A list of ReducedPlayer objects (First name, Last name) who have played in Dortmund during 13/14
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/fanout-indexes
+        /// </remarks>
+        /// <see cref="R05_ProjectFromIndexFieldsInto"/>
+        public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingPlayerFanOutIndex()
+        {
+            // HINT: Query()
+            // HINT: ProjectFromIndexFieldsInto()
+
+            throw new NotImplementedException();
+        }
         
         [Test]
         public void FindPlayersOfDortmundIn1314_UsingInMemoryFilter_ShouldReturnAllPlayersOfDortmundIn20132014()
@@ -121,6 +140,18 @@ namespace NoSqlKickoff.Tests.Exercises
         public void FindPlayersOfDortmundIn1314_UsingTeamFanOutIndex_ShouldReturnAllPlayersOfDortmundIn20132014()
         {
             var players = FindPlayersOfDortmundIn1314_UsingTeamFanOutIndex();
+
+            players.PrintDump();
+
+            WaitForUserToContinueTheTest(_store);
+
+            Assert.That(players.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindPlayersOfDortmundIn1314_UsingPlayerFanOutIndex_ShouldReturnAllPlayersOfDortmundIn20132014()
+        {
+            var players = FindPlayersOfDortmundIn1314_UsingPlayerFanOutIndex();
 
             players.PrintDump();
 
