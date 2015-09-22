@@ -115,6 +115,25 @@ namespace NoSqlKickoff.Tests.Exercises
                 return playersIn1314;
             }
         }
+
+        /// <summary>
+        /// TODO: Exercise 12c
+        /// As a user I want to find all employments of “Gonzalo Higuaín”
+        /// </summary>
+        /// <returns>
+        /// A list of EmploymentCopyInPlayer objects from Higuain
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#oftype-(as)---simple-projection
+        /// </remarks>
+        /// <see cref="R04_Querying_TypeCoercion"/>
+        public List<EmploymentCopyInPlayer> FindEmploymentsOfHiguain()
+        {
+            // HINT: Query()
+            // HINT: OfType()
+
+            throw new NotImplementedException();
+        }
         
         [Test]
         public void FindPlayersOfDortmundIn1314_UsingInMemoryFilter_ShouldReturnAllPlayersOfDortmundIn20132014()
@@ -162,6 +181,16 @@ namespace NoSqlKickoff.Tests.Exercises
             WaitForUserToContinueTheTest(_store);
 
             Assert.That(players.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindEmploymentsOfHiguain_ShouldReturnAllEmploymentsOfHiguain()
+        {
+            var employments = FindEmploymentsOfHiguain();
+
+            employments.PrintDump();
+
+            Assert.That(employments.Count, Is.EqualTo(19));
         }
         
         [TestFixtureSetUp]
