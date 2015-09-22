@@ -42,7 +42,6 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// TODO: Exercise 16
         /// As a user I want to have a list of all nationalities with their average salary
         /// </summary>
         /// <returns>
@@ -54,9 +53,12 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R13_MapReduce"/>
         public List<E10_NationalityWithAverageSalaryIndex.IndexEntry> GetListOfNationalitiesWithAverageSalary()
         {
-            // HINT: Query()
+            using (var session = _store.OpenSession())
+            {
+                var nationalitiesWithSalary = session.Query<E10_NationalityWithAverageSalaryIndex.IndexEntry, E10_NationalityWithAverageSalaryIndex>().ToList();
 
-            throw new NotImplementedException();
+                return nationalitiesWithSalary;
+            }
         }
 
         [Test]
