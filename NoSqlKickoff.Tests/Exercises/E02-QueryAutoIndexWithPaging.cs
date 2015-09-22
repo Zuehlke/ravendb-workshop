@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Model.Exercises;
@@ -19,7 +18,6 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 3 and 4
         /// As a user I want to get a list of 5 players at once (paged list)
         /// As a user I want to get the second list of 5 players at once (paged list)
         /// </summary>
@@ -30,11 +28,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R02_Querying_AutoIndex"/>
         public List<Player> GetPagedListOfFivePlayers(int page)
         {
-            // HINT: Query()
-            // HINT: Take()
-            // HINT: Skip()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<Player>().Take(5).Skip(page - 1).ToList();
+            }
         }
 
         [Test]
