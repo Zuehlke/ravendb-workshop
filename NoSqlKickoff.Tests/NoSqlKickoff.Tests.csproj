@@ -76,6 +76,7 @@
     <Compile Include="Exercises\E03-QueryStaticIndexWithFilter.cs" />
     <Compile Include="Exercises\E04-QueryStaticIndexWithTypeCoercion.cs" />
     <Compile Include="Exercises\E05-QueryFullTextIndex.cs" />
+    <Compile Include="Exercises\E06-EmploymentInSeparateCollection.cs" />
     <Compile Include="Reference\03 Modelling and Querying Relationships\R10_LoadDocumentInTransformer.cs" />
     <Compile Include="Reference\03 Modelling and Querying Relationships\R11_LoadDocumentWithStoreFields.cs" />
     <Compile Include="Reference\04 Aggregations\R13_MapReduce.cs" />
