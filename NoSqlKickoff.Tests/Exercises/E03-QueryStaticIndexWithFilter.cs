@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -21,7 +20,6 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 5
         /// As a user I want to find the player "Christiano Ronaldo"
         /// </summary>
         /// <returns>
@@ -33,15 +31,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R03_Querying_StaticIndex"/>
         public Player FindChristiano()
         {
-            // HINT: Query()
-            // HINT: Where()
-            // HINT: SingleOrDefault()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<Player, E03_PlayerIndex>().SingleOrDefault(p => p.FirstName == "Christiano" && p.LastName == "Ronaldo");
+            }
         }
 
         /// <summary>
-        /// TODO: Exercise 6
         /// As a user I want to query for all players that start with a "C" in the firstname
         /// </summary>
         /// <returns>
@@ -53,10 +49,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R03_Querying_StaticIndex"/>
         public List<Player> FindPlayersStartingWithC()
         {
-            // HINT: Query()
-            // HINT: Where()
-            
-            throw new NotImplementedException();
+            using (var sesion = _store.OpenSession())
+            {
+                return sesion.Query<Player, E03_PlayerIndex>().Where(p => p.FirstName.StartsWith("C")).ToList();
+            }
         }
 
         [Test]
