@@ -30,9 +30,22 @@ namespace NoSqlKickoff.Indexes.Exercises
 
         public E08_TeamFanOutIndex()
         {
-            // TODO: implement map property
-            // HINT: Store()
-            // TODO: define max fan-out per document
+            Map = teams => from team in teams
+                           from employment in team.EmploymentCopies
+                           select new IndexEntry
+                           {
+                               TeamName = team.Name,
+                               FirstName = employment.FirstName,
+                               LastName = employment.LastName,
+                               Season = employment.Season
+                           };
+
+            MaxIndexOutputsPerDocument = 30;
+
+            Index(e => e.FirstName, FieldIndexing.No);
+            Index(e => e.LastName, FieldIndexing.No);
+            Store(e => e.FirstName, FieldStorage.Yes);
+            Store(e => e.LastName, FieldStorage.Yes);
         }
     }
 }
