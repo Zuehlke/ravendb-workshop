@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Indexes\AdvancedFeatures\Player_Index_Suggestions.cs" />
+    <Compile Include="Indexes\Exercises\E03_PlayerIndex.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R12.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R13.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R11.cs" />
@@ -76,7 +77,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Indexes\Exercises\" />
     <Folder Include="Transformers\Exercises\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
