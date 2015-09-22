@@ -27,9 +27,26 @@ namespace NoSqlKickoff.Indexes.Exercises
 
         public E10_CountryWithAverageSalaryIndex()
         {
-            // TODO: implement Map property
-            
-            // TODO: implement Reduce property
+            Map = employments => from employment in employments
+                                 let team = LoadDocument<Team>(employment.TeamId)
+                                 select new IndexEntry
+                                 {
+                                     Salaries = new[] { employment.Salary },
+                                     Country = team.Country,
+                                     AverageSalary = employment.Salary
+                                 };
+
+            Reduce = entries => from entry in entries
+                                group entry by entry.Country
+                                into g
+                                let salaries = g.SelectMany(e => e.Salaries).ToArray()
+                                let average = g.Average(e => e.AverageSalary)
+                                select new IndexEntry
+                                {
+                                    Country = g.Key,
+                                    Salaries = salaries,
+                                    AverageSalary = average
+                                };
         }
     }
 }
