@@ -1,11 +1,10 @@
 ﻿using System.Linq;
 
-using NoSqlKickoff.Model;
 using NoSqlKickoff.Model.Exercises;
 
 using Raven.Client.Indexes;
 
-namespace NoSqlKickoff.Indexes
+namespace NoSqlKickoff.Indexes.Reference
 {
     public class Player_Index_R06 : AbstractIndexCreationTask<Player>
     {

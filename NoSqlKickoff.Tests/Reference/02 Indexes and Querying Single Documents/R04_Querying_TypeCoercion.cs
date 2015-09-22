@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using NoSqlKickoff.Indexes;
+using NoSqlKickoff.Indexes.Reference;
 using NoSqlKickoff.Model.Reference;
 
 using NUnit.Framework;
@@ -58,18 +58,18 @@ namespace NoSqlKickoff.Tests.Reference
         {
             using (var session = _store.OpenSession())
             {
-                 //Not possible to query on Name, because Player does not have a Name property
-                 //var filteredResults = session.Query<Player, Player_Index_UC04>()
+                 // Not possible to query on Name, because Player does not have a Name property
+                 // var filteredResults = session.Query<Player, Player_Index_UC04>()
                  //   .Where(p => p.Name.StartsWith("C"))
                  //   .ToList();
 
                 // Instead we have to query on the Index Entry and then coerce the type to Player using special operators
 
                 // Option 1: As<T>
-                //var filteredResults = session.Query<Player_Index_UC04.IndexEntry, Player_Index_UC04>()
-                //.Where(p => p.Name.StartsWith("C"))
-                //.As<Player>()
-                //.ToList();
+                // var filteredResults = session.Query<Player_Index_UC04.IndexEntry, Player_Index_UC04>()
+                // .Where(p => p.Name.StartsWith("C"))
+                // .As<Player>()
+                // .ToList();
 
                 // Option 2: OfType<T>
                 var filteredResults = session.Query<Player_Index_R04.IndexEntry, Player_Index_R04>()

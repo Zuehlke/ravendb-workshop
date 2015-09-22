@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
+using NoSqlKickoff.Indexes.Reference;
 using NoSqlKickoff.Model.Exercises;
 using NoSqlKickoff.Tests.Reference;
 using NoSqlKickoff.Transformers.Exercises;
@@ -37,7 +37,7 @@ namespace NoSqlKickoff.Tests.Exercises
             {
                 var dortmund = session.Query<Team, E08_TeamIndex>().Single(t => t.Name == "Borussia Dortmund");
 
-                var playersIn1314 = dortmund.EmploymentCopies.Where(e => e.Season == "2013-2014").Select(e => new ReducedPlayer { FirstName = e.FirstName, LastName = e.LastName}).ToList();
+                var playersIn1314 = dortmund.EmploymentCopies.Where(e => e.Season == "2013-2014").Select(e => new ReducedPlayer { FirstName = e.FirstName, LastName = e.LastName }).ToList();
 
                 return playersIn1314;
             }
@@ -137,7 +137,7 @@ namespace NoSqlKickoff.Tests.Exercises
                 var dortmundIn1314 = session.Query<E08_TeamMapReduceIndex.IndexEntry, E08_TeamMapReduceIndex>()
                         .Single(t => t.TeamName == "Borussia Dortmund" && t.Season == "2013-2014");
 
-                return dortmundIn1314.Players.Select(p => new ReducedPlayer { FirstName = p.FirstName, LastName = p.LastName}).ToList();
+                return dortmundIn1314.Players.Select(p => new ReducedPlayer { FirstName = p.FirstName, LastName = p.LastName }).ToList();
             }
         }
 
@@ -274,6 +274,5 @@ namespace NoSqlKickoff.Tests.Exercises
 
             WaitForIndexing(_store);
         }
-
     }
 }

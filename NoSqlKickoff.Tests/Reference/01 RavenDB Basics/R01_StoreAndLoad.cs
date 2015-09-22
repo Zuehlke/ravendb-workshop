@@ -9,7 +9,7 @@ using Raven.Tests.Helpers;
 
 namespace NoSqlKickoff.Tests.Reference
 {
-    //TODO: Add PrintDump() statements everywhere in reference tests
+    // TODO: Add PrintDump() statements everywhere in reference tests
 
     /// <summary>
     /// Use Case: Store and load players
@@ -37,7 +37,7 @@ namespace NoSqlKickoff.Tests.Reference
                 session.Store(player);
                 session.SaveChanges();
 
-                //player is tracked in session --> no call to Raven
+                // player is tracked in session --> no call to Raven
                 var samePlayer = session.Load<Player>(player.Id);
             }
 
@@ -47,8 +47,8 @@ namespace NoSqlKickoff.Tests.Reference
                 loadedPlayer = session.Load<Player>(player.Id);
             }
 
-            //Automatic ID Generation on Client with HiLo Algorithm
-            //Id = players/1
+            //// Automatic ID Generation on Client with HiLo Algorithm
+            //// Id = players/1
 
             Assert.AreEqual(loadedPlayer.FirstName, player.FirstName);
         }

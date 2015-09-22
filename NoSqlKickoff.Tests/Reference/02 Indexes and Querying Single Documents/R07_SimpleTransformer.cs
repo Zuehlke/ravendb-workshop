@@ -1,18 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using NoSqlKickoff.Indexes;
-using NoSqlKickoff.Model;
+using NoSqlKickoff.Indexes.Reference;
 using NoSqlKickoff.Model.Reference;
-using NoSqlKickoff.Transformers;
 using NoSqlKickoff.Transformers.Reference;
 
 using NUnit.Framework;
 
 using Raven.Client;
 using Raven.Client.Indexes;
-using Raven.Tests.Helpers;
 using Raven.Client.Linq;
+using Raven.Tests.Helpers;
 
 namespace NoSqlKickoff.Tests.Reference
 {

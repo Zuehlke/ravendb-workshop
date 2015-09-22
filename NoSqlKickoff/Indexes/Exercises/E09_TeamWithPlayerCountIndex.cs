@@ -39,8 +39,7 @@ namespace NoSqlKickoff.Indexes.Exercises
                                         TeamName = team.Name,
                                         PlayerCount = 0
                                     };
-
-
+            
             Reduce = entries => from entry in entries
                                 group entry by entry.TeamId into g
                                 let playerIds = g.SelectMany(e => e.PlayerIds).Distinct().ToArray()

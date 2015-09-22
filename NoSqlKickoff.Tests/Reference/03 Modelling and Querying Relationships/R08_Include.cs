@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using NoSqlKickoff.Indexes;
+using NoSqlKickoff.Indexes.Reference;
 using NoSqlKickoff.Model.Reference;
 
 using NUnit.Framework;
@@ -76,7 +76,6 @@ namespace NoSqlKickoff.Tests.Reference
         public void GetPlayerWithTeam_UsingInclude()
         {
             // Include is loading all mentioned documents into the session using the same network request
-
             using (var session = _store.OpenSession())
             {
                 var allPlayers = session.Query<Player>()

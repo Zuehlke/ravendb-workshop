@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
+using NoSqlKickoff.Indexes.Reference;
 using NoSqlKickoff.Tests.Reference;
 
 using NUnit.Framework;
@@ -148,6 +148,5 @@ namespace NoSqlKickoff.Tests.Exercises
 
             WaitForIndexing(_store);
         }
-
     }
 }

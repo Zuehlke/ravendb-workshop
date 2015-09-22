@@ -46,7 +46,7 @@ namespace NoSqlKickoff.Tests.Reference
             using (var session = _store.OpenSession())
             {
                 // Stale Index --> Query returns immediately with no results
-                //var allPlayers = session.Query<Player>().ToList();
+                // var allPlayers = session.Query<Player>().ToList();
 
                 // Wait for unstale index
                 var allPlayers = session.Query<Player>().Customize(c => c.WaitForNonStaleResultsAsOfNow()).ToList();

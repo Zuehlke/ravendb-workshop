@@ -4,7 +4,7 @@ using NoSqlKickoff.Model.Exercises;
 
 using Raven.Client.Indexes;
 
-namespace NoSqlKickoff.Indexes
+namespace NoSqlKickoff.Indexes.Reference
 {
     public class Player_Index_R03 : AbstractIndexCreationTask<Player>
     {

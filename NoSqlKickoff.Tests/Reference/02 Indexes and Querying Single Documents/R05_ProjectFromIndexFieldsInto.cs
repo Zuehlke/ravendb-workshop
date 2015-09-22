@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using NoSqlKickoff.Indexes;
-using NoSqlKickoff.Model;
+using NoSqlKickoff.Indexes.Reference;
 using NoSqlKickoff.Model.Reference;
 
 using NUnit.Framework;
@@ -71,6 +70,6 @@ namespace NoSqlKickoff.Tests.Reference
             }
         }
 
-        //TODO: Example where only index entry is queried
+        // TODO: Example where only index entry is queried
     }
 }

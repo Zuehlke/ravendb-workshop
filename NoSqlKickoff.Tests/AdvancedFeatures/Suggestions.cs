@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
-using NoSqlKickoff.Indexes;
+
 using NoSqlKickoff.Indexes.AdvancedFeatures;
+using NoSqlKickoff.Indexes.Reference;
 using NoSqlKickoff.Model.Reference;
 using NoSqlKickoff.Tests.Reference;
 

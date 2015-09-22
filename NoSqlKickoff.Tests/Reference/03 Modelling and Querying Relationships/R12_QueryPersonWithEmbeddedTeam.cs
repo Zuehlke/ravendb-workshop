@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using NoSqlKickoff.Indexes;
+using NoSqlKickoff.Indexes.Reference;
 using NoSqlKickoff.Model.Reference;
 
 using NUnit.Framework;
@@ -63,11 +63,11 @@ namespace NoSqlKickoff.Tests.Reference
         {
             using (var session = _store.OpenSession())
             {
-                // Not possible to compare on index fields !!
-                // var playersThatPlayInTheirHomeCountry = session.Query<Player_Index_UC13.IndexEntry, Player_Index_UC13>()
-                //    .Where(p => p.TeamCountryName == p.Nationality)
-                //    .ToList();
-
+                //// Not possible to compare on index fields !!
+                //// var playersThatPlayInTheirHomeCountry = session.Query<Player_Index_UC13.IndexEntry, Player_Index_UC13>()
+                ////    .Where(p => p.TeamCountryName == p.Nationality)
+                ////    .ToList();
+                
                 var playersThatPlayInTheirHomeCountry = session.Query<Player_Index_R12.IndexEntry, Player_Index_R12>()
                     .Where(p => p.PlaysInHisHomeCountry)
                     .OfType<PlayerWithTeam>()

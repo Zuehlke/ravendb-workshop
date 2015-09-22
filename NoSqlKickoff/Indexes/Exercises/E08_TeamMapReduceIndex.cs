@@ -46,8 +46,7 @@ namespace NoSqlKickoff.Indexes.Exercises
                                             Season = employment.Season,
                                             Players = new[] { new ReducedPlayer { FirstName = employment.FirstName, LastName = employment.LastName } }
                                         };
-
-
+            
             Reduce = entries => from entry in entries
                                 group entry by new { entry.TeamId, entry.Season } into g
                                 select

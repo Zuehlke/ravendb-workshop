@@ -17,13 +17,12 @@ namespace NoSqlKickoff.Indexes.Exercises
     {
         public E05_PlayerFullTextIndex()
         {
-            //TODO: Create full text index for player (FirstName and LastName)
+            // TODO: Create full text index for player (FirstName and LastName)
             Map = players => from player in players
                                  select new
                                             {
                                                 player.FirstName, 
                                                 player.LastName
-                                            
                                             };
 
             Index(p => p.FirstName, FieldIndexing.Analyzed);
