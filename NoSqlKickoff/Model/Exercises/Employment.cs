@@ -8,6 +8,8 @@
 
         public string TeamId { get; set; }
 
+        public string TeamName { get; set; }
+
         public string Season { get; set; }
 
         public int Salary { get; set; }

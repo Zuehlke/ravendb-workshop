@@ -55,6 +55,7 @@
     <Compile Include="Indexes\Exercises\E05_PlayerFullTextIndex.cs" />
     <Compile Include="Indexes\Exercises\E06_EmploymentIndex.cs" />
     <Compile Include="Indexes\Exercises\E06_EmploymentIndexWithStore.cs" />
+    <Compile Include="Indexes\Exercises\E07_PlayerFanOutIndex.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R12.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R13.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R11.cs" />
