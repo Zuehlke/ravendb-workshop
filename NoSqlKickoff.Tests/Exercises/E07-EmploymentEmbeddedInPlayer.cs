@@ -23,7 +23,6 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
         
         /// <summary>
-        /// TODO: Exercise 11b
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
         /// <returns>
@@ -43,6 +42,25 @@ namespace NoSqlKickoff.Tests.Exercises
                     .ToList();
             }
         }
+
+        /// <summary>
+        /// TODO: Exercise 12b
+        /// As a user I want to find all employments of “Gonzalo Higuaín”
+        /// </summary>
+        /// <returns>
+        /// A list of Employment objects from Higuain
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#oftype-(as)---simple-projection
+        /// </remarks>
+        /// <see cref="R04_Querying_TypeCoercion"/>
+        public List<Employment> FindEmploymentsOfHiguain()
+        {
+            // HINT: Query()
+            // HINT: OfType()
+
+            throw new NotImplementedException();
+        }
         
         [Test]
         public void FindPlayersOfDortmundIn1314_ShouldReturnAllPlayersOfDortmundIn20132014()
@@ -54,6 +72,16 @@ namespace NoSqlKickoff.Tests.Exercises
             players.PrintDump();
 
             Assert.That(players.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindEmploymentsOfHiguain_ShouldReturnAllEmploymentsOfHiguain()
+        {
+            var employments = FindEmploymentsOfHiguain();
+
+            employments.PrintDump();
+
+            Assert.That(employments.Count, Is.EqualTo(19));
         }
         
         [TestFixtureSetUp]
