@@ -25,7 +25,6 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
         
         /// <summary>
-        /// TODO: Exercise 11a (I)
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
         /// <returns>
@@ -46,11 +45,44 @@ namespace NoSqlKickoff.Tests.Exercises
                     .TransformWith<EmploymentToReducedPlayerTransformer, ReducedPlayer>().ToList();
             }
         }
+
+        /// <summary>
+        /// TODO: Exercise 11a (II)
+        /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
+        /// </summary>
+        /// <returns>
+        /// A list of ReducedPlayer objects (First name, Last name) who have played in Dortmund during 13/14
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#projectfromindexfieldsinto
+        /// </remarks>
+        /// <see cref="R05_ProjectFromIndexFieldsInto"/>
+        /// <see cref="R09_LoadDocumentInIndex"/>
+        /// <see cref="R11_LoadDocumentWithStoreFields"/>
+        public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingJoinAndIndexStore()
+        {
+            // HINT: Query()
+            // HINT: ProjectFromIndexFieldsInto()
+
+            throw new NotImplementedException();
+        }
         
         [Test]
         public void FindPlayersOfDortmundIn1314_UsingJoinAndTransformer_ShouldReturnAllPlayersOfDortmundIn1314()
         {
             var playerEmployments = FindPlayersOfDortmundIn1314_UsingJoinAndTransformer();
+
+            playerEmployments.PrintDump();
+
+            WaitForUserToContinueTheTest(_store);
+
+            Assert.That(playerEmployments.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindPlayersOfDortmundIn1314_UsingJoinAndIndexStore_ShouldReturnAllPlayersOfDortmundIn1314()
+        {
+            var playerEmployments = FindPlayersOfDortmundIn1314_UsingJoinAndIndexStore();
 
             playerEmployments.PrintDump();
 
