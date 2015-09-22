@@ -57,6 +57,7 @@
     <Compile Include="Indexes\Exercises\E06_EmploymentIndexWithStore.cs" />
     <Compile Include="Indexes\Exercises\E07_PlayerFanOutIndex.cs" />
     <Compile Include="Indexes\Exercises\E07_PlayerIndex.cs" />
+    <Compile Include="Indexes\Exercises\E08_TeamIndex.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R12.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R13.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R11.cs" />
@@ -68,6 +69,8 @@
     <Compile Include="Indexes\Reference\Player_Index_R04.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R03.cs" />
     <Compile Include="Model\Exercises\Employment.cs" />
+    <Compile Include="Model\Exercises\EmploymentCopyInPlayer.cs" />
+    <Compile Include="Model\Exercises\EmploymentCopyInTeam.cs" />
     <Compile Include="Model\Exercises\EmploymentWithTeam.cs" />
     <Compile Include="Model\Exercises\Player.cs" />
     <Compile Include="Model\Exercises\ReducedPlayer.cs" />

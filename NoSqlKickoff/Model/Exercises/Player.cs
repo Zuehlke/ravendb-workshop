@@ -7,9 +7,9 @@ namespace NoSqlKickoff.Model.Exercises
         public Player()
         {
             Employments = new List<Employment>();
+            EmploymentCopies = new List<EmploymentCopyInPlayer>();
         }
-
-
+        
         public string Id { get; set; }
 
         public string FirstName { get; set; }
@@ -19,5 +19,8 @@ namespace NoSqlKickoff.Model.Exercises
         public Nationality Nationality { get; set; }
 
         public List<Employment> Employments { get; set; }
+
+        public List<EmploymentCopyInPlayer> EmploymentCopies { get; set; }
+
     }
 }
