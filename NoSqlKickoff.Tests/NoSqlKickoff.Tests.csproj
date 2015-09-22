@@ -72,6 +72,7 @@
     <Compile Include="AdvancedFeatures\Highlighting.cs" />
     <Compile Include="AdvancedFeatures\Suggestions.cs" />
     <Compile Include="Exercises\E01-StoreAndLoadPlayers.cs" />
+    <Compile Include="Exercises\E02-QueryAutoIndexWithPaging.cs" />
     <Compile Include="Reference\03 Modelling and Querying Relationships\R10_LoadDocumentInTransformer.cs" />
     <Compile Include="Reference\03 Modelling and Querying Relationships\R11_LoadDocumentWithStoreFields.cs" />
     <Compile Include="Reference\04 Aggregations\R13_MapReduce.cs" />
