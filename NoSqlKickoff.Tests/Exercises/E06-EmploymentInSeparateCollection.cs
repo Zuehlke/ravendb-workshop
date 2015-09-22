@@ -39,10 +39,12 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R10_LoadDocumentInTransformer"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingJoinAndTransformer()
         {
-            // HINT: Query()
-            // HINT: TransformWith()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E06_EmploymentIndex.IndexEntry, E06_EmploymentIndex>()
+                    .Where(x => x.Season == "2013-2014" && x.TeamName == "Borussia Dortmund")
+                    .TransformWith<EmploymentToReducedPlayerTransformer, ReducedPlayer>().ToList();
+            }
         }
         
         [Test]

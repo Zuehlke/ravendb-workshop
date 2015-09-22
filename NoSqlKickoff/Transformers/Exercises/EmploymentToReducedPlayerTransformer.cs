@@ -10,9 +10,13 @@ namespace NoSqlKickoff.Transformers.Exercises
     {
         public EmploymentToReducedPlayerTransformer()
         {
-            // TODO: Implement the TransformResults property
-            // HINT: employments => from employment in employments...
-            // HINT: LoadDocument()
+            TransformResults = employments => from employment in employments
+                                              let player = LoadDocument<Player>(employment.PlayerId)
+                                              select new ReducedPlayer
+                                                      {
+                                                          FirstName = player.FirstName,
+                                                          LastName = player.LastName
+                                                      };
         }
     }
 }
