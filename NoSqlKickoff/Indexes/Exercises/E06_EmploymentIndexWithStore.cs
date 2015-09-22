@@ -36,11 +36,13 @@ namespace NoSqlKickoff.Indexes.Exercises
                                  select new IndexEntry
                                             {
                                                 Season = employment.Season,
-                                                TeamName = team.Name
+                                                TeamName = team.Name,
+                                                FirstName = player.FirstName,
+                                                LastName = player.LastName
                                             };
 
-            //TODO: Add FirstName and LastName
-
+            Store(e => e.FirstName, FieldStorage.Yes);
+            Store(e => e.LastName, FieldStorage.Yes);
             Store(e => e.TeamName, FieldStorage.Yes);
         }
     }

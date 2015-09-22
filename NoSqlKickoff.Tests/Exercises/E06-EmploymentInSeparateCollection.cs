@@ -93,7 +93,6 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// TODO: Exercise 12a (II)
         /// As a user I want to find all employments of “Gonzalo Higuaín”
         /// </summary>
         /// <returns>
@@ -107,10 +106,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R11_LoadDocumentWithStoreFields"/>
         public List<EmploymentWithTeam> FindEmploymentsOfHiguain_UsingJoinAndIndexStore()
         {
-            // HINT: Query()
-            // HINT: ProjectFromIndexFieldsInto()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E06_EmploymentIndexWithStore.IndexEntry, E06_EmploymentIndexWithStore>()
+                        .Where(x => x.FirstName == "Gonzalo" && x.LastName == "Higuaín")
+                        .ProjectFromIndexFieldsInto<EmploymentWithTeam>()
+                        .ToList();
+            }
         }
         
         [Test]
