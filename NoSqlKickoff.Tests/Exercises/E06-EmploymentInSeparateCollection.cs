@@ -70,7 +70,6 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// TODO: Exercise 12a (I)
         /// As a user I want to find all employments of “Gonzalo Higuaín”
         /// </summary>
         /// <returns>
@@ -84,10 +83,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R10_LoadDocumentInTransformer"/>
         public List<EmploymentWithTeam> FindEmploymentsOfHiguain_UsingJoinAndTransformer()
         {
-            // HINT: Query()
-            // HINT: TransformWith()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E06_EmploymentIndex.IndexEntry, E06_EmploymentIndex>()
+                        .Where(x => x.FirstName == "Gonzalo" && x.LastName == "Higuaín")
+                        .TransformWith<EmploymentToEmploymentWithTeamTransformer, EmploymentWithTeam>()
+                        .ToList();
+            }
         }
         
         [Test]

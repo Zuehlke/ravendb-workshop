@@ -10,9 +10,15 @@ namespace NoSqlKickoff.Transformers.Exercises
     {
         public EmploymentToEmploymentWithTeamTransformer()
         {
-            // TODO: Implement the TransformResults property
-            // HINT: employments => from employment in employments...
-            // HINT: LoadDocument()
+            TransformResults = employments => from employment in employments
+                                              let team = LoadDocument<Team>(employment.TeamId)
+                                              select new EmploymentWithTeam
+                                                  {
+                                                      TeamId = team.Id,
+                                                      Season = employment.Season,
+                                                      TeamName = team.Name,
+                                                      Id = employment.Id
+                                                  };
         }
     }
 }

@@ -27,7 +27,6 @@ namespace NoSqlKickoff.Indexes.Exercises
         
         public E06_EmploymentIndexWithStore()
         {
-            // TODO: Create Map property for Employment Index
             Map = employments => from employment in employments
                                  let team = LoadDocument<Team>(employment.TeamId)
                                  let player = LoadDocument<Player>(employment.PlayerId)
