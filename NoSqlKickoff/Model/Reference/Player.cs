@@ -8,11 +8,6 @@ namespace NoSqlKickoff.Model.Reference
 {
     public class Player
     {
-        public Player()
-        {
-            Employments = new List<Employment>();
-        }
-
         public string Id { get; set; }
 
         public string FirstName { get; set; }
@@ -26,7 +21,5 @@ namespace NoSqlKickoff.Model.Reference
         // Navigation property
         [JsonIgnore]
         public Team TeamNavigationProperty { get; set; }
-
-        public List<Employment> Employments { get; set; }
     }
 }
