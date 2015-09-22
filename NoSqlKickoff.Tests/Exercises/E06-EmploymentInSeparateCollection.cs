@@ -91,6 +91,27 @@ namespace NoSqlKickoff.Tests.Exercises
                         .ToList();
             }
         }
+
+        /// <summary>
+        /// TODO: Exercise 12a (II)
+        /// As a user I want to find all employments of “Gonzalo Higuaín”
+        /// </summary>
+        /// <returns>
+        /// A list of EmploymentWithTeam objects from Higuain
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#projectfromindexfieldsinto
+        /// </remarks>
+        /// <see cref="R05_ProjectFromIndexFieldsInto"/>
+        /// <see cref="R09_LoadDocumentInIndex"/>
+        /// <see cref="R11_LoadDocumentWithStoreFields"/>
+        public List<EmploymentWithTeam> FindEmploymentsOfHiguain_UsingJoinAndIndexStore()
+        {
+            // HINT: Query()
+            // HINT: ProjectFromIndexFieldsInto()
+
+            throw new NotImplementedException();
+        }
         
         [Test]
         public void FindPlayersOfDortmundIn1314_UsingJoinAndTransformer_ShouldReturnAllPlayersOfDortmundIn1314()
@@ -120,6 +141,16 @@ namespace NoSqlKickoff.Tests.Exercises
         public void FindEmploymentsOfHiguain_UsingJoinAndTransformer_ShouldReturnAllEmploymentsOfHiguain()
         {
             var employments = FindEmploymentsOfHiguain_UsingJoinAndTransformer();
+
+            employments.PrintDump();
+
+            Assert.That(employments.Count, Is.EqualTo(19));
+        }
+
+        [Test]
+        public void FindEmploymentsOfHiguain_UsingJoinAndIndexStore_ShouldReturnAllEmploymentsOfHiguain()
+        {
+            var employments = FindEmploymentsOfHiguain_UsingJoinAndIndexStore();
 
             employments.PrintDump();
 

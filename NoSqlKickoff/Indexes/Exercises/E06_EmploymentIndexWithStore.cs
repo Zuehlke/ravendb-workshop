@@ -23,6 +23,9 @@ namespace NoSqlKickoff.Indexes.Exercises
         {
             public string TeamName { get; set; }
             public string Season { get; set; }
+
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
         }
         
         public E06_EmploymentIndexWithStore()
@@ -35,6 +38,8 @@ namespace NoSqlKickoff.Indexes.Exercises
                                                 Season = employment.Season,
                                                 TeamName = team.Name
                                             };
+
+            //TODO: Add FirstName and LastName
 
             Store(e => e.TeamName, FieldStorage.Yes);
         }
