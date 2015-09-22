@@ -16,7 +16,12 @@ namespace NoSqlKickoff.Indexes.Exercises
     {
         public E08_TeamIndex()
         {
-            // TODO: implement map property
+            Map = teams => from team in teams
+                           select new
+                           {
+                               team.Name
+                           };
+
         }
     }
 }

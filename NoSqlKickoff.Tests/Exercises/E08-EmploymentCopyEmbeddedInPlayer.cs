@@ -26,7 +26,6 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 11c (I)
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
         /// <returns>
@@ -34,9 +33,14 @@ namespace NoSqlKickoff.Tests.Exercises
         /// </returns>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingInMemoryFilter()
         {
-            // HINT: Query()
-            
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                var dortmund = session.Query<Team, E08_TeamIndex>().Single(t => t.Name == "Borussia Dortmund");
+
+                var playersIn1314 = dortmund.EmploymentCopies.Where(e => e.Season == "2013-2014").Select(e => new ReducedPlayer { FirstName = e.FirstName, LastName = e.LastName }).ToList();
+
+                return playersIn1314;
+            }
         }
         
         [Test]
