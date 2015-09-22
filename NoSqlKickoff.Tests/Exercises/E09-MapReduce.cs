@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -33,12 +34,9 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R13_MapReduce"/>
         public List<E09_TeamWithPlayerCountIndex.IndexEntry> GetListOfTeamsWithPlayerCount()
         {
-            using (var session = _store.OpenSession())
-            {
-                var teamsWithCount = session.Query<E09_TeamWithPlayerCountIndex.IndexEntry, E09_TeamWithPlayerCountIndex>().ToList();
-
-                return teamsWithCount;
-            }
+            // HINT: Query()
+            
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -54,13 +52,9 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R13_MapReduce"/>
         public E09_TeamWithPlayerCountIndex.IndexEntry GetRealMadridWithPlayerCount()
         {
-            using (var session = _store.OpenSession())
-            {
-                var real = session.Query<E09_TeamWithPlayerCountIndex.IndexEntry, E09_TeamWithPlayerCountIndex>()
-                    .Single(e => e.TeamName == "Real Madrid");
+            // HINT: Query()
 
-                return real;
-            }
+            throw new NotImplementedException();
         }
 
         [Test]

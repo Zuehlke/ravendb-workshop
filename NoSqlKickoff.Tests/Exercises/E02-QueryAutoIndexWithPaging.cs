@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Model.Exercises;
@@ -29,10 +30,11 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R02_Querying_AutoIndex"/>
         public List<Player> GetPagedListOfFivePlayers(int page)
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Query<Player>().Take(5).Skip(page - 1).ToList();
-            }
+            // HINT: Query()
+            // HINT: Take()
+            // HINT: Skip()
+
+            throw new NotImplementedException();
         }
 
         [Test]

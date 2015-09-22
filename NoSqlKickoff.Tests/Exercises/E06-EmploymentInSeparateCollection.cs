@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -38,12 +39,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R10_LoadDocumentInTransformer"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingJoinAndTransformer()
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Query<E06_EmploymentIndex.IndexEntry, E06_EmploymentIndex>()
-                    .Where(x => x.Season == "2013-2014" && x.TeamName == "Borussia Dortmund")
-                    .TransformWith<EmploymentToReducedPlayerTransformer, ReducedPlayer>().ToList();
-            }
+            // HINT: Query()
+            // HINT: TransformWith()
+
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -61,13 +60,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R11_LoadDocumentWithStoreFields"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingJoinAndIndexStore()
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Query<E06_EmploymentIndexWithStore.IndexEntry, E06_EmploymentIndexWithStore>()
-                        .Where(x => x.Season == "2013-2014" && x.TeamName == "Borussia Dortmund")
-                        .ProjectFromIndexFieldsInto<ReducedPlayer>()
-                        .ToList();
-            }
+            // HINT: Query()
+            // HINT: ProjectFromIndexFieldsInto()
+
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -85,13 +81,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R10_LoadDocumentInTransformer"/>
         public List<EmploymentWithTeam> FindEmploymentsOfHiguain_UsingJoinAndTransformer()
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Query<E06_EmploymentIndex.IndexEntry, E06_EmploymentIndex>()
-                        .Where(x => x.FirstName == "Gonzalo" && x.LastName == "Higuaín")
-                        .TransformWith<EmploymentToEmploymentWithTeamTransformer, EmploymentWithTeam>()
-                        .ToList();
-            }
+            // HINT: Query()
+            // HINT: TransformWith()
+
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -109,13 +102,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R11_LoadDocumentWithStoreFields"/>
         public List<EmploymentWithTeam> FindEmploymentsOfHiguain_UsingJoinAndIndexStore()
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Query<E06_EmploymentIndexWithStore.IndexEntry, E06_EmploymentIndexWithStore>()
-                        .Where(x => x.FirstName == "Gonzalo" && x.LastName == "Higuaín")
-                        .ProjectFromIndexFieldsInto<EmploymentWithTeam>()
-                        .ToList();
-            }
+            // HINT: Query()
+            // HINT: ProjectFromIndexFieldsInto()
+
+            throw new NotImplementedException();
         }
 
         [Test]

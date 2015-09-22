@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Model.Exercises;
@@ -34,26 +35,11 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R01_StoreAndLoad"/>
         public string[] StoreListOfPlayers()
         {
-            var ids = new List<string>();
+            // HINT: OpenSession()
+            // HINT: Store()
+            // HINT: SaveChanges()
 
-            using (var session = _store.OpenSession())
-            {
-                var christiano = new Player { FirstName = "Christiano", LastName = "Ronaldo" };
-                var lionel = new Player { FirstName = "Lionel", LastName = "Messi" };
-                var bastian = new Player { FirstName = "Bastian", LastName = "Schweinsteiger" };
-                
-                session.Store(christiano);
-                session.Store(lionel);
-                session.Store(bastian);
-                
-                ids.Add(christiano.Id);
-                ids.Add(lionel.Id);
-                ids.Add(bastian.Id);
-
-                session.SaveChanges();
-            }
-
-            return ids.ToArray();
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -71,10 +57,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R01_StoreAndLoad"/>
         public List<Player> GetListOfPlayersById(string[] ids)
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Load<Player>(ids).ToList();
-            }
+            // HINT: OpenSession()
+            // HINT: Load()
+            
+            throw new NotImplementedException();
         }
 
         [SetUp]

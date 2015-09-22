@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -33,12 +34,9 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R13_MapReduce"/>
         public List<E10_TeamWithAverageSalaryIndex.IndexEntry> GetListOfTeamsWithAverageSalary()
         {
-            using (var session = _store.OpenSession())
-            {
-                var teamsWithAverageSalary = session.Query<E10_TeamWithAverageSalaryIndex.IndexEntry, E10_TeamWithAverageSalaryIndex>().ToList();
+            // HINT: Query()
 
-                return teamsWithAverageSalary;
-            }
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -54,12 +52,9 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R13_MapReduce"/>
         public List<E10_NationalityWithAverageSalaryIndex.IndexEntry> GetListOfNationalitiesWithAverageSalary()
         {
-            using (var session = _store.OpenSession())
-            {
-                var nationalitiesWithSalary = session.Query<E10_NationalityWithAverageSalaryIndex.IndexEntry, E10_NationalityWithAverageSalaryIndex>().ToList();
+            // HINT: Query()
 
-                return nationalitiesWithSalary;
-            }
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -75,13 +70,9 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R13_MapReduce"/>
         public List<E10_CountryWithAverageSalaryIndex.IndexEntry> GetListOfCountriesWithAverageSalary()
         {
-            using (var session = _store.OpenSession())
-            {
-                var countriesWithSalary = session.Query<E10_CountryWithAverageSalaryIndex.IndexEntry, E10_CountryWithAverageSalaryIndex>()
-                        .ToList();
+            // HINT: Query()
 
-                return countriesWithSalary;
-            }
+            throw new NotImplementedException();
         }
 
         [Test]

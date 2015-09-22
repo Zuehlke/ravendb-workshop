@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -33,13 +34,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R04_Querying_TypeCoercion"/>
         public Player FindChristiano()
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Query<E04_PlayerIndex.IndexEntry, E04_PlayerIndex>()
-                    .Where(p => p.FullName == "Christiano Ronaldo")
-                    .OfType<Player>()
-                    .SingleOrDefault();
-            }
+            // HINT: Query()
+            // HINT: OfType()
+
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -56,13 +54,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R04_Querying_TypeCoercion"/>
         public List<Player> FindBrazilianPlayers()
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Query<E04_PlayerIndex.IndexEntry, E04_PlayerIndex>()
-                        .Where(p => p.Nationality == "Brazil")
-                        .OfType<Player>()
-                        .ToList();
-            }
+            // HINT: Query()
+            // HINT: OfType()
+
+            throw new NotImplementedException();
         }
 
         [Test]

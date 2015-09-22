@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -32,10 +33,11 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R03_Querying_StaticIndex"/>
         public Player FindChristiano()
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Query<Player, E03_PlayerIndex>().SingleOrDefault(p => p.FirstName == "Christiano" && p.LastName == "Ronaldo");
-            }
+            // HINT: Query()
+            // HINT: Where()
+            // HINT: SingleOrDefault()
+
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -51,10 +53,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R03_Querying_StaticIndex"/>
         public List<Player> FindPlayersStartingWithC()
         {
-            using (var sesion = _store.OpenSession())
-            {
-                return sesion.Query<Player, E03_PlayerIndex>().Where(p => p.FirstName.StartsWith("C")).ToList();
-            }
+            // HINT: Query()
+            // HINT: Where()
+            
+            throw new NotImplementedException();
         }
 
         [Test]

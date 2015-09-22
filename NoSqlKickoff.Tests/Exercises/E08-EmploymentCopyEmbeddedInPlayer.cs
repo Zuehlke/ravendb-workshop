@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -33,14 +34,9 @@ namespace NoSqlKickoff.Tests.Exercises
         /// </returns>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingInMemoryFilter()
         {
-            using (var session = _store.OpenSession())
-            {
-                var dortmund = session.Query<Team, E08_TeamIndex>().Single(t => t.Name == "Borussia Dortmund");
-
-                var playersIn1314 = dortmund.EmploymentCopies.Where(e => e.Season == "2013-2014").Select(e => new ReducedPlayer { FirstName = e.FirstName, LastName = e.LastName }).ToList();
-
-                return playersIn1314;
-            }
+            // HINT: Query()
+            
+            throw new NotImplementedException();
         }
         
         /// <summary>
@@ -57,18 +53,11 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R07_SimpleTransformer"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingTransformer()
         {
-            using (var session = _store.OpenSession())
-            {
-                var dortmund = session.Query<Team, E08_TeamIndex>()
-                    .Where(t => t.Name == "Borussia Dortmund")
-                    .TransformWith<TeamToSeasonTransformer, Team>()
-                    .AddTransformerParameter("season", RavenJToken.FromObject("2013-2014"))
-                    .Single();
+            // HINT: Query()
+            // HINT: TransformWith()
+            // HINT: AddTransformerParameter()
 
-                var playersIn1314 = dortmund.EmploymentCopies.Select(e => new ReducedPlayer { FirstName = e.FirstName, LastName = e.LastName }).ToList();
-
-                return playersIn1314;
-            }
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -84,15 +73,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R05_ProjectFromIndexFieldsInto"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingTeamFanOutIndex()
         {
-            using (var session = _store.OpenSession())
-            {
-                var playersIn1314 = session.Query<E08_TeamFanOutIndex.IndexEntry, E08_TeamFanOutIndex>()
-                    .Where(t => t.TeamName == "Borussia Dortmund" && t.Season == "2013-2014")
-                    .ProjectFromIndexFieldsInto<ReducedPlayer>()
-                    .ToList();
+            // HINT: Query()
+            // HINT: ProjectFromIndexFieldsInto()
 
-                return playersIn1314;
-            }
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -108,15 +92,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R05_ProjectFromIndexFieldsInto"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingPlayerFanOutIndex()
         {
-            using (var session = _store.OpenSession())
-            {
-                var playersIn1314 = session.Query<E08_PlayerFanOutIndex.IndexEntry, E08_PlayerFanOutIndex>()
-                    .Where(t => t.TeamName == "Borussia Dortmund" && t.Season == "2013-2014")
-                    .ProjectFromIndexFieldsInto<ReducedPlayer>()
-                    .ToList();
+            // HINT: Query()
+            // HINT: ProjectFromIndexFieldsInto()
 
-                return playersIn1314;
-            }
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -132,13 +111,9 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R13_MapReduce"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingMapReduceIndex()
         {
-            using (var session = _store.OpenSession())
-            {
-                var dortmundIn1314 = session.Query<E08_TeamMapReduceIndex.IndexEntry, E08_TeamMapReduceIndex>()
-                        .Single(t => t.TeamName == "Borussia Dortmund" && t.Season == "2013-2014");
-
-                return dortmundIn1314.Players.Select(p => new ReducedPlayer { FirstName = p.FirstName, LastName = p.LastName }).ToList();
-            }
+            // HINT: Query()
+            
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -154,15 +129,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R04_Querying_TypeCoercion"/>
         public List<EmploymentCopyInPlayer> FindEmploymentsOfHiguain()
         {
-            using (var session = _store.OpenSession())
-            {
-                var higuain = session.Query<E08_PlayerIndex.IndexEntry, E08_PlayerIndex>()
-                                .Where(x => x.FirstName == "Gonzalo" && x.LastName == "Higuaín")
-                                .OfType<Player>()
-                                .Single();
+            // HINT: Query()
+            // HINT: OfType()
 
-                return higuain.EmploymentCopies.ToList();
-            }
+            throw new NotImplementedException();
         }
 
         [Test]

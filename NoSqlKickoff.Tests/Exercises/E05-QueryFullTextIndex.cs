@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -32,14 +33,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// </remarks>
         public List<Player> FindPlayersWithNameFragments()
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Query<Player, E05_PlayerFullTextIndex>()
-                    .Search(p => p.LastName, "van")
-                    .Search(p => p.LastName, "di")
-                    .Search(p => p.LastName, "de")
-                    .ToList();
-            }
+            // HINT: Query()
+            // HINT: Search()
+
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -54,12 +51,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// </remarks>
         public List<Player> FindPlayerWithFirstNameEndingWithAn()
         {
-            using (var session = _store.OpenSession())
-            {
-                return session.Query<Player, E05_PlayerFullTextIndex>()
-                    .Search(p => p.FirstName, "*an", escapeQueryOptions: EscapeQueryOptions.AllowAllWildcards)
-                    .ToList();
-            }
+            // HINT: Query()
+            // HINT: Search()
+
+            throw new NotImplementedException();
         }
 
         [Test]
