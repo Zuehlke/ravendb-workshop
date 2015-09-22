@@ -29,9 +29,28 @@ namespace NoSqlKickoff.Indexes.Exercises
 
         public E10_TeamWithAverageSalaryIndex()
         {
-            // TODO: implement Map property
-            
-            // TODO: implement Reduce property
+            Map = employments => from employment in employments
+                                 let team = LoadDocument<Team>(employment.TeamId)
+                                 select new IndexEntry
+                                 {
+                                     TeamId = employment.TeamId,
+                                     Salaries = new[] { employment.Salary },
+                                     TeamName = team.Name,
+                                     AverageSalary = employment.Salary
+                                 };
+
+            Reduce = entries => from entry in entries
+                                group entry by entry.TeamId
+                                into g
+                                let salaries = g.SelectMany(e => e.Salaries).ToArray()
+                                let average = g.Average(e => e.AverageSalary)
+                                select new IndexEntry
+                                {
+                                    TeamId = g.Key,
+                                    TeamName = g.First().TeamName,
+                                    Salaries = salaries,
+                                    AverageSalary = average
+                                };
         }
     }
 }

@@ -22,7 +22,6 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 15
         /// As a user I want to have a list of all teams with their average salary
         /// </summary>
         /// <returns>
@@ -34,9 +33,12 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R13_MapReduce"/>
         public List<E10_TeamWithAverageSalaryIndex.IndexEntry> GetListOfTeamsWithAverageSalary()
         {
-            // HINT: Query()
+            using (var session = _store.OpenSession())
+            {
+                var teamsWithAverageSalary = session.Query<E10_TeamWithAverageSalaryIndex.IndexEntry, E10_TeamWithAverageSalaryIndex>().ToList();
 
-            throw new NotImplementedException();
+                return teamsWithAverageSalary;
+            }
         }
 
         [Test]
