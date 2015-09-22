@@ -68,6 +68,27 @@ namespace NoSqlKickoff.Tests.Exercises
                         .ToList();
             }
         }
+
+        /// <summary>
+        /// TODO: Exercise 12a (I)
+        /// As a user I want to find all employments of “Gonzalo Higuaín”
+        /// </summary>
+        /// <returns>
+        /// A list of EmploymentWithTeam objects from Higuain
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-use-transformers-in-queries
+        /// </remarks>
+        /// <see cref="R07_SimpleTransformer"/>
+        /// <see cref="R09_LoadDocumentInIndex"/>
+        /// <see cref="R10_LoadDocumentInTransformer"/>
+        public List<EmploymentWithTeam> FindEmploymentsOfHiguain_UsingJoinAndTransformer()
+        {
+            // HINT: Query()
+            // HINT: TransformWith()
+
+            throw new NotImplementedException();
+        }
         
         [Test]
         public void FindPlayersOfDortmundIn1314_UsingJoinAndTransformer_ShouldReturnAllPlayersOfDortmundIn1314()
@@ -91,6 +112,16 @@ namespace NoSqlKickoff.Tests.Exercises
             WaitForUserToContinueTheTest(_store);
 
             Assert.That(playerEmployments.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindEmploymentsOfHiguain_UsingJoinAndTransformer_ShouldReturnAllEmploymentsOfHiguain()
+        {
+            var employments = FindEmploymentsOfHiguain_UsingJoinAndTransformer();
+
+            employments.PrintDump();
+
+            Assert.That(employments.Count, Is.EqualTo(19));
         }
 
         [TestFixtureSetUp]

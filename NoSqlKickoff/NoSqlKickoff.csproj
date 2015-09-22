@@ -66,6 +66,7 @@
     <Compile Include="Indexes\Reference\Player_Index_R04.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R03.cs" />
     <Compile Include="Model\Exercises\Employment.cs" />
+    <Compile Include="Model\Exercises\EmploymentWithTeam.cs" />
     <Compile Include="Model\Exercises\Player.cs" />
     <Compile Include="Model\Exercises\ReducedPlayer.cs" />
     <Compile Include="Model\Exercises\Team.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Model\Reference\PlayerWithTeam.cs" />
     <Compile Include="Model\Reference\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transformers\Exercises\EmploymentToEmploymentWithTeamTransformer.cs" />
     <Compile Include="Transformers\Exercises\EmploymentToReducedPlayerTransformer.cs" />
     <Compile Include="Transformers\Reference\PlayerFullNameTransformer.cs" />
     <Compile Include="Transformers\Reference\PlayerWithTeamTransformer.cs" />
