@@ -94,7 +94,6 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// TODO: Exercise 11c (IV)
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
         /// <returns>
@@ -106,10 +105,15 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R05_ProjectFromIndexFieldsInto"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingPlayerFanOutIndex()
         {
-            // HINT: Query()
-            // HINT: ProjectFromIndexFieldsInto()
+            using (var session = _store.OpenSession())
+            {
+                var playersIn1314 = session.Query<E08_PlayerFanOutIndex.IndexEntry, E08_PlayerFanOutIndex>()
+                    .Where(t => t.TeamName == "Borussia Dortmund" && t.Season == "2013-2014")
+                    .ProjectFromIndexFieldsInto<ReducedPlayer>()
+                    .ToList();
 
-            throw new NotImplementedException();
+                return playersIn1314;
+            }
         }
         
         [Test]
