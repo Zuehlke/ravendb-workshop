@@ -12,6 +12,6 @@
 
         public string Season { get; set; }
 
-        public int Salary { get; set; }
+        public decimal Salary { get; set; }
     }
 }
