@@ -61,6 +61,7 @@
     <Compile Include="Indexes\Exercises\E08_PlayerIndex.cs" />
     <Compile Include="Indexes\Exercises\E08_TeamFanOutIndex.cs" />
     <Compile Include="Indexes\Exercises\E08_TeamIndex.cs" />
+    <Compile Include="Indexes\Exercises\E09_TeamWithPlayerCountIndex.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R12.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R13.cs" />
     <Compile Include="Indexes\Reference\Player_Index_R11.cs" />
