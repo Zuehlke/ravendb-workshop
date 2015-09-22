@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -22,7 +21,6 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 9
         /// As a user I want to find players that contain the name fragment "van", "di" or "de"
         /// </summary>
         /// <returns>
@@ -33,14 +31,17 @@ namespace NoSqlKickoff.Tests.Exercises
         /// </remarks>
         public List<Player> FindPlayersWithNameFragments()
         {
-            // HINT: Query()
-            // HINT: Search()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<Player, E05_PlayerFullTextIndex>()
+                    .Search(p => p.LastName, "van")
+                    .Search(p => p.LastName, "di")
+                    .Search(p => p.LastName, "de")
+                    .ToList();
+            }
         }
 
         /// <summary>
-        /// TODO: Exercise 10
         /// As a user I want to find players whose first name ends with "an"
         /// </summary>
         /// <returns>
@@ -51,10 +52,12 @@ namespace NoSqlKickoff.Tests.Exercises
         /// </remarks>
         public List<Player> FindPlayerWithFirstNameEndingWithAn()
         {
-            // HINT: Query()
-            // HINT: Search()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<Player, E05_PlayerFullTextIndex>()
+                    .Search(p => p.FirstName, "*an", escapeQueryOptions: EscapeQueryOptions.AllowAllWildcards)
+                    .ToList();
+            }
         }
 
         [Test]

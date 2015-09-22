@@ -17,9 +17,15 @@ namespace NoSqlKickoff.Indexes.Exercises
     {
         public E05_PlayerFullTextIndex()
         {
-            // TODO: Implement the Map property
-            // HINT: players => from player in players
-            // HINT: Index()
+            Map = players => from player in players
+                                 select new
+                                            {
+                                                player.FirstName, 
+                                                player.LastName
+                                            };
+
+            Index(p => p.FirstName, FieldIndexing.Analyzed);
+            Index(p => p.LastName, FieldIndexing.Analyzed);
         }
     }
 }
