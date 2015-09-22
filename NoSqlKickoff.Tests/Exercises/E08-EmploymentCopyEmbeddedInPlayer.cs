@@ -42,11 +42,44 @@ namespace NoSqlKickoff.Tests.Exercises
                 return playersIn1314;
             }
         }
+
+        /// <summary>
+        /// TODO: Exercise 11c (II)
+        /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
+        /// </summary>
+        /// <returns>
+        /// A list of ReducedPlayer objects (First name, Last name) who have played in Dortmund during 13/14
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-use-transformers-in-queries
+        /// http://ravendb.net/docs/article-page/3.0/csharp/transformers/passing-parameters
+        /// </remarks>
+        /// <see cref="R07_SimpleTransformer"/>
+        public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingTransformer()
+        {
+            // HINT: Query()
+            // HINT: TransformWith()
+            // HINT: AddTransformerParameter()
+
+            throw new NotImplementedException();
+        }
         
         [Test]
         public void FindPlayersOfDortmundIn1314_UsingInMemoryFilter_ShouldReturnAllPlayersOfDortmundIn20132014()
         {
             var players = FindPlayersOfDortmundIn1314_UsingInMemoryFilter();
+
+            players.PrintDump();
+
+            WaitForUserToContinueTheTest(_store);
+
+            Assert.That(players.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindPlayersOfDortmundIn1314_UsingTransformer_ShouldReturnAllPlayersOfDortmundIn20132014()
+        {
+            var players = FindPlayersOfDortmundIn1314_UsingTransformer();
 
             players.PrintDump();
 

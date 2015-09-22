@@ -83,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transformers\Exercises\EmploymentToEmploymentWithTeamTransformer.cs" />
     <Compile Include="Transformers\Exercises\EmploymentToReducedPlayerTransformer.cs" />
+    <Compile Include="Transformers\Exercises\TeamToSeasonTransformer.cs" />
     <Compile Include="Transformers\Reference\PlayerFullNameTransformer.cs" />
     <Compile Include="Transformers\Reference\PlayerWithTeamTransformer.cs" />
   </ItemGroup>
