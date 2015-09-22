@@ -35,10 +35,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R04_Querying_TypeCoercion"/>
         public List<Player> FindPlayersOfDortmundIn1314()
         {
-            // HINT: Query()
-            // HINT: OfType()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E07_PlayerFanOutIndex.IndexEntry, E07_PlayerFanOutIndex>()
+                    .Where(e => e.TeamName == "Borussia Dortmund" && e.Season == "2013-2014")
+                    .OfType<Player>()
+                    .ToList();
+            }
         }
         
         [Test]

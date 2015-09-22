@@ -24,9 +24,15 @@ namespace NoSqlKickoff.Indexes.Exercises
 
         public E07_PlayerFanOutIndex()
         {
-            // TODO: implement map property
-            
-            // TODO: configure the fan-out maximum
+            Map = players => from player in players
+                             from employment in Recurse(player, p => p.Employments)
+                             select new IndexEntry
+                             {
+                                 TeamName = employment.TeamName,
+                                 Season = employment.Season
+                             };
+
+            MaxIndexOutputsPerDocument = 30;
         }
     }
 }
