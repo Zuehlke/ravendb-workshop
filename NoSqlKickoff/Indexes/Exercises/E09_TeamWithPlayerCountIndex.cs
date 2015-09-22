@@ -29,11 +29,26 @@ namespace NoSqlKickoff.Indexes.Exercises
 
         public E09_TeamWithPlayerCountIndex()
         {
-            // TODO: implement Map property
-            // HINT: LoadDocument()
+            Map = employments => from employment in employments
+                                 let team = LoadDocument<Team>(employment.TeamId)
+                                 select new IndexEntry
+                                    {
+                                        TeamId = employment.TeamId,
+                                        PlayerIds = new[] { employment.PlayerId },
+                                        TeamName = team.Name,
+                                        PlayerCount = 0
+                                    };
             
-            // TODO: implement Reduce property
-            // HINT: SelectMany()
+            Reduce = entries => from entry in entries
+                                group entry by entry.TeamId into g
+                                let playerIds = g.SelectMany(e => e.PlayerIds).Distinct().ToArray()
+                                select new IndexEntry
+                                        {
+                                            TeamId = g.Key,
+                                            TeamName = g.First().TeamName,
+                                            PlayerCount = playerIds.Length,
+                                            PlayerIds = playerIds
+                                        };
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -22,7 +21,6 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 13
         /// As a user I want to have a list of all teams with the total number of players that ever played in each team
         /// </summary>
         /// <returns>
@@ -34,13 +32,15 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R13_MapReduce"/>
         public List<E09_TeamWithPlayerCountIndex.IndexEntry> GetListOfTeamsWithPlayerCount()
         {
-            // HINT: Query()
-            
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                var teamsWithCount = session.Query<E09_TeamWithPlayerCountIndex.IndexEntry, E09_TeamWithPlayerCountIndex>().ToList();
+
+                return teamsWithCount;
+            }
         }
 
         /// <summary>
-        /// TODO: Exercise 14
         /// As a user I want to have the total number of players that ever played in "Real Madrid"
         /// </summary>
         /// <returns>
@@ -52,9 +52,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R13_MapReduce"/>
         public E09_TeamWithPlayerCountIndex.IndexEntry GetRealMadridWithPlayerCount()
         {
-            // HINT: Query()
+            using (var session = _store.OpenSession())
+            {
+                var real = session.Query<E09_TeamWithPlayerCountIndex.IndexEntry, E09_TeamWithPlayerCountIndex>()
+                    .Single(e => e.TeamName == "Real Madrid");
 
-            throw new NotImplementedException();
+                return real;
+            }
         }
 
         [Test]
