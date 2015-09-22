@@ -44,7 +44,6 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// TODO: Exercise 11c (II)
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
         /// <returns>
@@ -57,11 +56,18 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R07_SimpleTransformer"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingTransformer()
         {
-            // HINT: Query()
-            // HINT: TransformWith()
-            // HINT: AddTransformerParameter()
+            using (var session = _store.OpenSession())
+            {
+                var dortmund = session.Query<Team, E08_TeamIndex>()
+                    .Where(t => t.Name == "Borussia Dortmund")
+                    .TransformWith<TeamToSeasonTransformer, Team>()
+                    .AddTransformerParameter("season", RavenJToken.FromObject("2013-2014"))
+                    .Single();
 
-            throw new NotImplementedException();
+                var playersIn1314 = dortmund.EmploymentCopies.Select(e => new ReducedPlayer { FirstName = e.FirstName, LastName = e.LastName }).ToList();
+
+                return playersIn1314;
+            }
         }
         
         [Test]

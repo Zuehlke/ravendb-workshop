@@ -10,9 +10,16 @@ namespace NoSqlKickoff.Transformers.Exercises
     {
         public TeamToSeasonTransformer()
         {
-            // TODO: Implement the TransformResults property
-            // HINT: teams => from team in teams...
-            // HINT: Parameter()
+            TransformResults = teams => from team in teams
+                                        select
+                                            new Team
+                                            {
+                                                Id = team.Id,
+                                                Name = team.Name,
+                                                Country = team.Country,
+                                                EmploymentCopies = team.EmploymentCopies.Where(e => e.Season == Parameter("season").Value<string>()).ToList()
+                                            };
+
         }
     }
 }
