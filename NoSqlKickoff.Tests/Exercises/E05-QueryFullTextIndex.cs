@@ -24,6 +24,12 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 9
         /// As a user I want to find players that contain the name fragment "van", "di" or "de"
         /// </summary>
+        /// <returns>
+        /// A list of players which contain any of the name fragments "van", "di" or "de"
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-use-search
+        /// </remarks>
         public List<Player> FindPlayersWithNameFragments()
         {
             using (var session = _store.OpenSession())
@@ -40,7 +46,12 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 10
         /// As a user I want to find players whose first name ends with "an"
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// A list of players whose first name ends with "an"
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-use-search
+        /// </remarks>
         public List<Player> FindPlayerWithFirstNameEndingWithAn()
         {
             using (var session = _store.OpenSession())

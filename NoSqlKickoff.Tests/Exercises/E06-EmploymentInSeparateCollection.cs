@@ -4,6 +4,7 @@ using System.Linq;
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
 using NoSqlKickoff.Model.Exercises;
+using NoSqlKickoff.Tests.Reference;
 using NoSqlKickoff.Transformers.Exercises;
 
 using NUnit.Framework;
@@ -23,9 +24,18 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
         
         /// <summary>
-        /// TODO: Exercise 11a
+        /// TODO: Exercise 11a (I)
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
+        /// <returns>
+        /// A list of ReducedPlayer objects (First name, Last name) who have played in Dortmund during 13/14
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-use-transformers-in-queries
+        /// </remarks>
+        /// <see cref="R07_SimpleTransformer"/>
+        /// <see cref="R09_LoadDocumentInIndex"/>
+        /// <see cref="R10_LoadDocumentInTransformer"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingJoinAndTransformer()
         {
             using (var session = _store.OpenSession())
@@ -36,6 +46,19 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
+        /// <summary>
+        /// TODO: Exercise 11a (II)
+        /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
+        /// </summary>
+        /// <returns>
+        /// A list of ReducedPlayer objects (First name, Last name) who have played in Dortmund during 13/14
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#projectfromindexfieldsinto
+        /// </remarks>
+        /// <see cref="R05_ProjectFromIndexFieldsInto"/>
+        /// <see cref="R09_LoadDocumentInIndex"/>
+        /// <see cref="R11_LoadDocumentWithStoreFields"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingJoinAndIndexStore()
         {
             using (var session = _store.OpenSession())
@@ -48,9 +71,18 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// TODO: Exercise 12a
+        /// TODO: Exercise 12a (I)
         /// As a user I want to find all employments of “Gonzalo Higuaín”
         /// </summary>
+        /// <returns>
+        /// A list of EmploymentWithTeam objects from Higuain
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-use-transformers-in-queries
+        /// </remarks>
+        /// <see cref="R07_SimpleTransformer"/>
+        /// <see cref="R09_LoadDocumentInIndex"/>
+        /// <see cref="R10_LoadDocumentInTransformer"/>
         public List<EmploymentWithTeam> FindEmploymentsOfHiguain_UsingJoinAndTransformer()
         {
             using (var session = _store.OpenSession())
@@ -62,6 +94,19 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
+        /// <summary>
+        /// TODO: Exercise 12a (II)
+        /// As a user I want to find all employments of “Gonzalo Higuaín”
+        /// </summary>
+        /// <returns>
+        /// A list of EmploymentWithTeam objects from Higuain
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#projectfromindexfieldsinto
+        /// </remarks>
+        /// <see cref="R05_ProjectFromIndexFieldsInto"/>
+        /// <see cref="R09_LoadDocumentInIndex"/>
+        /// <see cref="R11_LoadDocumentWithStoreFields"/>
         public List<EmploymentWithTeam> FindEmploymentsOfHiguain_UsingJoinAndIndexStore()
         {
             using (var session = _store.OpenSession())
@@ -73,10 +118,8 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
-        //TODO: add more exercises to show different problems: Update of employment, Player Search which returns player info and current employment
-        
         [Test]
-        public void FindPlayersOfDortmundIn1314_ShouldReturnAllPlayersOfDortmundIn1314()
+        public void FindPlayersOfDortmundIn1314_UsingJoinAndTransformer_ShouldReturnAllPlayersOfDortmundIn1314()
         {
             var playerEmployments = FindPlayersOfDortmundIn1314_UsingJoinAndTransformer();
 
@@ -88,7 +131,29 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         [Test]
-        public void FindEmploymentsOfHiguain_ShouldReturnAllEmploymentsOfHiguain()
+        public void FindPlayersOfDortmundIn1314_UsingJoinAndIndexStore_ShouldReturnAllPlayersOfDortmundIn1314()
+        {
+            var playerEmployments = FindPlayersOfDortmundIn1314_UsingJoinAndIndexStore();
+
+            playerEmployments.PrintDump();
+
+            WaitForUserToContinueTheTest(_store);
+
+            Assert.That(playerEmployments.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindEmploymentsOfHiguain_UsingJoinAndTransformer_ShouldReturnAllEmploymentsOfHiguain()
+        {
+            var employments = FindEmploymentsOfHiguain_UsingJoinAndTransformer();
+
+            employments.PrintDump();
+
+            Assert.That(employments.Count, Is.EqualTo(19));
+        }
+
+        [Test]
+        public void FindEmploymentsOfHiguain_UsingJoinAndIndexStore_ShouldReturnAllEmploymentsOfHiguain()
         {
             var employments = FindEmploymentsOfHiguain_UsingJoinAndIndexStore();
 

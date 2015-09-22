@@ -2,6 +2,7 @@
 using System.Linq;
 
 using NoSqlKickoff.Model.Exercises;
+using NoSqlKickoff.Tests.Reference;
 
 using NUnit.Framework;
 
@@ -18,12 +19,19 @@ namespace NoSqlKickoff.Tests.Exercises
 
         /// <summary>
         /// TODO: Exercise 1
-        /// As a user I want store a list of the following players: 
+        /// As a user I want to store a list of the following players: 
         /// "Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger".
         /// </summary>
         /// <returns>
         /// An array of the ids of the players
         /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/what-is-a-session-and-how-does-it-work
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/opening-a-session
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/storing-entities
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/saving-changes
+        /// </remarks>
+        /// <see cref="R01_StoreAndLoad"/>
         public string[] StoreListOfPlayers()
         {
             var ids = new List<string>();
@@ -54,6 +62,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// I stored before ("Christiano Ronaldo", "Lionel Messi" and "Bastian Schweinsteiger") 
         /// given a list of their ids
         /// </summary>
+        /// <returns>
+        /// A list of player objects
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/loading-entities
+        /// </remarks>
+        /// <see cref="R01_StoreAndLoad"/>
         public List<Player> GetListOfPlayersById(string[] ids)
         {
             using (var session = _store.OpenSession())

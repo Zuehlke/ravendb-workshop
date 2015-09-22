@@ -3,6 +3,7 @@ using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
 using NoSqlKickoff.Model.Exercises;
+using NoSqlKickoff.Tests.Reference;
 
 using NUnit.Framework;
 
@@ -23,6 +24,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 7
         /// As a user I want to find the player "Christiano Ronaldo" by querying the full name
         /// </summary>
+        /// <returns>
+        /// A player object of Christiano
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#oftype-(as)---simple-projection
+        /// </remarks>
+        /// <see cref="R04_Querying_TypeCoercion"/>
         public Player FindChristiano()
         {
             using (var session = _store.OpenSession())
@@ -38,7 +46,14 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 8
         /// As a user I want to find all players that have the Nationality "Brazil"
         /// </summary>
+        /// <returns>
+        /// A list of players who have the nationality "Brazil"
+        /// </returns>
         /// <returns>A list of brazilian players</returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#oftype-(as)---simple-projection
+        /// </remarks>
+        /// <see cref="R04_Querying_TypeCoercion"/>
         public List<Player> FindBrazilianPlayers()
         {
             using (var session = _store.OpenSession())

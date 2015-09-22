@@ -4,6 +4,7 @@ using System.Linq;
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
 using NoSqlKickoff.Model.Exercises;
+using NoSqlKickoff.Tests.Reference;
 
 using NUnit.Framework;
 
@@ -24,6 +25,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 11b
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
+        /// <returns>
+        /// A list of Player objects who have played in Dortmund during 13/14
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#oftype-(as)---simple-projection
+        /// </remarks>
+        /// <see cref="R04_Querying_TypeCoercion"/>
         public List<Player> FindPlayersOfDortmundIn1314()
         {
             using (var session = _store.OpenSession())
@@ -36,9 +44,16 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// TODO: Exercise 12a
+        /// TODO: Exercise 12b
         /// As a user I want to find all employments of “Gonzalo Higuaín”
         /// </summary>
+        /// <returns>
+        /// A list of Employment objects from Higuain
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#oftype-(as)---simple-projection
+        /// </remarks>
+        /// <see cref="R04_Querying_TypeCoercion"/>
         public List<Employment> FindEmploymentsOfHiguain()
         {
             using (var session = _store.OpenSession())

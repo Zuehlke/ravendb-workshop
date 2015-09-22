@@ -4,6 +4,7 @@ using System.Linq;
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
 using NoSqlKickoff.Model.Exercises;
+using NoSqlKickoff.Tests.Reference;
 using NoSqlKickoff.Transformers.Exercises;
 
 using NUnit.Framework;
@@ -24,9 +25,12 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 11c
+        /// TODO: Exercise 11c (I)
         /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
         /// </summary>
+        /// <returns>
+        /// A list of ReducedPlayer objects (First name, Last name) who have played in Dortmund during 13/14
+        /// </returns>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingInMemoryFilter()
         {
             using (var session = _store.OpenSession())
@@ -38,7 +42,19 @@ namespace NoSqlKickoff.Tests.Exercises
                 return playersIn1314;
             }
         }
-
+        
+        /// <summary>
+        /// TODO: Exercise 11c (II)
+        /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
+        /// </summary>
+        /// <returns>
+        /// A list of ReducedPlayer objects (First name, Last name) who have played in Dortmund during 13/14
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-use-transformers-in-queries
+        /// http://ravendb.net/docs/article-page/3.0/csharp/transformers/passing-parameters
+        /// </remarks>
+        /// <see cref="R07_SimpleTransformer"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingTransformer()
         {
             using (var session = _store.OpenSession())
@@ -55,6 +71,17 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
+        /// <summary>
+        /// TODO: Exercise 11c (III)
+        /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
+        /// </summary>
+        /// <returns>
+        /// A list of ReducedPlayer objects (First name, Last name) who have played in Dortmund during 13/14
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/fanout-indexes
+        /// </remarks>
+        /// <see cref="R05_ProjectFromIndexFieldsInto"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingTeamFanOutIndex()
         {
             using (var session = _store.OpenSession())
@@ -68,6 +95,17 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
+        /// <summary>
+        /// TODO: Exercise 11c (IV)
+        /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
+        /// </summary>
+        /// <returns>
+        /// A list of ReducedPlayer objects (First name, Last name) who have played in Dortmund during 13/14
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/fanout-indexes
+        /// </remarks>
+        /// <see cref="R05_ProjectFromIndexFieldsInto"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingPlayerFanOutIndex()
         {
             using (var session = _store.OpenSession())
@@ -81,6 +119,17 @@ namespace NoSqlKickoff.Tests.Exercises
             }
         }
 
+        /// <summary>
+        /// TODO: Exercise 11c (V)
+        /// As a user I want to know what players have been employed by "Borussia Dortmund" in season "2013-2014".
+        /// </summary>
+        /// <returns>
+        /// A list of ReducedPlayer objects (First name, Last name) who have played in Dortmund during 13/14
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/map-reduce-indexes
+        /// </remarks>
+        /// <see cref="R13_MapReduce"/>
         public List<ReducedPlayer> FindPlayersOfDortmundIn1314_UsingMapReduceIndex()
         {
             using (var session = _store.OpenSession())
@@ -93,9 +142,16 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         /// <summary>
-        /// TODO: Exercise 12a
+        /// TODO: Exercise 12c
         /// As a user I want to find all employments of “Gonzalo Higuaín”
         /// </summary>
+        /// <returns>
+        /// A list of EmploymentCopyInPlayer objects from Higuain
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-perform-projection#oftype-(as)---simple-projection
+        /// </remarks>
+        /// <see cref="R04_Querying_TypeCoercion"/>
         public List<EmploymentCopyInPlayer> FindEmploymentsOfHiguain()
         {
             using (var session = _store.OpenSession())
@@ -110,9 +166,57 @@ namespace NoSqlKickoff.Tests.Exercises
         }
 
         [Test]
-        public void FindPlayersOfDortmundIn1314_ShouldReturnAllPlayersOfDortmundIn20132014()
+        public void FindPlayersOfDortmundIn1314_UsingInMemoryFilter_ShouldReturnAllPlayersOfDortmundIn20132014()
+        {
+            var players = FindPlayersOfDortmundIn1314_UsingInMemoryFilter();
+
+            players.PrintDump();
+
+            WaitForUserToContinueTheTest(_store);
+
+            Assert.That(players.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindPlayersOfDortmundIn1314_UsingTransformer_ShouldReturnAllPlayersOfDortmundIn20132014()
+        {
+            var players = FindPlayersOfDortmundIn1314_UsingTransformer();
+
+            players.PrintDump();
+
+            WaitForUserToContinueTheTest(_store);
+
+            Assert.That(players.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindPlayersOfDortmundIn1314_UsingTeamFanOutIndex_ShouldReturnAllPlayersOfDortmundIn20132014()
+        {
+            var players = FindPlayersOfDortmundIn1314_UsingTeamFanOutIndex();
+
+            players.PrintDump();
+
+            WaitForUserToContinueTheTest(_store);
+
+            Assert.That(players.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindPlayersOfDortmundIn1314_UsingPlayerFanOutIndex_ShouldReturnAllPlayersOfDortmundIn20132014()
         {
             var players = FindPlayersOfDortmundIn1314_UsingPlayerFanOutIndex();
+
+            players.PrintDump();
+
+            WaitForUserToContinueTheTest(_store);
+
+            Assert.That(players.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void FindPlayersOfDortmundIn1314_UsingMapReduceIndex_ShouldReturnAllPlayersOfDortmundIn20132014()
+        {
+            var players = FindPlayersOfDortmundIn1314_UsingMapReduceIndex();
 
             players.PrintDump();
 

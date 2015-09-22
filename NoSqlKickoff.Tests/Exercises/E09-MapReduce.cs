@@ -3,6 +3,7 @@ using System.Linq;
 
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
+using NoSqlKickoff.Tests.Reference;
 
 using NUnit.Framework;
 
@@ -23,6 +24,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 13
         /// As a user I want to have a list of all teams with the total number of players that ever played in each team
         /// </summary>
+        /// <returns>
+        /// A list of all teams with their total number of players
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/map-reduce-indexes
+        /// </remarks>
+        /// <see cref="R13_MapReduce"/>
         public List<E09_TeamWithPlayerCountIndex.IndexEntry> GetListOfTeamsWithPlayerCount()
         {
             using (var session = _store.OpenSession())
@@ -37,6 +45,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 14
         /// As a user I want to have the total number of players that ever played in "Real Madrid"
         /// </summary>
+        /// <returns>
+        /// An object which contains the number of players that have played in Real
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/map-reduce-indexes
+        /// </remarks>
+        /// <see cref="R13_MapReduce"/>
         public E09_TeamWithPlayerCountIndex.IndexEntry GetRealMadridWithPlayerCount()
         {
             using (var session = _store.OpenSession())

@@ -3,6 +3,7 @@ using System.Linq;
 
 using NoSqlKickoff.Indexes;
 using NoSqlKickoff.Indexes.Exercises;
+using NoSqlKickoff.Tests.Reference;
 
 using NUnit.Framework;
 
@@ -23,6 +24,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 15
         /// As a user I want to have a list of all teams with their average salary
         /// </summary>
+        /// <returns>
+        /// A list of all teams with their average salary
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/map-reduce-indexes
+        /// </remarks>
+        /// <see cref="R13_MapReduce"/>
         public List<E10_TeamWithAverageSalaryIndex.IndexEntry> GetListOfTeamsWithAverageSalary()
         {
             using (var session = _store.OpenSession())
@@ -37,6 +45,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 16
         /// As a user I want to have a list of all nationalities with their average salary
         /// </summary>
+        /// <returns>
+        /// A list of all nationalities with their average salary
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/map-reduce-indexes
+        /// </remarks>
+        /// <see cref="R13_MapReduce"/>
         public List<E10_NationalityWithAverageSalaryIndex.IndexEntry> GetListOfNationalitiesWithAverageSalary()
         {
             using (var session = _store.OpenSession())
@@ -51,6 +66,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 17
         /// As a user I want to have a list of all countries with their average salary
         /// </summary>
+        /// <returns>
+        /// A list of all countries with their average salary
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/map-reduce-indexes
+        /// </remarks>
+        /// <see cref="R13_MapReduce"/>
         public List<E10_CountryWithAverageSalaryIndex.IndexEntry> GetListOfCountriesWithAverageSalary()
         {
             using (var session = _store.OpenSession())

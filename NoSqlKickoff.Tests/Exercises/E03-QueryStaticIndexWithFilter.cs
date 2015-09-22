@@ -3,6 +3,7 @@ using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
 using NoSqlKickoff.Model.Exercises;
+using NoSqlKickoff.Tests.Reference;
 
 using NUnit.Framework;
 
@@ -22,6 +23,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 5
         /// As a user I want to find the player "Christiano Ronaldo"
         /// </summary>
+        /// <returns>
+        /// A player object of Christiano
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-query
+        /// </remarks>
+        /// <see cref="R03_Querying_StaticIndex"/>
         public Player FindChristiano()
         {
             using (var session = _store.OpenSession())
@@ -34,6 +42,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// TODO: Exercise 6
         /// As a user I want to query for all players that start with a "C" in the firstname
         /// </summary>
+        /// <returns>
+        /// A list of players whose first name starts with "C"
+        /// </returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-query
+        /// </remarks>
+        /// <see cref="R03_Querying_StaticIndex"/>
         public List<Player> FindPlayersStartingWithC()
         {
             using (var sesion = _store.OpenSession())

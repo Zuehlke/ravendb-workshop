@@ -6,6 +6,12 @@ using Raven.Client.Indexes;
 
 namespace NoSqlKickoff.Indexes.Exercises
 {
+    /// <summary>
+    /// Player Index for E07_EmploymentEmbeddedInPlayer
+    /// </summary>
+    /// <remarks>
+    /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/map-indexes
+    /// </remarks>
     public class E07_PlayerIndex : AbstractIndexCreationTask<Player>
     {
         public class IndexEntry

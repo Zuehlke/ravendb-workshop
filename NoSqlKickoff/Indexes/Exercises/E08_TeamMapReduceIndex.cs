@@ -1,11 +1,19 @@
 ﻿using System.Linq;
 
+using NoSqlKickoff.Indexes.Reference;
 using NoSqlKickoff.Model.Exercises;
 
 using Raven.Client.Indexes;
 
 namespace NoSqlKickoff.Indexes.Exercises
 {
+    /// <summary>
+    /// Team Map Reduce Index for E08_EmploymentCopyEmbeddedInPlayerAndTeam
+    /// </summary>
+    /// <remarks>
+    /// http://ravendb.net/docs/article-page/3.0/csharp/indexes/map-reduce-indexes
+    /// </remarks>
+    /// <see cref="Player_Index_R13"/>
     public class E08_TeamMapReduceIndex : AbstractIndexCreationTask<Team, E08_TeamMapReduceIndex.IndexEntry>
     {
         public class IndexEntry

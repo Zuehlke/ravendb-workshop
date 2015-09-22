@@ -2,6 +2,7 @@
 using System.Linq;
 
 using NoSqlKickoff.Model.Exercises;
+using NoSqlKickoff.Tests.Reference;
 
 using NUnit.Framework;
 
@@ -22,6 +23,10 @@ namespace NoSqlKickoff.Tests.Exercises
         /// As a user I want to get the second list of 5 players at once (paged list)
         /// </summary>
         /// <returns>A list of 5 players</returns>
+        /// <remarks>
+        /// http://ravendb.net/docs/article-page/3.0/csharp/client-api/session/querying/how-to-query
+        /// </remarks>
+        /// <see cref="R02_Querying_AutoIndex"/>
         public List<Player> GetPagedListOfFivePlayers(int page)
         {
             using (var session = _store.OpenSession())
