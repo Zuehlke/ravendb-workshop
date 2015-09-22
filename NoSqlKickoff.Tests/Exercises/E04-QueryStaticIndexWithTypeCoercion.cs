@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using NoSqlKickoff.Indexes.Exercises;
@@ -22,7 +21,6 @@ namespace NoSqlKickoff.Tests.Exercises
         private IDocumentStore _store;
 
         /// <summary>
-        /// TODO: Exercise 7
         /// As a user I want to find the player "Christiano Ronaldo" by querying the full name
         /// </summary>
         /// <returns>
@@ -34,14 +32,16 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R04_Querying_TypeCoercion"/>
         public Player FindChristiano()
         {
-            // HINT: Query()
-            // HINT: OfType()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E04_PlayerIndex.IndexEntry, E04_PlayerIndex>()
+                    .Where(p => p.FullName == "Christiano Ronaldo")
+                    .OfType<Player>()
+                    .SingleOrDefault();
+            }
         }
 
         /// <summary>
-        /// TODO: Exercise 8
         /// As a user I want to find all players that have the Nationality "Brazil"
         /// </summary>
         /// <returns>
@@ -54,10 +54,13 @@ namespace NoSqlKickoff.Tests.Exercises
         /// <see cref="R04_Querying_TypeCoercion"/>
         public List<Player> FindBrazilianPlayers()
         {
-            // HINT: Query()
-            // HINT: OfType()
-
-            throw new NotImplementedException();
+            using (var session = _store.OpenSession())
+            {
+                return session.Query<E04_PlayerIndex.IndexEntry, E04_PlayerIndex>()
+                        .Where(p => p.Nationality == "Brazil")
+                        .OfType<Player>()
+                        .ToList();
+            }
         }
 
         [Test]

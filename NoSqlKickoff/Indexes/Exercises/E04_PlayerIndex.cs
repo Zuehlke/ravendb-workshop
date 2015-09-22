@@ -25,8 +25,12 @@ namespace NoSqlKickoff.Indexes.Exercises
 
         public E04_PlayerIndex()
         {
-            // TODO: Implement the Map property
-            // HINT: players => from player in players
+            Map = players => from player in players 
+                             select new IndexEntry
+                             {
+                                 FullName = player.FirstName + " " + player.LastName,
+                                 Nationality = player.Nationality.Name
+                             };
         }
     }
 }
