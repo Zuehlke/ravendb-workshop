@@ -8,6 +8,7 @@ using NoSqlKickoff.Tests.Reference;
 using NUnit.Framework;
 
 using Raven.Client;
+using Raven.Client.Document;
 using Raven.Tests.Helpers;
 
 using ServiceStack.Text;
@@ -67,6 +68,9 @@ namespace NoSqlKickoff.Tests.Exercises
         public void SetUp()
         {
             _store = NewDocumentStore();
+
+            // Alternatively connect to your local document store
+            //_store = new DocumentStore { Url = "http://localhost:8080", DefaultDatabase = "NoSQLKickoff" }.Initialize();
         }
 
         [Test]
