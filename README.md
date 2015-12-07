@@ -45,6 +45,7 @@ In this tutorial, attendees will learn the most important concepts of document d
 	* Bundles
 
 ##Contributors
-Special thanks for any contributor <3
-- [olibanjoli](https://github.com/olibanjoli) (Oliver Zürcher)
-- [michaelschnyder](https://github.com/michaelschnyder) (Michael Schnyder)
+-- [mzoellner](https://github.com/mzoellner) (Michael Zöllner)
+-- [tobiaszuercher](https://github.com/tobiaszuercher) (Tobias Zürcher)
+-- [qtschi](https://github.com/qtschi)
+-- [stefanzueger](https://github.com/stefanzueger ) (Stefan Züger)
