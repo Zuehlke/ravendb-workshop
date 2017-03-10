@@ -81,7 +81,7 @@ namespace NoSqlKickoff.Tests.Exercises
             Assert.That(brazilisanPlayers.All(p => p.Nationality.Name == "Brazil"), Is.True);
         }
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void TestFixtureSetUp()
         {
             _store = NewDocumentStore();
