@@ -81,7 +81,7 @@ namespace NoSqlKickoff.Tests.Exercises
             Assert.IsTrue(playersEndingWithAn.All(p => p.FirstName.EndsWith("an")));
         }
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void TestFixtureSetUp()
         {
             _store = NewDocumentStore();
