@@ -80,7 +80,7 @@ namespace NoSqlKickoff.Tests.Exercises
             Assert.IsTrue(players.All(p => p.FirstName.StartsWith("C")));
         }
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void TestFixtureSetUp()
         {
             _store = NewDocumentStore();
