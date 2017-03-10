@@ -81,8 +81,8 @@ namespace NoSqlKickoff.Tests.Exercises
             Assert.That(nationalitiesWithAverageSalary.Single(t => t.Nationality == "Germany").AverageSalary, Is.GreaterThan(1000000));
         }
 
-        [TestFixtureSetUp]
-        public void TestFixtureSetUp()
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
         {
             _store = NewDocumentStore();
 
