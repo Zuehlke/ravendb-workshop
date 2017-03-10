@@ -78,8 +78,8 @@ namespace NoSqlKickoff.Tests.Exercises
             Assert.That(realMadridWithPlayerCount.PlayerCount, Is.EqualTo(6));
         }
 
-        [TestFixtureSetUp]
-        public void TestFixtureSetUp()
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
         {
             _store = NewDocumentStore();
 
