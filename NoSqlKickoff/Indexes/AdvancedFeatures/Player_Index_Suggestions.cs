@@ -25,7 +25,7 @@ namespace NoSqlKickoff.Indexes.AdvancedFeatures
             Indexes.Add(p => p.FirstName, FieldIndexing.Analyzed);
 
             Store(x => x.FirstName, FieldStorage.Yes);
-            Suggestion(p => p.FirstName, new SuggestionOptions());
+            Suggestion(p => p.FirstName);
             
             TermVector(p => p.FirstName, FieldTermVector.WithPositionsAndOffsets); // just used for highlighting
         }
