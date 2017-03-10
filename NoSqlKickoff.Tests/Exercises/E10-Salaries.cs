@@ -50,8 +50,8 @@ namespace NoSqlKickoff.Tests.Exercises
             Assert.That(teamsWithAverageSalary.Single(t => t.TeamName == "Real Madrid").AverageSalary, Is.EqualTo(2000000));
         }
 
-        [TestFixtureSetUp]
-        public void TestFixtureSetUp()
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
         {
             _store = NewDocumentStore();
 
